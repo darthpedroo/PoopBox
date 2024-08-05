@@ -46,6 +46,9 @@ public class PlayerMovingState : PlayerBaseState
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity*Time.deltaTime);
 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded && (x != 0 || z != 0)) {
+            player.SwitchState(player.DashState);
+        }
     }
 
     public override void EnterState(PlayerStateManager player){

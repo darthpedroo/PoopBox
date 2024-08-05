@@ -7,6 +7,7 @@ public class PlayerStateManager : MonoBehaviour
 
     PlayerBaseState currentState;
     public PlayerMovingState MovingState = new PlayerMovingState();
+    public PlayerDashState DashState = new PlayerDashState();
     public LayerMask groundMask; //Esto es medio troll , ver si no se puede hace run setter desde PlayerMoving
     public Transform groundCheck;
 
