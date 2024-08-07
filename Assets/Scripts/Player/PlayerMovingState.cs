@@ -16,7 +16,7 @@ public class PlayerMovingState : PlayerBaseState
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
-    public float jumpHeight = 30 ;
+    public float jumpHeight = 10 ;
     [SerializeField]
     public LayerMask groundMask; 
     bool isGrounded; 

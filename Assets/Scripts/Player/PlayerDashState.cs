@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerDashState : PlayerBaseState
 {
-    private float maxDashTime = 1; // segundos
+    private float maxDashTime = 0.1f; // segundos
     private float dashTime = 0;
 
     public Vector3 direction;
