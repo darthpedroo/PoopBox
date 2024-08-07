@@ -40,8 +40,6 @@ public class PlayerMovingState : PlayerBaseState
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded){
             velocity.y = Mathf.Sqrt(jumpHeight*-2*gravity);
         }
-        
-
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity*Time.deltaTime);
@@ -52,7 +50,6 @@ public class PlayerMovingState : PlayerBaseState
     }
 
     public override void EnterState(PlayerStateManager player){
-        Debug.Log("Hello from Moving State");
         controller = player.GetComponent<CharacterController>();
         groundMask = player.groundMask;
         groundCheck = player.groundCheck;

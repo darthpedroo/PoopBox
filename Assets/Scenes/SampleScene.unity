@@ -634,7 +634,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 200
   playerBody: {fileID: 771822883}
-<<<<<<< HEAD
 --- !u!1 &1247569351
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,8 +757,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> 48d508bb5bf0812f755c3d82c6cff979542e8904
 --- !u!1 &1830494530
 GameObject:
   m_ObjectHideFlags: 0
