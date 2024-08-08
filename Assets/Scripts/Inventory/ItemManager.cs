@@ -17,19 +17,14 @@ public class ItemManager : MonoBehaviour
     
     void Start()
     {
-        
-        Debug.Log("CURRENT TYPE: ");
-        Debug.Log(currentType);
         switch(currentType){
             case ItemType.SWORD:        
                 currentItem = new Sword();
                 currentItem.createObject(this.gameObject);
-                Debug.Log("THE SPADE IS DONE");
                 break;
             case ItemType.AXE:
                 currentItem = new Axe();
                 currentItem.createObject(this.gameObject);
-                Debug.Log("THE AXE IS DONE");
                 break;
         }
     }
