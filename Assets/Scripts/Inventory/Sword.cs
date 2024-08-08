@@ -1,11 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Sword : Item
 {
-    
+    private Canvas swordCanvas;
+
     public override void createObject(GameObject parentObject){
         Debug.Log("Creating a Sword");
         GameObject swordObject = GameObject.CreatePrimitive(PrimitiveType.Capsule);
@@ -14,7 +18,16 @@ public class Sword : Item
         meshFilter = swordObject.GetComponent<MeshFilter>();
         meshRenderer = swordObject.GetComponent<MeshRenderer>();
 
+
+     
+      
+      //  Canvas canvas = parentObject.GetComponentInChildren<Canvas>();
+       // RawImage image = canvas.GetComponentInChildren<RawImage>();
+    //    Texture rawdog =  Resources.Load<Texture>("sword");
+    //  image.texture = rawdog;
+
     }
+        
 
 
     public override void useItem()

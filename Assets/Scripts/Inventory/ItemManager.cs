@@ -17,9 +17,6 @@ public class ItemManager : MonoBehaviour
     
     void Start()
     {
-        
-        Debug.Log("CURRENT TYPE: ");
-        Debug.Log(currentType);
         switch(currentType){
             case ItemType.SWORD:        
                 currentItem = new Sword();

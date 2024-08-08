@@ -16,6 +16,7 @@ public class PlayerDashState : PlayerBaseState
         controller.Move(direction * speed * Time.deltaTime);
         dashTime += Time.deltaTime;
         
+        
         if (maxDashTime <= dashTime){
             player.SwitchState(player.MovingState);
             

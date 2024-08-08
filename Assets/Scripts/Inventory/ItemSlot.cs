@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ItemSlot : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public ItemManager currentItem;
+
     void Start()
     {
         
