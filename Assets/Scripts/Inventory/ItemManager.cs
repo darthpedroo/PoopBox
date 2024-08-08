@@ -21,12 +21,10 @@ public class ItemManager : MonoBehaviour
             case ItemType.SWORD:        
                 currentItem = new Sword();
                 currentItem.createObject(this.gameObject);
-                Debug.Log("THE SPADE IS DONE");
                 break;
             case ItemType.AXE:
                 currentItem = new Axe();
                 currentItem.createObject(this.gameObject);
-                Debug.Log("THE AXE IS DONE");
                 break;
         }
     }

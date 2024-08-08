@@ -16,7 +16,6 @@ public class PlayerStateManager : MonoBehaviour
     void Start()
     {
         currentState = MovingState;
-        Debug.Log("ENTERING");
         currentState.EnterState(this);
         
     }

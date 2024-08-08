@@ -12,8 +12,6 @@ public class ItemSlot : MonoBehaviour
     {
         itemManagerSlot.currentType = currentItemType;
         RawImage slotimage = GetComponent<RawImage>();
-        Debug.Log("HEREEE ");
-        Debug.Log(slotimage);
         if (slotimage){
             slotimage.texture = itemManagerSlot.currentItem.GetitemTexture;
         }

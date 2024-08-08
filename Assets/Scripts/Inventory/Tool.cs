@@ -13,9 +13,8 @@ public abstract class Tool : Item
         
     public override void createObject(GameObject parentObject){
         
-        GameObject swordObject = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        swordObject.transform.parent = parentObject.transform;
-        
+        //GameObject swordObject = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        //swordObject.transform.parent = parentObject.transform;
         //swordObject.transform.position = new Vector3(2.95f,4.91f,3.13f); //ES UNA POSICION ARBITRARIA PAAA QUE SE VA A LA DERECHA EL ITEM QUE TENES EN LA MANO :v
         //meshFilter = swordObject.GetComponent<MeshFilter>();
         //meshRenderer = swordObject.GetComponent<MeshRenderer>();
@@ -30,7 +29,6 @@ public abstract class Tool : Item
 
     public override void useItem()
     {
-        Debug.Log("Using the sword");
 
     }
 
