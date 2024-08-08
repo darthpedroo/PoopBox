@@ -10,6 +10,8 @@ public class HandManager : MonoBehaviour
 {
     public Canvas hotbar;
     private ItemSlot[] slots;
+    public Transform cameraman;
+
     void Start()
     {   
         slots = hotbar.GetComponentsInChildren<ItemSlot>();
@@ -24,6 +26,7 @@ public class HandManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.rotation = cameraman.rotation;
         // Check for numeric key inputs
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
