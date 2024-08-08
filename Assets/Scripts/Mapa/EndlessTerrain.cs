@@ -64,6 +64,7 @@ public class EndlessTerrain : MonoBehaviour
         Bounds bounds;
         MeshRenderer meshRenderer;
         MeshFilter meshFilter;
+        MeshCollider meshCollider;
         LODInfo[] detailLevels;
         LODMesh[] lodMeshes;
         MapData mapData;
@@ -75,8 +76,10 @@ public class EndlessTerrain : MonoBehaviour
             bounds = new Bounds(position,Vector2.one * size);
             Vector3 positionV3 = new Vector3(position.x,0,position.y);
             meshObject = new GameObject("Terrain Chunk " + coord.ToString());
+            meshObject.layer =  6;
             meshRenderer = meshObject.AddComponent<MeshRenderer>();
             meshFilter = meshObject.AddComponent<MeshFilter>();
+            meshCollider = meshObject.AddComponent<MeshCollider>();
             meshRenderer.material = material;
             meshObject.transform.position = positionV3;
             meshObject.transform.parent = parent;
@@ -118,6 +121,7 @@ public class EndlessTerrain : MonoBehaviour
                         if (lodMesh.hasMesh){
                             previousLODIndex = lodIndex;
                             meshFilter.mesh = lodMesh.mesh;
+                            meshCollider.sharedMesh = lodMesh.mesh;
                         }
                         else if (!lodMesh.hasRequestedMesh){
                             lodMesh.RequestMesh(mapData);

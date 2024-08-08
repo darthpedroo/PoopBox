@@ -126,14 +126,14 @@ public class MapGenerator : MonoBehaviour {
         {
             
 
-            regions[0] = new TerrainType("Shallow Water", 0.2f, new Color32(0x33, 0x61, 0xbf, 0xff)); // Blue
-            regions[1] = new TerrainType("Light Beach", 0.3f, new Color32(0x38, 0x65, 0xbf, 0xff)); // Lighter Blue
-            regions[2] = new TerrainType("Beach", 0.40f, new Color32(0xd0, 0xd1, 0x80, 0xff)); // Sand color
-            regions[3] = new TerrainType("Grass", 0.55f, new Color32(0x58, 0x98, 0x18, 0xff)); // Green
-            regions[4] = new TerrainType("Forest", 0.6f, new Color32(0x3f, 0x6a, 0x12, 0xff)); // Dark Green
-            regions[5] = new TerrainType("Rock", 0.7f, new Color32(0x57, 0x40, 0x39, 0xff)); // Brown
-            regions[6] = new TerrainType("Mountain", 0.9f, new Color32(0x42, 0x34, 0x32, 0xff)); // Darker Brown
-            regions[7] = new TerrainType("Snow", 1.0f, Color.white); // White
+         //   regions[0] = new TerrainType("Shallow Water", 0f, new Color32(0x33, 0x61, 0xbf, 0xff)); // Blue
+        	// regions[1] = new TerrainType("Light Beach", 0.3f, new Color32(0x38, 0x65, 0xbf, 0xff)); // Lighter Blue
+            //regions[2] = new TerrainType("Beach", 0.40f, new Color32(0xd0, 0xd1, 0x80, 0xff)); // Sand color
+            //regions[3] = new TerrainType("Grass", 0.55f, new Color32(0x58, 0x98, 0x18, 0xff)); // Green
+            //regions[4] = new TerrainType("Forest", 0.6f, new Color32(0x3f, 0x6a, 0x12, 0xff)); // Dark Green
+            //regions[5] = new TerrainType("Rock", 0.7f, new Color32(0x57, 0x40, 0x39, 0xff)); // Brown
+            //regions[6] = new TerrainType("Mountain", 0.9f, new Color32(0x42, 0x34, 0x32, 0xff)); // Darker Brown
+            //regions[7] = new TerrainType("Snow", 1.0f, Color.white); // White
 
             
         }
