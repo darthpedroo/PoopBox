@@ -12,28 +12,13 @@ public class MapGeneratorEditor : Editor
         {
             if (mapGen.autoUpdate)
             {
-                mapGen.GenerateMap();
+                mapGen.DrawMapInEditor();
             }
         }
         if (GUILayout.Button("Generate"))
         {
-            mapGen.GenerateMap();
+            mapGen.DrawMapInEditor();
         }
     }
 }
 
-[InitializeOnLoad]
-public static class MapGeneratorInitializer
-{
-    static MapGeneratorInitializer()
-    {
-        EditorApplication.delayCall += OnEditorReload;
-    }
-
-    private static void OnEditorReload()
-    {
-        // Find the MapGenerator instance in the scene
-        MapGenerator mapGen = GameObject.FindObjectOfType<MapGenerator>();
-        mapGen?.GenerateMap();
-    }
-}
