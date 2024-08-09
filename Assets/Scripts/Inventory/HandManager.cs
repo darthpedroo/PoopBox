@@ -15,12 +15,6 @@ public class HandManager : MonoBehaviour
     void Start()
     {   
         slots = hotbar.GetComponentsInChildren<ItemSlot>();
-        Debug.Log("Gyat");
-        Debug.Log(slots[0].itemManagerSlot.currentItem);
-        Debug.Log(slots[1].itemManagerSlot.currentItem);
-        Debug.Log(slots[2].itemManagerSlot.currentItem);
-
-        
     }
 
     // Update is called once per frame
