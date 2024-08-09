@@ -10,6 +10,7 @@ public class ItemManager : MonoBehaviour
     public enum ItemType{
         SWORD,
         AXE,
+        EMPTY,
     }
     
     public Item currentItem;
@@ -25,6 +26,10 @@ public class ItemManager : MonoBehaviour
             case ItemType.AXE:
                 currentItem = new Axe();
                 currentItem.createObject(this.gameObject);
+                break;
+            case ItemType.EMPTY:
+                currentItem = new Empty();
+                //currentItem.createObject(gameObject);
                 break;
         }
     }
