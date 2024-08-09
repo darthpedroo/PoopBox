@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -34,11 +35,46 @@ public class HandManager : MonoBehaviour
         {
             EquipItem(2); // Equip item in slot 2
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            EquipItem(2); // Equip item in slot 2
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            EquipItem(2); // Equip item in slot 2
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            EquipItem(2); // Equip item in slot 2
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            EquipItem(2); // Equip item in slot 2
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            EquipItem(2); // Equip item in slot 2
+        }
     }
 
     void EquipItem(int slotIndex)
     {
-        // Ensure the slot index is within range
+        // Try to find and destroy the first child object
+        try
+        {
+            var childObject = transform.GetChild(0).gameObject;
+            if (childObject)
+            {
+                Destroy(childObject); // Destroy the child object
+                Debug.Log("ITEM DESTROYED");
+            }
+        }
+        catch
+        {
+            Debug.Log("OBJECT NOT FOUND");
+        }
+
+        // Equip the item from the selected slot
         if (slotIndex >= 0 && slotIndex < slots.Length)
         {
             var itemSlot = slots[slotIndex];
