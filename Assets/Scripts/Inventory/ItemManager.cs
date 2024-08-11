@@ -11,6 +11,7 @@ public class ItemManager : MonoBehaviour
         SWORD,
         AXE,
         EMPTY,
+        CHEST,
     }
     
     public Item currentItem;
@@ -29,8 +30,13 @@ public class ItemManager : MonoBehaviour
                 break;
             case ItemType.EMPTY:
                 currentItem = new Empty();
-                //currentItem.createObject(gameObject);
+                currentItem.createObject(gameObject);
                 break;
+            case ItemType.CHEST:
+                currentItem = new Chest();
+                currentItem.createObject(gameObject);
+                break;
+
         }
     }
 

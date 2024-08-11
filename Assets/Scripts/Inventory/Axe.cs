@@ -5,35 +5,26 @@ using UnityEngine;
 
 public class Axe : Tool
 {
-    
-    public override void createObject(GameObject parentObject){
-
+    public override void createObject(GameObject parentObject)
+    {
         Damage = 10;
         itemTexture = Resources.Load<Texture>("axe");
-       
-        
-       
-       // Canvas canvas = parentObject.GetComponentInChildren<Canvas>();
-       // UnityEngine.UI.RawImage image = canvas.GetComponentInChildren<UnityEngine.UI.RawImage>();
-       // Texture rawdog =  Resources.Load<Texture>("axe");
-       // image.texture = rawdog;
     }
 
     public override void useItem()
     {
-
-
     }
 
     public override void equipItem(GameObject parentObject)
     {
-        GameObject swordObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        swordObject.transform.parent = parentObject.transform;
-        swordObject.transform.position = parentObject.transform.position;
-        swordObject.transform.localRotation = Quaternion.Euler(0f, 0f,0f);
-        swordObject.layer = LayerMask.NameToLayer("holdLayer");
-        meshFilter = swordObject.GetComponent<MeshFilter>();
-        meshRenderer = swordObject.GetComponent<MeshRenderer>();
-    }
+        // Use the static method from ObjectInstantiator to instantiate the axe
+        GameObject axeObject = ObjectInstantiator.InstantiatePrefab("Prefabs/Axe", new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f));
+        axeObject.transform.parent = parentObject.transform;
+        axeObject.transform.position = parentObject.transform.position;
+        axeObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        axeObject.layer = LayerMask.NameToLayer("holdLayer");
 
+        meshFilter = axeObject.GetComponent<MeshFilter>();
+        meshRenderer = axeObject.GetComponent<MeshRenderer>();
+    }
 }
