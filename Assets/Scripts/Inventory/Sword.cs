@@ -25,7 +25,9 @@ public class Sword : Tool
     {
         GameObject swordObject = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         swordObject.transform.parent = parentObject.transform;
-        swordObject.transform.position = parentObject.transform.position; //ES UNA POSICION ARBITRARIA PAAA QUE SE VA A LA DERECHA EL ITEM QUE TENES EN LA MANO :v
+        swordObject.transform.position = parentObject.transform.position;
+        swordObject.transform.localRotation = Quaternion.Euler(0f, 0f,0f);
+        swordObject.layer = LayerMask.NameToLayer("holdLayer");
         meshFilter = swordObject.GetComponent<MeshFilter>();
         meshRenderer = swordObject.GetComponent<MeshRenderer>();
     }

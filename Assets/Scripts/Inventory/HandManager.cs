@@ -66,7 +66,6 @@ public class HandManager : MonoBehaviour
             if (childObject)
             {
                 Destroy(childObject); // Destroy the child object
-                Debug.Log("ITEM DESTROYED");
             }
         }
         catch
