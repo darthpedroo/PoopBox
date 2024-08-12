@@ -25,35 +25,35 @@ public class HandManager : MonoBehaviour
         // Check for numeric key inputs
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            EquipItem(0); // Equip item in slot 0
+            EquipItem(0);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            EquipItem(1); // Equip item in slot 1
+            EquipItem(1); 
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            EquipItem(2); // Equip item in slot 2
+            EquipItem(2);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            EquipItem(2); // Equip item in slot 2
+            EquipItem(3); 
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            EquipItem(2); // Equip item in slot 2
+            EquipItem(4); 
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            EquipItem(2); // Equip item in slot 2
+            EquipItem(5); 
         }
         else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            EquipItem(2); // Equip item in slot 2
+            EquipItem(6); 
         }
         else if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            EquipItem(2); // Equip item in slot 2
+            EquipItem(7); 
         }
     }
 
@@ -65,6 +65,7 @@ public class HandManager : MonoBehaviour
             var childObject = transform.GetChild(0).gameObject;
             if (childObject)
             {
+                Debug.Log("SEEK AND DESTROY");
                 Destroy(childObject); // Destroy the child object
             }
         }
