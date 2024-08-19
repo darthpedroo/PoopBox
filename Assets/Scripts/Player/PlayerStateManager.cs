@@ -11,7 +11,8 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerOnAirState OnAirState = new PlayerOnAirState();
     public LayerMask groundMask; //Esto es medio troll , ver si no se puede hace run setter desde PlayerMoving
     public Transform groundCheck;
-
+    public Vector3 velocity;
+    public float speed = 60f;
     
     void Start()
     {

@@ -19,7 +19,6 @@ public class PlayerDashState : PlayerBaseState
         
         if (maxDashTime <= dashTime){
             player.SwitchState(player.MovingState);
-            
         }
 
     }

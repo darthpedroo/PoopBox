@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 using Unity.VisualScripting;
@@ -9,9 +10,9 @@ public class PlayerMovingState : PlayerBaseState
 {
     
     public CharacterController controller;
-    public float speed = 12f;
+ 
 
-    UnityEngine.Vector3 velocity;
+    
     public float gravity = -9.8f * 3;
 
     public Transform groundCheck;
@@ -20,13 +21,27 @@ public class PlayerMovingState : PlayerBaseState
     [SerializeField]
     public LayerMask groundMask; 
     bool isGrounded; 
-
+    private int ungroundedFrameCounter = 0; // Counter for frames not grounded
+    private const int ungroundedFrameThreshold = 40; // Threshold for switching to OnAirState
     public override void UpdateState(PlayerStateManager player){
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance,groundMask);
+        
+        if (!isGrounded){
+            ungroundedFrameCounter++;
+        } else {
+            ungroundedFrameCounter = 0;
+        }
 
-        if(isGrounded && velocity.y <0){
-            velocity.y = -2f;
+        if (ungroundedFrameCounter > ungroundedFrameThreshold)
+        {
+            player.SwitchState(player.OnAirState);
+            
+        }
+
+        // el siguiente codigo requiere que estes en el piso para ejecutarse
+        if(player.velocity.y <0){
+            player.velocity.y = -2f;
         }
 
         float x = Input.GetAxis("Horizontal");
@@ -35,16 +50,16 @@ public class PlayerMovingState : PlayerBaseState
         //transforms gets the direction the player is moving so it moves locally and not globally
         UnityEngine.Vector3 move = player.transform.right * x + player.transform.forward *z;
 
-        controller.Move(move *speed * Time.deltaTime);
+        controller.Move(move * player.speed * Time.deltaTime);
         
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded){
-            velocity.y = Mathf.Sqrt(jumpHeight*-2*gravity);
+        if(Input.GetKeyDown(KeyCode.Space)){
+            player.velocity.y = Mathf.Sqrt(jumpHeight*-2*gravity);
         }
 
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity*Time.deltaTime);
+        player.velocity.y += gravity * Time.deltaTime;
+        controller.Move(player.velocity*Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded && (x != 0 || z != 0)) {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && (x != 0 || z != 0)) {
             player.SwitchState(player.DashState);
         }
     }
@@ -53,6 +68,7 @@ public class PlayerMovingState : PlayerBaseState
         controller = player.GetComponent<CharacterController>();
         groundMask = player.groundMask;
         groundCheck = player.groundCheck;
+        ungroundedFrameCounter = 0;
     }
 
     

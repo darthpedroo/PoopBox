@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EndlessTerrain : MonoBehaviour
 {
-    const float scale = 5f;
+    const float scale = 1f;
     const float viewerMoveThresholdForChunkUpdate = 25f;
     const float sqrViewerMoveThresholdForChunkUpdate = viewerMoveThresholdForChunkUpdate*viewerMoveThresholdForChunkUpdate;
     public LODInfo[] detailsLevels;
@@ -20,13 +20,20 @@ public class EndlessTerrain : MonoBehaviour
     int chunkVisibleInViewDst;
     Dictionary<Vector2,TerrainChunk> TerrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
     static List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>();
+    public static GameObject[] treePrefabs; // Array to store tree prefabs
+    public static int maxTreesPerChunk = 100; // Max number of trees per chunk
+
     void Start(){
         mapGenerator = FindObjectOfType<MapGenerator>(); 
         maxViewDist = detailsLevels[detailsLevels.Length -1].visibleDstThreshold;
         chunkSize = MapGenerator.mapChunkSize -1 ;
         chunkVisibleInViewDst = Mathf.RoundToInt(maxViewDist /chunkSize);
         UpdateVisibleChunks();
+        treePrefabs = Resources.LoadAll<GameObject>("Trees/Prefabs");
+
+        
     }
+
     void Update(){
         viewerPosition = new Vector2(viewer.position.x,viewer.position.z) / scale;
         if ((viewerPositionOld-viewerPosition).sqrMagnitude > sqrViewerMoveThresholdForChunkUpdate){
@@ -69,6 +76,7 @@ public class EndlessTerrain : MonoBehaviour
         MapData mapData;
         bool mapDataReceived;
         int previousLODIndex = -1;
+        int chunkSize;
         public TerrainChunk(Vector2 coord, int size,LODInfo[] detailLevels ,Transform parent, Material material){
             this.detailLevels = detailLevels;
             position = coord * size;
@@ -83,6 +91,7 @@ public class EndlessTerrain : MonoBehaviour
             meshObject.transform.position = positionV3 * scale;
             meshObject.transform.localScale = Vector3.one * scale;
             meshObject.transform.parent = parent;
+            chunkSize = size;
             SetVisible(false);
             lodMeshes = new LODMesh[detailLevels.Length];
             for (int i = 0; i < detailLevels.Length; i++){
@@ -97,11 +106,50 @@ public class EndlessTerrain : MonoBehaviour
            Texture2D texture = TextureGenerator.TextureFromColourMap(mapData.colourMap,MapGenerator.mapChunkSize,MapGenerator.mapChunkSize);
            meshRenderer.material.mainTexture = texture;
            UpdateTerrainChunk();
+           PlaceTrees(position,mapData,meshObject.transform);
+        }
+    
+        public void PlaceTrees(Vector2 position, MapData mapData, Transform parent) {
+            int treeCount = UnityEngine.Random.Range(5, maxTreesPerChunk);
+
+            
+
+            // Ensure the tree prefabs are loaded
+            if (treePrefabs == null || treePrefabs.Length == 0) {
+                Debug.LogWarning("No tree prefabs found!");
+                return;
+            }
+
+        
+            float rayHeight = 1000f; 
+
+            if (meshObject.name != "Terrain Chunk (0.00, 0.00)"){
+                return;
+            } 
+            for (int i = 0; i < treeCount; i++) {
+                // chatgpt me puede comer la verga
+                float randomX = UnityEngine.Random.Range(0, chunkSize / 2);
+                float randomZ = UnityEngine.Random.Range(0, chunkSize / 2);
+
+                
+                Vector3 rayStart = new Vector3(position.x  + randomX,  rayHeight,  position.y + randomZ);
+                Debug.Log(rayStart );
+                
+                RaycastHit hit;
+                
+                if (Physics.Raycast(rayStart, Vector3.down, out hit, rayHeight, LayerMask.GetMask("Ground"))) {
+                    Vector3 treePosition = hit.point;   
+                    GameObject treePrefab = treePrefabs[UnityEngine.Random.Range(0, treePrefabs.Length)];          
+                    GameObject treeInstance = Instantiate(treePrefab, treePosition, Quaternion.identity, parent);
+                } else{
+                    Debug.Log("missed");
+                }
+            }
         }
 
-       // void OnMeshDataReceived(MeshData meshData){
-         //   meshFilter.mesh = meshData.CreateMesh();
-        //}
+
+
+
         
         public void UpdateTerrainChunk() {
             if (mapDataReceived){

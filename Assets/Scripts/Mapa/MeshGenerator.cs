@@ -19,7 +19,7 @@ public static class MeshGenerator
         
         MeshData meshData = new MeshData(verticesPerLine,verticesPerLine);
         int vertexIndex = 0;
-
+        
         for (int y = 0; y < height; y += meshSimplificationIncrement){
             for (int x = 0; x < width; x += meshSimplificationIncrement){
                 meshData.vertices[vertexIndex] = new Vector3(topLeftX + x,heightCurve.Evaluate(heightMap[x,y]) * heightMultiplier,topLeftZ - y);
