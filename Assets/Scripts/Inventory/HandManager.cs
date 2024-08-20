@@ -11,6 +11,8 @@ public class HandManager : MonoBehaviour
 {
     public Canvas hotbar;
     private ItemSlot[] slots;
+    private int oldItemIndex; 
+
     public Transform cameraman;
 
     void Start()
@@ -21,21 +23,64 @@ public class HandManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            var itemSlot = slots[oldItemIndex];
+            if (itemSlot.itemManagerSlot != null && itemSlot.itemManagerSlot.currentItem != null)
+            {
+                Debug.Log("Calling from toliet land");
+                itemSlot.itemManagerSlot.currentItem.useItem();
+                Debug.Log($"Equipped item from slot {oldItemIndex}");
+            }
+            else
+            {
+                Debug.LogWarning($"Item or ItemManagerSlot in slot {oldItemIndex} is null.");
+            }
+        }
+
         transform.rotation = cameraman.rotation;
         // Check for numeric key inputs
-        for (int i = 1; i < 9; i++) {
-            string keyString = "Alpha" + i;
-            if (Enum.TryParse<KeyCode>(keyString, out KeyCode key)) {
-                if (Input.GetKeyDown(key)) {
-                    EquipItem(i - 1);
-                }
-            }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            EquipItem(0);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            EquipItem(1); 
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            EquipItem(2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            EquipItem(3); 
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            EquipItem(4); 
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            EquipItem(5); 
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            EquipItem(6); 
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            EquipItem(7); 
         }
     }
 
     void EquipItem(int slotIndex)
     {
         // Try to find and destroy the first child object
+        if (oldItemIndex == slotIndex){
+            return;
+        }
         try
         {
             var childObject = transform.GetChild(0).gameObject;
@@ -68,5 +113,8 @@ public class HandManager : MonoBehaviour
         {
             Debug.LogWarning($"Slot index {slotIndex} is out of range.");
         }
+        oldItemIndex = slotIndex;
     }
+
+
 }

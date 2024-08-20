@@ -40,11 +40,4 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            currentItem.useItem();
-        }
-    }
 }

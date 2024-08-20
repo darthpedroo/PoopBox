@@ -13,6 +13,7 @@ public class Axe : Tool
 
     public override void useItem()
     {
+        Debug.Log("o forchinaichi la lppapai");
     }
 
     public override void equipItem(GameObject parentObject)

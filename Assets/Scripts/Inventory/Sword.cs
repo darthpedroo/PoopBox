@@ -19,6 +19,7 @@ public class Sword : Tool
 
     public override void useItem()
     {
+        
     }
 
     public override void equipItem(GameObject parentObject)
