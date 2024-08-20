@@ -23,37 +23,13 @@ public class HandManager : MonoBehaviour
     {
         transform.rotation = cameraman.rotation;
         // Check for numeric key inputs
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            EquipItem(0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            EquipItem(1); 
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            EquipItem(2);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            EquipItem(3); 
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            EquipItem(4); 
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            EquipItem(5); 
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            EquipItem(6); 
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            EquipItem(7); 
+        for (int i = 1; i < 9; i++) {
+            string keyString = "Alpha" + i;
+            if (Enum.TryParse<KeyCode>(keyString, out KeyCode key)) {
+                if (Input.GetKeyDown(key)) {
+                    EquipItem(i - 1);
+                }
+            }
         }
     }
 
