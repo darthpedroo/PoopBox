@@ -9,10 +9,10 @@ public class PlayerOnAirState : PlayerBaseState
     public LayerMask groundMask; 
     public Transform groundCheck;
     private bool hasDoubleJumped;
-    bool isGrounded;
+    
     public override void UpdateState(PlayerStateManager player){
         
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance,groundMask);
+        player.isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance,groundMask);
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -21,7 +21,7 @@ public class PlayerOnAirState : PlayerBaseState
 
         controller.Move(move * player.speed * Time.deltaTime);
 
-        if (isGrounded){
+        if (player.isGrounded){
             player.SwitchState(player.MovingState);
         }
 

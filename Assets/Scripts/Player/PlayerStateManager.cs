@@ -12,7 +12,8 @@ public class PlayerStateManager : MonoBehaviour
     public LayerMask groundMask; //Esto es medio troll , ver si no se puede hace run setter desde PlayerMoving
     public Transform groundCheck;
     public Vector3 velocity;
-    public float speed = 60f;
+    public float speed = 20f;
+    public bool isGrounded;
     
     void Start()
     {
