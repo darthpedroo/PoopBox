@@ -123,6 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 747186613304498403}
   - component: {fileID: 2842861608925665256}
+  - component: {fileID: -3294805232771157620}
   m_Layer: 3
   m_Name: Simple_Tree_08
   m_TagString: Untagged
@@ -175,6 +176,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8302465181109692942}
   m_Enabled: 1
+--- !u!114 &-3294805232771157620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397764417442837929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d232f4e17afd2524cad68ff862ccb4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!1 &2478805049180564233
 GameObject:
   m_ObjectHideFlags: 0

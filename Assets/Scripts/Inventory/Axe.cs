@@ -9,7 +9,7 @@ public class Axe : Tool
     Transform transform = UnityEngine.Object.FindObjectOfType<Camera>().transform;
     public override void createObject(GameObject parentObject)
     {
-        Damage = 10;
+        Damage = 50;
         itemTexture = Resources.Load<Texture>("axe");
         
         
@@ -18,8 +18,14 @@ public class Axe : Tool
     public override void useItem()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 100, LayerMask.GetMask("Interactable"))){
-
-            UnityEngine.Object.Destroy(hit.collider.transform.parent.gameObject);
+            
+            if (hit.collider.transform.parent.gameObject.GetComponent<BaseStructure>().health - Damage <= 0){
+                UnityEngine.Object.Destroy(hit.collider.transform.parent.gameObject);
+            } else{
+                hit.collider.transform.parent.gameObject.GetComponent<BaseStructure>().health -= Damage;
+            }
+            
+        
             Debug.Log("hit smth");
 
         }
