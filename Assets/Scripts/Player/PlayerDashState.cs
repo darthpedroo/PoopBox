@@ -10,15 +10,20 @@ public class PlayerDashState : PlayerBaseState
 
     public Vector3 direction;
     public CharacterController controller;
-    public float speed = 50f;
+    public float speed = 100f;
     public override void  UpdateState(PlayerStateManager player)
     {
         controller.Move(direction * speed * Time.deltaTime);
         dashTime += Time.deltaTime;
         
         
-        if (maxDashTime <= dashTime){
+        if (maxDashTime > dashTime){
+            return;
+        }
+        if (player.isGrounded){
             player.SwitchState(player.MovingState);
+        } else {
+            player.SwitchState(player.OnAirState);
         }
 
     }

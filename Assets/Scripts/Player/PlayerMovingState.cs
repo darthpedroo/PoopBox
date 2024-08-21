@@ -20,14 +20,13 @@ public class PlayerMovingState : PlayerBaseState
     public float jumpHeight = 10 ;
     [SerializeField]
     public LayerMask groundMask; 
-    bool isGrounded; 
     private int ungroundedFrameCounter = 0; // Counter for frames not grounded
     private const int ungroundedFrameThreshold = 40; // Threshold for switching to OnAirState
     public override void UpdateState(PlayerStateManager player){
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance,groundMask);
+        player.isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance,groundMask);
         
-        if (!isGrounded){
+        if (!player.isGrounded){
             ungroundedFrameCounter++;
         } else {
             ungroundedFrameCounter = 0;

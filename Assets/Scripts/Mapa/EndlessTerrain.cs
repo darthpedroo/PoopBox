@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EndlessTerrain : MonoBehaviour
 {
-    const float scale = 1f;
+    const float scale = 5f;
     const float viewerMoveThresholdForChunkUpdate = 25f;
     const float sqrViewerMoveThresholdForChunkUpdate = viewerMoveThresholdForChunkUpdate*viewerMoveThresholdForChunkUpdate;
     public LODInfo[] detailsLevels;
@@ -21,7 +21,7 @@ public class EndlessTerrain : MonoBehaviour
     Dictionary<Vector2,TerrainChunk> TerrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
     static List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>();
     public static GameObject[] treePrefabs; // Array to store tree prefabs
-    public static int maxTreesPerChunk = 100; // Max number of trees per chunk
+    public static int maxTreesPerChunk = 200; // Max number of trees per chunk
 
     void Start(){
         mapGenerator = FindObjectOfType<MapGenerator>(); 
@@ -106,34 +106,36 @@ public class EndlessTerrain : MonoBehaviour
            Texture2D texture = TextureGenerator.TextureFromColourMap(mapData.colourMap,MapGenerator.mapChunkSize,MapGenerator.mapChunkSize);
            meshRenderer.material.mainTexture = texture;
            UpdateTerrainChunk();
-           PlaceTrees(position,mapData,meshObject.transform);
+           
         }
     
         public void PlaceTrees(Vector2 position, MapData mapData, Transform parent) {
             int treeCount = UnityEngine.Random.Range(5, maxTreesPerChunk);
 
             
+            
 
             // Ensure the tree prefabs are loaded
             if (treePrefabs == null || treePrefabs.Length == 0) {
-                Debug.LogWarning("No tree prefabs found!");
+                Debug.LogWarning("No tree pskinidi!");
                 return;
             }
 
         
             float rayHeight = 1000f; 
-
-            if (meshObject.name != "Terrain Chunk (0.00, 0.00)"){
-                return;
-            } 
+           
             for (int i = 0; i < treeCount; i++) {
                 // chatgpt me puede comer la verga
-                float randomX = UnityEngine.Random.Range(0, chunkSize / 2);
-                float randomZ = UnityEngine.Random.Range(0, chunkSize / 2);
+                int randomX = UnityEngine.Random.Range(0, chunkSize);
+                int randomZ = UnityEngine.Random.Range(0, chunkSize);
 
+                float height = mapData.heightMap[randomX,randomZ];
                 
-                Vector3 rayStart = new Vector3(position.x  + randomX,  rayHeight,  position.y + randomZ);
-                Debug.Log(rayStart );
+                if (height < 0.05f || height > 0.7f){
+                    continue;
+                }
+                Vector3 rayStart = new Vector3(((position.x) - (chunkSize /2) + randomX) * scale,  rayHeight,  ((position.y) - (chunkSize/2) + randomZ) * scale);
+                
                 
                 RaycastHit hit;
                 
@@ -141,9 +143,7 @@ public class EndlessTerrain : MonoBehaviour
                     Vector3 treePosition = hit.point;   
                     GameObject treePrefab = treePrefabs[UnityEngine.Random.Range(0, treePrefabs.Length)];          
                     GameObject treeInstance = Instantiate(treePrefab, treePosition, Quaternion.identity, parent);
-                } else{
-                    Debug.Log("missed");
-                }
+                } 
             }
         }
 
@@ -170,6 +170,7 @@ public class EndlessTerrain : MonoBehaviour
                             previousLODIndex = lodIndex;
                             meshFilter.mesh = lodMesh.mesh;
                             meshCollider.sharedMesh = lodMesh.mesh;
+                            PlaceTrees(position,mapData,meshObject.transform);
                         }
                         else if (!lodMesh.hasRequestedMesh){
                             lodMesh.RequestMesh(mapData);
