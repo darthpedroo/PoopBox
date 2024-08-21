@@ -10,6 +10,7 @@ public abstract class Tool : Item
 {
 
     protected int Damage;
+    protected RaycastHit hit;
         
     public override void createObject(GameObject parentObject){
         
