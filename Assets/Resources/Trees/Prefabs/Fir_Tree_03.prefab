@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7709056430549715393}
   - component: {fileID: 4550961258892204985}
   - component: {fileID: 3182968895951826013}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fir_Tree_03_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 453611180655426405}
   m_RootOrder: 2
@@ -53,10 +54,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &4550961258892204985
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -119,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 453611180655426405}
   - component: {fileID: 8606364992146410778}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fir_Tree_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,6 +140,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4232867319140329078}
   - {fileID: 8203149198495605829}
@@ -183,7 +188,7 @@ GameObject:
   - component: {fileID: 1884908237441612610}
   - component: {fileID: 6655309733902102979}
   - component: {fileID: 5857409440383148954}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fir_Tree_03_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,6 +205,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 453611180655426405}
   m_RootOrder: 1
@@ -223,10 +229,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -251,6 +259,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &6655309733902102979
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -292,7 +301,7 @@ GameObject:
   - component: {fileID: 3988562364633588573}
   - component: {fileID: 5488437364966150252}
   - component: {fileID: 3510496999723661291}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fir_Tree_03_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,6 +318,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 453611180655426405}
   m_RootOrder: 0
@@ -332,10 +342,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -360,6 +372,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &5488437364966150252
 CapsuleCollider:
   m_ObjectHideFlags: 0

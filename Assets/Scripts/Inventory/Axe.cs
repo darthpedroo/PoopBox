@@ -17,11 +17,9 @@ public class Axe : Tool
 
     public override void useItem()
     {
-    
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 10, 8)){
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 100, LayerMask.GetMask("Interactable"))){
 
             UnityEngine.Object.Destroy(hit.collider.transform.parent.gameObject);
-            
             Debug.Log("hit smth");
 
         }

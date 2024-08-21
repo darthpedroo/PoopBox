@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8305912855630391089}
   - component: {fileID: 4098628365127076437}
   - component: {fileID: 1014259590752103397}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dead_Tree_14_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8430724561626344256}
   m_RootOrder: 0
@@ -52,10 +53,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &1014259590752103397
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -106,7 +110,7 @@ GameObject:
   - component: {fileID: 5183648787187613240}
   - component: {fileID: 7544312844810055491}
   - component: {fileID: 5966979440675774000}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dead_Tree_14_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +127,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8430724561626344256}
   m_RootOrder: 2
@@ -146,10 +151,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -174,6 +181,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &5966979440675774000
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -200,7 +208,7 @@ GameObject:
   - component: {fileID: 5769734018430129088}
   - component: {fileID: 1711248508322707396}
   - component: {fileID: 7321265025545410912}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dead_Tree_14_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,6 +225,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8430724561626344256}
   m_RootOrder: 1
@@ -240,10 +249,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -268,6 +279,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &7321265025545410912
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -292,7 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8430724561626344256}
   - component: {fileID: 6501567514334623159}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dead_Tree_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,6 +321,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 612466820439124001}
   - {fileID: 5565435142388531015}

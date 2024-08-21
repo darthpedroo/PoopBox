@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 89097966449622946}
   - component: {fileID: 8648627249276609388}
   - component: {fileID: 5687344541057903274}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plant_04_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2398054192273864400}
   m_RootOrder: 1
@@ -52,10 +53,12 @@ MeshRenderer:
   m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &5687344541057903274
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -103,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2398054192273864400}
   - component: {fileID: 136878239595675470}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plant_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +124,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7043822115319649117}
   - {fileID: 3226430080986438801}
@@ -166,7 +171,7 @@ GameObject:
   - component: {fileID: 5299421613235745414}
   - component: {fileID: 6314765287529864640}
   - component: {fileID: 8658204504962103070}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plant_04_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,6 +188,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2398054192273864400}
   m_RootOrder: 0
@@ -206,10 +212,12 @@ MeshRenderer:
   m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -234,6 +242,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &8658204504962103070
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -259,7 +268,7 @@ GameObject:
   - component: {fileID: 5987906940193452296}
   - component: {fileID: 7243747917946010336}
   - component: {fileID: 3073813940311449298}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plant_04_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,6 +285,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2398054192273864400}
   m_RootOrder: 2
@@ -299,10 +309,12 @@ MeshRenderer:
   m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -327,6 +339,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &3073813940311449298
 BoxCollider:
   m_ObjectHideFlags: 0

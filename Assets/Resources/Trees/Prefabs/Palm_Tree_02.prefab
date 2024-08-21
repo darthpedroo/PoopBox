@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1537141795494614623}
   - component: {fileID: 770710422796976479}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Palm_Tree_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3437063085250888122}
   - {fileID: 2403701048416121300}
@@ -73,7 +74,7 @@ GameObject:
   - component: {fileID: 7718707179521055481}
   - component: {fileID: 3814913842395271606}
   - component: {fileID: 8209222041628214501}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Palm_02_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,6 +91,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1537141795494614623}
   m_RootOrder: 1
@@ -113,10 +115,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -141,6 +145,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &8209222041628214501
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -167,7 +172,7 @@ GameObject:
   - component: {fileID: 3043138459637390597}
   - component: {fileID: 7552716451622635677}
   - component: {fileID: 3877404954919080138}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Palm_02_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,6 +189,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1537141795494614623}
   m_RootOrder: 2
@@ -207,10 +213,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -235,6 +243,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &3877404954919080138
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -261,7 +270,7 @@ GameObject:
   - component: {fileID: 5009038132183110257}
   - component: {fileID: 6887744944827253969}
   - component: {fileID: 819019088944204805}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Palm_02_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,6 +287,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1537141795494614623}
   m_RootOrder: 0
@@ -301,10 +311,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -329,6 +341,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &819019088944204805
 CapsuleCollider:
   m_ObjectHideFlags: 0
