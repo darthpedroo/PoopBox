@@ -22,7 +22,7 @@ public class Axe : Tool
             if (hit.collider.transform.parent.gameObject.GetComponent<BaseStructure>().health - Damage <= 0){
                 UnityEngine.Object.Destroy(hit.collider.transform.parent.gameObject);
             } else{
-                hit.collider.transform.parent.gameObject.GetComponent<BaseStructure>().health -= Damage;
+                hit.collider.transform.parent.gameObject.GetComponent<BaseStructure>().takeDamage(Damage, hit);
             }
             
         
