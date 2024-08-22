@@ -4,28 +4,31 @@ using UnityEngine;
 
 public class Structure : MonoBehaviour
 {
-    public int health;
+    public int Health;
     public GameObject hitParticle;
     public GameObject bazingaParticle;
     
     void Start()
     {
-        health = 250;
+        Health = 250;
     }
 
-    public void TakeDamage(int Damage, RaycastHit hit){
+    public void TakeDamage(Tool tool, RaycastHit hit){
         hitParticle = ObjectInstantiator.InstantiatePrefab("Prefabs/HitParticle", new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f)); //Hacer esto UN SINGELTON
         hitParticle.transform.parent = transform;
         hitParticle.transform.position = transform.position;
         hitParticle.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         Debug.Log("Oh oh me estan comiendo");
-        health-=Damage;
-        hitParticle.transform.position = hit.point;
-        hitParticle.GetComponent<ParticleSystem>().Emit(1);
+        Health -= tool.Damage;
+        if (Health <= 0) {
+            DestroyTree(hit);
+        } else{
+            hitParticle.transform.position = hit.point;
+            hitParticle.GetComponent<ParticleSystem>().Emit(1);
+        }
     }
     
     public void DestroyTree(RaycastHit hit){
-        health = 0;
         bazingaParticle = ObjectInstantiator.InstantiatePrefab("Prefabs/BazingaParticle", new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f));
         bazingaParticle.transform.parent = transform;
         bazingaParticle.transform.position = transform.position;
@@ -36,11 +39,5 @@ public class Structure : MonoBehaviour
         //Hacer que no se pueda seguir golpeando al arbol porque se puede seguir ejecutando "TakeDamage"
         Destroy(gameObject, 0.5f);
 
-    }
-
-
-    void Update()
-    {
-        
     }
 }

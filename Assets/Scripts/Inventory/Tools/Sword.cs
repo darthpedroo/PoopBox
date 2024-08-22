@@ -11,7 +11,7 @@ public class Sword : Tool
     
 
     public override void createObject(GameObject parentObject){
-        Damage = 100;
+        _Damage = 100;
         itemTexture = Resources.Load<Texture>("sword");
     }
         
