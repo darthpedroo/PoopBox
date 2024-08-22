@@ -21,13 +21,13 @@ public class Axe : Tool
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 100, LayerMask.GetMask("Interactable"))){
             
-            if (hit.collider.transform.parent.gameObject.GetComponent<BaseStructure>().health - Damage <= 0){
+            if (hit.collider.transform.parent.gameObject.GetComponent<Structure>().health - Damage <= 0){
 
 
-                hit.collider.transform.parent.gameObject.GetComponent<BaseStructure>().DestroyTree(hit);
+                hit.collider.transform.parent.gameObject.GetComponent<Structure>().DestroyTree(hit);
                 
             } else{
-                hit.collider.transform.parent.gameObject.GetComponent<BaseStructure>().takeDamage(Damage, hit);
+                hit.collider.transform.parent.gameObject.GetComponent<Structure>().TakeDamage(Damage, hit);
 
             }
 
