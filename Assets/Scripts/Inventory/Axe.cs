@@ -23,6 +23,7 @@ public class Axe : Tool
             
             if (hit.collider.transform.parent.gameObject.GetComponent<BaseStructure>().health - Damage <= 0){
 
+
                 hit.collider.transform.parent.gameObject.GetComponent<BaseStructure>().DestroyTree(hit);
                 
             } else{
