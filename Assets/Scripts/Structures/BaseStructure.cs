@@ -16,6 +16,13 @@ public class BaseStructure : MonoBehaviour
         hitParticle.transform.position = transform.position;
         hitParticle.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
 
+        bazingaParticle = ObjectInstantiator.InstantiatePrefab("Prefabs/BazingaParticle", new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f));
+        bazingaParticle.transform.parent = transform;
+        bazingaParticle.transform.position = transform.position;
+        bazingaParticle.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        
+
+    
     }
 
     public void takeDamage(int Damage, RaycastHit hit){
@@ -23,6 +30,15 @@ public class BaseStructure : MonoBehaviour
         health-=Damage;
         hitParticle.transform.position = hit.point;
         hitParticle.GetComponent<ParticleSystem>().Emit(1);
+    }
+    
+    public void DestroyTree(RaycastHit hit){
+        Debug.Log("Bazingaaa");
+        bazingaParticle.transform.position = hit.point;
+        bazingaParticle.GetComponent<ParticleSystem>().Emit(1);
+        //Hacer que no se pueda seguir golpeando al arbol porque se puede seguir ejecutando "TakeDamage"
+        Destroy(gameObject, 0.5f);
+
     }
 
 

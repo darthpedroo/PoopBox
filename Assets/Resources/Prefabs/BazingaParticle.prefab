@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7170850533710090420}
   - component: {fileID: 8425485763880898757}
   - component: {fileID: 9045451577403158146}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BazingaParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.2
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
