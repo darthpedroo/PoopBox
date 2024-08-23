@@ -83,7 +83,6 @@ public class HandManager : MonoBehaviour
             var childObject = transform.GetChild(0).gameObject;
             if (childObject)
             {
-                Debug.Log("SEEK AND DESTROY");
                 Destroy(childObject); // Destroy the child object
             }
         }
@@ -99,7 +98,6 @@ public class HandManager : MonoBehaviour
             if (itemSlot.itemManagerSlot != null && itemSlot.itemManagerSlot.currentItem != null)
             {
                 itemSlot.itemManagerSlot.currentItem.equipItem(gameObject);
-                Debug.Log($"Equipped item from slot {slotIndex}");
             }
             else
             {
