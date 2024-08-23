@@ -143,6 +143,8 @@ public class EndlessTerrain : MonoBehaviour
                     Vector3 treePosition = hit.point;   
                     GameObject treePrefab = treePrefabs[UnityEngine.Random.Range(0, treePrefabs.Length)];          
                     GameObject treeInstance = Instantiate(treePrefab, treePosition, Quaternion.identity, parent);
+                    
+                    
                 } 
             }
         }

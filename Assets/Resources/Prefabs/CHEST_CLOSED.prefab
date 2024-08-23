@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3803014910382680665}
   - component: {fileID: 2487638392186259501}
   - component: {fileID: 796622399158683319}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6559122923453992166}
   - component: {fileID: 2520887815471217272}
   - component: {fileID: 6340492094143588007}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8031898485385451395}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CHEST_CLOSED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
