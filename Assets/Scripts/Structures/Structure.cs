@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Structure : MonoBehaviour
+public class Structure : MonoBehaviour, IHealth
 {
-    public int Health;
+    public int Health {get; set;}
+    public string DisplayName{get; set;}
     public GameObject hitParticle;
     public GameObject bazingaParticle;
     
     void Start()
     {
         Health = 250;
+        DisplayName = "Arbol";
     }
 
     public void TakeDamage(Tool tool, RaycastHit hit){
