@@ -7,20 +7,20 @@ using UnityEngine.Animations;
 using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
-    public Slider slider;
-    public float maxHealth;
-    public float health;
-    private float lerpSpeed = 0.05f;
+    public Slider Slider;
+    private float _maxHealth;
+    private float _health;
+    private readonly float lerpSpeed = 0.05f;
     void Start(){
-        maxHealth = GetComponentInParent<Structure>().Health;
-        health = maxHealth;
-        slider.maxValue = maxHealth;
+        _maxHealth = GetComponentInParent<IHealth>().Health;
+        _health = _maxHealth;
+        Slider.maxValue = _maxHealth;
     }
     
     void Update(){
-        health = GetComponentInParent<Structure>().Health;
-        if (slider.value != health){
-            slider.value = Mathf.Lerp(slider.value, health, lerpSpeed);
+        _health = GetComponentInParent<IHealth>().Health;
+        if (Slider.value != _health){
+            Slider.value = Mathf.Lerp(Slider.value, _health, lerpSpeed);
         }
     }
 }

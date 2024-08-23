@@ -182,10 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9db26e49822794da675bc7c0151e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 6963124168018092918}
-  maxHealth: 250
-  health: 250
-  healthBarCanvas: {fileID: 0}
+  Slider: {fileID: 6963124168018092918}
 --- !u!114 &1425918328847408246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc5707b1c172924c9b1bb3958c107d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  Cam: {fileID: 0}
 --- !u!1 &3684708337260787725
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +370,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tree
+  m_text: Example Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

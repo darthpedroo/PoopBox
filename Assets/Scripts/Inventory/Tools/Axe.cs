@@ -19,10 +19,9 @@ public class Axe : Tool
 
     public override void useItem()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 100, LayerMask.GetMask("Interactable"))){      
-            if (hit.collider.transform.parent.gameObject.GetComponent<Structure>().Health - Damage >= 0){
-                hit.collider.transform.parent.gameObject.GetComponent<Structure>().TakeDamage(this, hit);
-            } 
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 7.5f, LayerMask.GetMask("Interactable"))){      
+            hit.collider.transform.parent.gameObject.GetComponent<IChopable>().TakeAxeDamage(this, hit);
+
         }
         
     }
@@ -38,10 +37,5 @@ public class Axe : Tool
 
         meshFilter = axeObject.GetComponent<MeshFilter>();
         meshRenderer = axeObject.GetComponent<MeshRenderer>();
-    }
-
-    void Update(){
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward)*1000 , Color.red);
-        Debug.Log("NOt a mono");
     }
 }

@@ -12,7 +12,6 @@ public class HandManager : MonoBehaviour
     public Canvas hotbar;
     private ItemSlot[] slots;
     private int oldItemIndex; 
-
     public Transform cameraman;
 
     void Start()
@@ -29,9 +28,7 @@ public class HandManager : MonoBehaviour
             var itemSlot = slots[oldItemIndex];
             if (itemSlot.itemManagerSlot != null && itemSlot.itemManagerSlot.currentItem != null)
             {
-                Debug.Log("Calling from toliet land");
                 itemSlot.itemManagerSlot.currentItem.useItem();
-                Debug.Log($"Equipped item from slot {oldItemIndex}");
             }
             else
             {
