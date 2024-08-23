@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
     public Slider Slider;
     private float _maxHealth;
     private float _health;
-    private readonly float lerpSpeed = 0.05f;
+    private readonly float _lerpSpeed = 0.05f;
     void Start(){
         _maxHealth = GetComponentInParent<IHealth>().Health;
         _health = _maxHealth;
@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour
     void Update(){
         _health = GetComponentInParent<IHealth>().Health;
         if (Slider.value != _health){
-            Slider.value = Mathf.Lerp(Slider.value, _health, lerpSpeed);
+            Slider.value = Mathf.Lerp(Slider.value, _health, _lerpSpeed);
         }
     }
 }

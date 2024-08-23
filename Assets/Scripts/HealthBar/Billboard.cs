@@ -6,6 +6,7 @@ using UnityEngine;
 public class Billboard : MonoBehaviour
 {
     public Transform Cam;
+    public string DisplayName;
     private Canvas _healthBarCanvas;
     void Start(){
         Cam = FindObjectOfType<Camera>().transform;
@@ -14,7 +15,7 @@ public class Billboard : MonoBehaviour
         transform.parent.parent.position = gyat;
         _healthBarCanvas = GetComponentInParent<Canvas>();
         TMP_Text textDisplay = GetComponentInChildren<TMP_Text>();
-        textDisplay.text = GetComponentInParent<IHealth>().DisplayName;
+        textDisplay.text = DisplayName;
     }
 
     void LateUpdate(){

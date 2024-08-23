@@ -6,14 +6,12 @@ using UnityEngine;
 public class Structure : MonoBehaviour, IHealth, IChopable
 {
     public int Health {get; set;}
-    public string DisplayName{get; set;}
     public GameObject HitParticle;
     public GameObject BazingaParticle;
     private bool _isDestroyed;
     void Start()
     {
         Health = 250;
-        DisplayName = "Arbol";
     }
 
     public void TakeAxeDamage(Tool tool, RaycastHit hit){

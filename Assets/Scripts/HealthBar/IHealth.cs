@@ -5,5 +5,4 @@ using UnityEngine;
 public interface IHealth 
 {
     int Health {get;}
-    string DisplayName {get;}
 }
