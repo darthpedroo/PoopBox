@@ -8,15 +8,16 @@ public class Axe : Tool
 {
     readonly Transform transform = UnityEngine.Object.FindObjectOfType<Camera>().transform;
     
+    public Axe() {
+        createObject();
+    }
 
-    
-    public override void createObject(GameObject parentObject)
+    public override void createObject()
     {
         ToolDamage = 50;
         itemTexture = Resources.Load<Texture>("axe");
 
     }
-
     public override void useItem()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 7.5f, LayerMask.GetMask("Interactable"))){      

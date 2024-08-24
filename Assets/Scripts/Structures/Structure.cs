@@ -11,15 +11,19 @@ public class Structure : MonoBehaviour, IHealth, IChopable
     private bool _isDestroyed;
     void Start()
     {
+        Vector3 startingpos;
+        startingpos = gameObject.transform.position;
+        startingpos.x += 6f;
+        startingpos.y += 6f;
+        FloorItemConstructor droppedItem = new FloorItemConstructor(startingpos);
         Health = 250;
     }
 
     public void TakeAxeDamage(Tool tool, RaycastHit hit){
         if (_isDestroyed){return;}
-        HitParticle = ObjectInstantiator.InstantiatePrefab("Prefabs/HitParticle", new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f)); //Hacer esto UN SINGELTON
+        HitParticle = ObjectInstantiator.InstantiatePrefab("Prefabs/HitParticle", transform.position, Quaternion.identity); 
+        //Hacer esto UN SINGELTON
         HitParticle.transform.parent = transform;
-        HitParticle.transform.position = transform.position;
-        HitParticle.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         
         Health -= tool.Damage;
         if (Health <= 0) {
@@ -31,12 +35,11 @@ public class Structure : MonoBehaviour, IHealth, IChopable
     }
     
     public void DestroyTree(RaycastHit hit){
-        BazingaParticle = ObjectInstantiator.InstantiatePrefab("Prefabs/BazingaParticle", new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f));
+        BazingaParticle = ObjectInstantiator.InstantiatePrefab("Prefabs/BazingaParticle", hit.point, Quaternion.Euler(0f, 0f, 0f));
         BazingaParticle.transform.parent = transform;
-        BazingaParticle.transform.position = transform.position;
-        BazingaParticle.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        BazingaParticle.transform.position = hit.point;
         BazingaParticle.GetComponent<ParticleSystem>().Emit(1);
+
+        FloorItemConstructor droppedItem = new FloorItemConstructor(gameObject.transform.position);
 
         _isDestroyed = true;
         //Hacer que no se pueda seguir golpeando al arbol porque se puede seguir ejecutando "TakeDamage"

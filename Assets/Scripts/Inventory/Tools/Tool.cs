@@ -12,7 +12,7 @@ public abstract class Tool : Item
     protected int ToolDamage;
     protected RaycastHit hit;
         
-    public override void createObject(GameObject parentObject){
+    public override void createObject() {
         
         //GameObject swordObject = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         //swordObject.transform.parent = parentObject.transform;

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Chest : Item
 {
-    public override void createObject(GameObject parentObject)
+    public Chest() {
+        
+    }
+
+    public override void createObject()
     {
         itemTexture = Resources.Load<Texture>("chest");
     }

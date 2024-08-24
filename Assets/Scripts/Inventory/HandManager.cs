@@ -13,9 +13,11 @@ public class HandManager : MonoBehaviour
     private ItemSlot[] slots;
     private int currentItemSlot; 
     public Transform cameraman;
+    private Hand emptyHand;
 
     void Start()
     {   
+        emptyHand = new Hand();
         slots = hotbar.GetComponentsInChildren<ItemSlot>();
     }
 
@@ -93,15 +95,11 @@ public class HandManager : MonoBehaviour
         if (newSlotIndex >= 0 && newSlotIndex < slots.Length)
         {
             var itemSlot = slots[newSlotIndex];
-            if (itemSlot.itemClass != null)
-            {
-                //Debug.Log(gameObject);
-                itemSlot.Equip(gameObject);
+            if (itemSlot.itemClass == null) {
+                itemSlot.Switch(emptyHand);
             }
-            else
-            {
-                Debug.LogWarning($"Item or ItemManagerSlot in slot {newSlotIndex} is null.");
-            }
+
+            itemSlot.Equip(gameObject);
         }
         else
         {
@@ -111,9 +109,9 @@ public class HandManager : MonoBehaviour
     }
 
     public bool ReceiveItem(Item item) {
-        Debug.Log("gyatler");
+        Debug.Log("Picked up item:");
         for (int i = 0; i < slots.Length; i++){
-            if (slots[i].itemClass == null) {
+            if (slots[i].itemClass == null || slots[i].itemClass == emptyHand) {
                 slots[i].Switch(item);
                 return true;
             }

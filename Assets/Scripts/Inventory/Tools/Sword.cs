@@ -9,8 +9,11 @@ using UnityEngine.UIElements;
 public class Sword : Tool
 {
     
+    public Sword() {
+        createObject();
+    }
 
-    public override void createObject(GameObject parentObject){
+    public override void createObject(){
         ToolDamage = 100;
         itemTexture = Resources.Load<Texture>("sword");
     }

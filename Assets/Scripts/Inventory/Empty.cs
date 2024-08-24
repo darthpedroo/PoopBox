@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Empty : Item
 {
-    public override void createObject(GameObject parentObject)
+
+    public Empty() {
+        createObject();
+    }
+
+    public override void createObject()
     {
         itemTexture = Resources.Load<Texture>("None");
     }
