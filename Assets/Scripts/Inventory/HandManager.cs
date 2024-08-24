@@ -115,6 +115,11 @@ public class HandManager : MonoBehaviour
         for (int i = 0; i < slots.Length; i++){
             if (slots[i].itemClass == null || slots[i].itemClass == emptyHand) {
                 slots[i].Switch(item);
+
+                if (i == currentItemSlot) {
+                    slots[i].Equip(gameObject);
+                }
+
                 return true;
             }
         }
