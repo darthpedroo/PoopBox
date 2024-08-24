@@ -7,15 +7,13 @@ public class Hotbar : MonoBehaviour
     [SerializeField]
     List<GameObject> ListOfGameObject;
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(ListOfGameObject[0].GetComponent<ItemSlot>().currentItemType);
     }
 }

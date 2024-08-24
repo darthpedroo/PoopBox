@@ -15,10 +15,21 @@ public class ItemManager : MonoBehaviour
     }
     
     public Item currentItem;
-    public ItemType currentType;
+    private ItemType currentType;
     
+    public ItemType CurrentType(){
+        
+        return currentType;
+
+    }
+
     void Start()
     {
+        currentType = gameObject.GetComponent<ItemSlot>().currentItemType;
+        
+        Debug.Log("Current Dop: ");
+        Debug.Log(currentType);
+
         switch(currentType){
             case ItemType.SWORD:        
                 currentItem = new Sword();
