@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public abstract class Tool : Item
 {
 
-    protected int _Damage;
+    protected int ToolDamage;
     protected RaycastHit hit;
         
     public override void createObject(GameObject parentObject){
@@ -26,7 +26,7 @@ public abstract class Tool : Item
     }
     
     public int Damage {
-        get {return _Damage;}
+        get {return ToolDamage;}
     }
 
 

@@ -12,7 +12,7 @@ public class Axe : Tool
     
     public override void createObject(GameObject parentObject)
     {
-        _Damage = 50;
+        ToolDamage = 50;
         itemTexture = Resources.Load<Texture>("axe");
 
     }
