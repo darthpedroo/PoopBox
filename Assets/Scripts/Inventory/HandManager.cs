@@ -11,7 +11,7 @@ public class HandManager : MonoBehaviour
 {
     public Canvas hotbar;
     private ItemSlot[] slots;
-    private int oldItemIndex; 
+    private int currentItemSlot; 
     public Transform cameraman;
 
     void Start()
@@ -24,14 +24,13 @@ public class HandManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            var itemSlot = slots[oldItemIndex];
-            if (itemSlot.itemManagerSlot != null && itemSlot.itemManagerSlot.currentItem != null)
-            {
-                itemSlot.itemManagerSlot.currentItem.useItem();
+            var itemSlot = slots[currentItemSlot];
+            if (itemSlot.itemClass != null) {
+                itemSlot.Use();
             }
             else
             {
-                Debug.LogWarning($"Item or ItemManagerSlot in slot {oldItemIndex} is null.");
+                Debug.LogWarning($"Item or ItemManagerSlot in slot {currentItemSlot} is null.");
             }
         }
 
@@ -71,10 +70,10 @@ public class HandManager : MonoBehaviour
         }
     }
 
-    void EquipItem(int slotIndex)
+    void EquipItem(int newSlotIndex)
     {
         // Try to find and destroy the first child object
-        if (oldItemIndex == slotIndex){
+        if (currentItemSlot == newSlotIndex){
             return;
         }
         try
@@ -91,32 +90,31 @@ public class HandManager : MonoBehaviour
         }
 
         // Equip the item from the selected slot
-        if (slotIndex >= 0 && slotIndex < slots.Length)
+        if (newSlotIndex >= 0 && newSlotIndex < slots.Length)
         {
-            var itemSlot = slots[slotIndex];
-            if (itemSlot.itemManagerSlot != null && itemSlot.itemManagerSlot.currentItem != null)
+            var itemSlot = slots[newSlotIndex];
+            if (itemSlot.itemClass != null)
             {
-                itemSlot.itemManagerSlot.currentItem.equipItem(gameObject);
+                //Debug.Log(gameObject);
+                itemSlot.Equip(gameObject);
             }
             else
             {
-                Debug.LogWarning($"Item or ItemManagerSlot in slot {slotIndex} is null.");
+                Debug.LogWarning($"Item or ItemManagerSlot in slot {newSlotIndex} is null.");
             }
         }
         else
         {
-            Debug.LogWarning($"Slot index {slotIndex} is out of range.");
+            Debug.LogWarning($"Slot index {newSlotIndex} is out of range.");
         }
-        oldItemIndex = slotIndex;
+        currentItemSlot = newSlotIndex;
     }
 
-    public bool ReceiveItem(Item item){
+    public bool ReceiveItem(Item item) {
         Debug.Log("gyatler");
         for (int i = 0; i < slots.Length; i++){
-            if (slots[i].currentItemType == ItemManager.ItemType.EMPTY){
-                slots[i].itemManagerSlot.currentItem = item;
-                slots[i].currentItemType = ItemManager.ItemType.AXE;
-                slots[i].UpdateImage();
+            if (slots[i].itemClass == null) {
+                slots[i].Switch(item);
                 return true;
             }
         }

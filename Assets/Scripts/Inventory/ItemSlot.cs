@@ -5,25 +5,27 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    public ItemManager itemManagerSlot;
-    public ItemManager.ItemType currentItemType; 
-
-    void Start()
-    {
-        UpdateImage();
-        currentItemType = itemManagerSlot.CurrentType();
-    }
+    //public ItemManager itemManagerSlot;
+    //public ItemManager.ItemType currentItemType; 
+    public Item itemClass;
 
     public void UpdateImage(){
         RawImage slotimage = GetComponent<RawImage>();
-        if (slotimage){
-            slotimage.texture = itemManagerSlot.currentItem.GetitemTexture;
+        if (slotimage != null) {
+            slotimage.texture = itemClass.GetItemTexture;
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void Switch(Item newItem) {
+        itemClass = newItem;
+        UpdateImage();
+    }
+
+    public void Equip(GameObject CurrentItemGameObject) {
+        itemClass.equipItem(CurrentItemGameObject);
+    }
+
+    public void Use() {
+        itemClass.useItem();
     }
 }

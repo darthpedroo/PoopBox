@@ -5,7 +5,7 @@ public abstract class Item
     
 
     protected Texture itemTexture; //This is the texture for the inventory
-    public Texture GetitemTexture
+    public Texture GetItemTexture
     {
         get { return itemTexture; }
     }
