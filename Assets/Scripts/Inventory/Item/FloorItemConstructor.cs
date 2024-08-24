@@ -13,7 +13,7 @@ public class FloorItemConstructor
 
     public FloorItemConstructor(Vector3 origin) {
         ConstructItemPrefab(origin);
-        Axe DroppedItem = new Axe();
+        Wood DroppedItem = new Wood(3);
 
         PickableItem pickableItem = objectReference.GetComponent<PickableItem>();
         pickableItem.BaseItem = DroppedItem;

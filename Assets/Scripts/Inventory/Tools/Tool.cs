@@ -11,29 +11,12 @@ public abstract class Tool : Item
 
     protected int ToolDamage;
     protected RaycastHit hit;
-        
-    public override void createObject() {
-        
-        //GameObject swordObject = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        //swordObject.transform.parent = parentObject.transform;
-        //swordObject.transform.position = new Vector3(2.95f,4.91f,3.13f); //ES UNA POSICION ARBITRARIA PAAA QUE SE VA A LA DERECHA EL ITEM QUE TENES EN LA MANO :v
-        //meshFilter = swordObject.GetComponent<MeshFilter>();
-        //meshRenderer = swordObject.GetComponent<MeshRenderer>();
-      //  Canvas canvas = parentObject.GetComponentInChildren<Canvas>();
-       // RawImage image = canvas.GetComponentInChildren<RawImage>();
-    //    Texture rawdog =  Resources.Load<Texture>("sword");
-    //  image.texture = rawdog;
-    }
-    
     public int Damage {
         get {return ToolDamage;}
     }
-
-
-    public override void useItem()
-    {
-
-    }
-
-
+        
+    public override void createObject() {}
+    
+    
+    public override void useItem(){}
 }

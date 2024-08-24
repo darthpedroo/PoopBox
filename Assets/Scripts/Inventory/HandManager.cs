@@ -21,6 +21,8 @@ public class HandManager : MonoBehaviour
         slots = hotbar.GetComponentsInChildren<ItemSlot>();
         currentItemSlot = -1;
         EquipItem(0);
+
+        ReceiveItem(new Axe());
     }
 
     // Update is called once per frame
@@ -83,15 +85,10 @@ public class HandManager : MonoBehaviour
         try
         {
             var childObject = transform.GetChild(0).gameObject;
-            if (childObject)
-            {
+            if (childObject){
                 Destroy(childObject); // Destroy the child object
             }
-        }
-        catch
-        {
-            Debug.Log("OBJECT NOT FOUND");
-        }
+        } catch {}
 
         // Equip the item from the selected slot
         if (newSlotIndex >= 0 && newSlotIndex < slots.Length)
