@@ -28,4 +28,5 @@ public class ItemSlot : MonoBehaviour
     public void Use() {
         itemClass.useItem();
     }
+
 }

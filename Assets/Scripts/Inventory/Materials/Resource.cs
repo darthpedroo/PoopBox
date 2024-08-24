@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Resource : Item
 {
     protected int itemCount;
+    public int StackSize;
     public int Count {
         get {return itemCount;}
     }

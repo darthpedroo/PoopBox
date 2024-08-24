@@ -11,7 +11,7 @@ public class Hand : Tool
     }
 
     public override void createObject() {
-        ToolDamage = 100;
+        ToolDamage = 20;
     }
 
     public override void useItem() {

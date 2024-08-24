@@ -11,12 +11,12 @@ public class FloorItemConstructor
 
     public GameObject objectReference;
 
-    public FloorItemConstructor(Vector3 origin) {
-        ConstructItemPrefab(origin);
-        Wood DroppedItem = new Wood(3);
+    public FloorItemConstructor(Vector3 origin, Item item) {
 
+        ConstructItemPrefab(origin);
         PickableItem pickableItem = objectReference.GetComponent<PickableItem>();
-        pickableItem.BaseItem = DroppedItem;
+        pickableItem.BaseItem = item;
+        
     }
 
     void ConstructItemPrefab(Vector3 origin) {

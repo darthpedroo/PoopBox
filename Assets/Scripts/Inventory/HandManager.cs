@@ -108,7 +108,7 @@ public class HandManager : MonoBehaviour
     }
 
     public bool ReceiveItem(Item item) {
-        Debug.Log("Picked up item:");
+        Debug.Log("Picked up item");
         for (int i = 0; i < slots.Length; i++){
             if (slots[i].itemClass == null || slots[i].itemClass == emptyHand) {
                 slots[i].Switch(item);
@@ -116,7 +116,7 @@ public class HandManager : MonoBehaviour
                 if (i == currentItemSlot) {
                     slots[i].Equip(gameObject);
                 }
-
+                
                 return true;
             }
         }
