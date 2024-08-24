@@ -11,11 +11,6 @@ public class Structure : MonoBehaviour, IHealth, IChopable
     private bool _isDestroyed;
     void Start()
     {
-        Vector3 startingpos;
-        startingpos = gameObject.transform.position;
-        startingpos.x += 6f;
-        startingpos.y += 6f;
-        FloorItemConstructor droppedItem = new FloorItemConstructor(startingpos);
         Health = 250;
     }
 

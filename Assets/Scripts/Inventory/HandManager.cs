@@ -19,6 +19,8 @@ public class HandManager : MonoBehaviour
     {   
         emptyHand = new Hand();
         slots = hotbar.GetComponentsInChildren<ItemSlot>();
+        currentItemSlot = -1;
+        EquipItem(0);
     }
 
     // Update is called once per frame
