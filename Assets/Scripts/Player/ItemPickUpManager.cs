@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ItemPickUpManager : MonoBehaviour
 {
+
+    public HandManager HandManager;
     private void OnTriggerEnter(Collider PickedUpItem) {
-        FloorItem item = PickedUpItem.GetComponent<FloorItem>();
-        Debug.Log(item);
+        FloorItem floorItem = PickedUpItem.GetComponent<FloorItem>();
+        bool isReceived = HandManager.ReceiveItem(floorItem.BaseItem);
+        if (isReceived) {Destroy(floorItem.gameObject);}
+
     }
 }

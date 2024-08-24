@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ec9795b5c5fa5428153e422dc89d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 2
 --- !u!1 &1597770014465989524
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ec9795b5c5fa5428153e422dc89d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 2
 --- !u!1 &4762581278696188918
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ec9795b5c5fa5428153e422dc89d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 2
 --- !u!1 &5410932849834874891
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ec9795b5c5fa5428153e422dc89d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 0
 --- !u!1 &5811550966347632307
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,7 +995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ec9795b5c5fa5428153e422dc89d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 3
 --- !u!1 &5974078577022583435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +1096,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ec9795b5c5fa5428153e422dc89d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 2
 --- !u!1 &6602529096503100104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,7 +1351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ec9795b5c5fa5428153e422dc89d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 2
 --- !u!1 &8017444471325835746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +1484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ec9795b5c5fa5428153e422dc89d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 2
 --- !u!1 &9084177017035922687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,7 +1585,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ec9795b5c5fa5428153e422dc89d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 1
 --- !u!1 &9202865752770104208
 GameObject:
   m_ObjectHideFlags: 0

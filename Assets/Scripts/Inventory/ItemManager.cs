@@ -26,7 +26,6 @@ public class ItemManager : MonoBehaviour
     void Start()
     {
         currentType = gameObject.GetComponent<ItemSlot>().currentItemType;
-        
         Debug.Log("Current Dop: ");
         Debug.Log(currentType);
 

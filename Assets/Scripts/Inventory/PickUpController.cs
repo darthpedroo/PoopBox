@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class PickUpController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // OBSOLETEEEEEEEE
+    // OBSOLETEEEEEEEE// OBSOLETEEEEEEEE// OBSOLETEEEEEEEE// OBSOLETEEEEEEEE// OBSOLETEEEEEEEE
     public Item itemScript;
     public Rigidbody rb;
     public BoxCollider coll;

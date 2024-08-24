@@ -10,7 +10,11 @@ public class ItemSlot : MonoBehaviour
 
     void Start()
     {
+        UpdateImage();
         currentItemType = itemManagerSlot.CurrentType();
+    }
+
+    public void UpdateImage(){
         RawImage slotimage = GetComponent<RawImage>();
         if (slotimage){
             slotimage.texture = itemManagerSlot.currentItem.GetitemTexture;

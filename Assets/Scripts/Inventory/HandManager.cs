@@ -22,7 +22,6 @@ public class HandManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
             var itemSlot = slots[oldItemIndex];
@@ -111,5 +110,16 @@ public class HandManager : MonoBehaviour
         oldItemIndex = slotIndex;
     }
 
-
+    public bool ReceiveItem(Item item){
+        Debug.Log("gyatler");
+        for (int i = 0; i < slots.Length; i++){
+            if (slots[i].currentItemType == ItemManager.ItemType.EMPTY){
+                slots[i].itemManagerSlot.currentItem = item;
+                slots[i].currentItemType = ItemManager.ItemType.AXE;
+                slots[i].UpdateImage();
+                return true;
+            }
+        }
+        return false;
+    }
 }
