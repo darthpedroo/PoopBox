@@ -18,8 +18,15 @@ public class Drop
     }
 
     public Item DropLoot(){
-        float randomNumber = Random.Range(0,99);
-        // int stacksize = Random.Range(_minDrop,_maxDrop)
-        return randomNumber <= _chance ? _item : null;
+        float randomNumber = Random.value * 100;
+        Debug.Log(randomNumber + "  " +_chance);
+        if (randomNumber <= _chance){
+            //int stacksize = Random.Range(_minDrop,_maxDrop);
+            //_item.itemCount = stacksize;
+            return _item;
+        } else{
+            return null;
+        }
+        
     }
 }

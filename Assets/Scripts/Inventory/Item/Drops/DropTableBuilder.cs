@@ -4,6 +4,11 @@ using System.Collections.Generic;
 public class DropTableBuilder
 {
     private readonly List<Drop> _drops = new();
+    private IDropStrategy _dropStrategy;
+
+    public DropTableBuilder(){
+        _dropStrategy = new DropStrategyRandom();
+    }
     public DropTableBuilder Add(Drop drop){
         _drops.Add(drop);
         return this;
@@ -14,24 +19,21 @@ public class DropTableBuilder
         return this;
     }
 
+    public DropTableBuilder SetModeMutuallyExclusive(float percentageChance){
+        _dropStrategy = new DropStrategyMutuallyExclusive(percentageChance);
+        return this;
+    }
+
+    public DropTableBuilder SetModeDefault(){
+        _dropStrategy = new DropStrategyRandom();
+        return this;
+    }
+    
     public Item[] GetDrops(){
-        List<Item> allLoot = new();
-        foreach (Drop drop in _drops){
-            Item loot = drop.DropLoot();
-            if (loot != null){
-                allLoot.Add(loot);
-            }
-        }
-        return allLoot.ToArray();
+        return _dropStrategy.GetDrops(_drops);
     }
 
     public void SpawnDrops(UnityEngine.Vector3 position){
-        List<Item> allLoot = new();
-        foreach (Drop drop in _drops){
-            Item loot = drop.DropLoot();
-            if (loot != null){
-                FloorItemConstructor droppedItem = new FloorItemConstructor(position,loot);
-            }
-        }
+        _dropStrategy.SpawnDrops(position,_drops);
     }
 }
