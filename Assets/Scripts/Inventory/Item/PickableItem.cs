@@ -8,4 +8,5 @@ public class PickableItem : MonoBehaviour, IPickable
     public Item PickUp() {
         return BaseItem;
     }
+    public GameObject ParentObject{get;set;}
 }

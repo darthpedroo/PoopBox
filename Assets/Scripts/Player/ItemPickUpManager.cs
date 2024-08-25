@@ -9,6 +9,6 @@ public class ItemPickUpManager : MonoBehaviour
     private void OnTriggerEnter(Collider PickedUpItem) {
         IPickable floorItem = PickedUpItem.GetComponent<IPickable>();
         bool isReceived = HandManager.ReceiveItem(floorItem.PickUp());
-        if (isReceived) {Destroy(PickedUpItem.gameObject);}
+        if (isReceived) {Destroy(floorItem.ParentObject);}
     }
 }
