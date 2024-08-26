@@ -7,26 +7,26 @@ public class ItemSlot : MonoBehaviour
 {
     //public ItemManager itemManagerSlot;
     //public ItemManager.ItemType currentItemType; 
-    public Item itemClass;
+    public Item ItemClass;
 
     public void UpdateImage(){
         RawImage slotimage = GetComponent<RawImage>();
         if (slotimage != null) {
-            slotimage.texture = itemClass.GetItemTexture;
+            slotimage.texture = ItemClass.GetItemTexture;
         }
     }
 
     public void Switch(Item newItem) {
-        itemClass = newItem;
+        ItemClass = newItem;
         UpdateImage();
     }
 
     public void Equip(GameObject CurrentItemGameObject) {
-        itemClass.equipItem(CurrentItemGameObject);
+        ItemClass.equipItem(CurrentItemGameObject);
     }
 
     public void Use() {
-        itemClass.useItem();
+        ItemClass.useItem();
     }
 
 }
