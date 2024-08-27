@@ -5,6 +5,8 @@ using UnityEngine;
 public class Wood : Resource
 {
     public Wood(int startAmount) {
+        
+        name = "Wood";
         itemCount = startAmount;
         StackSize = 64;
         createObject();

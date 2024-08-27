@@ -9,6 +9,9 @@ public abstract class Item
     {
         get { return itemTexture; }
     }
+
+    public string name;
+
     public MeshFilter meshFilter;
     public MeshRenderer meshRenderer;
     public abstract void createObject();

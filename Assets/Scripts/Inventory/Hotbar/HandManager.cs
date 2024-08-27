@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +14,8 @@ public class HandManager : MonoBehaviour
     public Transform Cameraman;
     private Hand _emptyHand;
 
+    public RaycastHit hit;
+
     void Start()
     {   
         _emptyHand = new Hand();
@@ -28,6 +29,7 @@ public class HandManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        showHitInfo();
         if (Input.GetMouseButtonDown(0))
         {
             var itemSlot = _slots[_currentItemSlot];
@@ -54,6 +56,14 @@ public class HandManager : MonoBehaviour
                 }
             }
 
+    }
+
+    public void showHitInfo()
+    {
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 7.5f,LayerMask.GetMask("FloorItem"))){     
+            Debug.Log("ITEM SUELO"); 
+            Debug.Log(hit.collider);
+        }
     }
 
     void EquipItem(int newSlotIndex)

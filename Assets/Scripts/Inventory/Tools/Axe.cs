@@ -14,6 +14,7 @@ public class Axe : Tool
 
     public override void createObject()
     {
+        name = "Axe";
         ToolDamage = 50;
         itemTexture = Resources.Load<Texture>("axe");
 
@@ -22,9 +23,7 @@ public class Axe : Tool
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 7.5f, LayerMask.GetMask("Interactable"))){      
             hit.collider.transform.parent.gameObject.GetComponent<IChopable>().TakeAxeDamage(this, hit);
-
         }
-        
     }
 
     public override void equipItem(GameObject parentObject)

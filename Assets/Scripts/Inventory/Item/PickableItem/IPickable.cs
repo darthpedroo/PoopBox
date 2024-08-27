@@ -6,4 +6,5 @@ public interface IPickable
 {
     Item PickUp();
     GameObject ParentObject {get;}
+
 }
