@@ -91,9 +91,14 @@ public class HandManager : MonoBehaviour
     public bool ReceiveItem(Item item) {
         Debug.Log("Picked up item");
         for (int i = 0; i < _slots.Length; i++){
+            // bastante skibidi dop si me pregunstas a mi
             if (_slots[i].ItemClass == null || _slots[i].ItemClass == _emptyHand) {
+                if (item.StackSize <= item.Count)
+                {
+                   item.Count += _slots[i].ItemClass.Count;
+                }
                 _slots[i].Switch(item);
-
+    
                 if (i == _currentItemSlot) {
                     _slots[i].Equip(gameObject);
                 }

@@ -13,7 +13,7 @@ public class Structure : MonoBehaviour, IHealth, IChopable
     void Start()
     {
         Health = 250;
-        _dropTable = new DropTableBuilder().Add(new Wood(3),2,10,100).Add(new Axe(),1,1,100).SetModeMutuallyExclusive(100);
+        _dropTable = new DropTableBuilder().Add(new Wood(1),5,12,100);
     }
 
     public void TakeAxeDamage(Tool tool, RaycastHit hit){

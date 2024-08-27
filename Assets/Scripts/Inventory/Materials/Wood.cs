@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wood : Resource
-{
+public class Wood : Resource, IStackable
+{   
+    
+ 
     public Wood(int startAmount) {
         
         name = "Wood";
-        itemCount = startAmount;
+        Count = startAmount;
         StackSize = 64;
         createObject();
     }

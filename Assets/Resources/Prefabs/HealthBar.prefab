@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cam: {fileID: 0}
+  DisplayName: 
 --- !u!1 &3684708337260787725
 GameObject:
   m_ObjectHideFlags: 0
