@@ -16,5 +16,7 @@ public abstract class Item
     public abstract void useItem();
 
     public abstract void equipItem(GameObject parentObject);
+    public int StackSize { get; set; }
+    public int Count { get; set; }
 
 }

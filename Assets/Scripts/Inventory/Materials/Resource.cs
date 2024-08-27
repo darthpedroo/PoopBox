@@ -4,12 +4,6 @@ using UnityEngine;
 
 public abstract class Resource : Item
 {
-    protected int itemCount;
-    public int StackSize;
-    public int Count {
-        get {return itemCount;}
-    }
-
     public override void createObject() {}
     public override void useItem() {}
     public override void equipItem(GameObject parentObject) {}
