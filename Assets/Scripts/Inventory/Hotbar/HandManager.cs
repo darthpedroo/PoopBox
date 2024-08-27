@@ -91,19 +91,30 @@ public class HandManager : MonoBehaviour
     public bool ReceiveItem(Item item) {
         Debug.Log("Picked up item");
         for (int i = 0; i < _slots.Length; i++){
-            // bastante skibidi dop si me pregunstas a mi
-            if (_slots[i].ItemClass == null || _slots[i].ItemClass == _emptyHand) {
-                if (item.StackSize <= item.Count)
-                {
-                   item.Count += _slots[i].ItemClass.Count;
-                }
+            // OKEY LO QUE HAY QUE HACER AHORA ES HACER QUE EL INVENTARIO SEA UNA LISTA
+            // EJ = [MADERA,MADERA,HACHA,HACHA,empty,empty]
+            // la lista tiene que primero contener slots no vacios y despues los vacios
+            // porque la funcion depende de que los items iguales se chequeen antes que
+            // algun slot vacio
+            Item otherItem = _slots[i].ItemClass;
+            
+            if (otherItem == null || otherItem == _emptyHand) {
                 _slots[i].Switch(item);
     
                 if (i == _currentItemSlot) {
                     _slots[i].Equip(gameObject);
                 }
-                
                 return true;
+            }
+            else if (item.name == otherItem.name) {
+                if (item.Count + otherItem.Count <= item.StackSize){
+                    _slots[i].ItemClass.Count += item.Count;
+                    return true;
+                } else if (item.Count + otherItem.Count > item.StackSize){
+                    int remainingItemsToStack = item.StackSize - otherItem.Count;
+                    otherItem.Count = item.StackSize;
+                    item.Count -= remainingItemsToStack;
+                }
             }
         }
         return false;
