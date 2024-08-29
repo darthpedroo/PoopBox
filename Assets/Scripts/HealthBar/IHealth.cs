@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IHealth 
 {
-    int Health {get;}
+    int Health {get; set;}
 }
