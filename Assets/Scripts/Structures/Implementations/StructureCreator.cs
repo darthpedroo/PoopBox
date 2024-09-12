@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -13,8 +10,7 @@ public class StructureCreator : ScriptableObject
     [SerializeField] private bool _isShovable;
     [SerializeField] private int _health = 100;
     [SerializeField] private string _displayName = "Pedro";
-    [SerializeField] private Vector3 _scale = Vector3.one * 10;
-    [SerializeField] private Vector3 _position = Vector3.one * 3;
+    [SerializeField] private Vector3 _billboardRelativePosition ;
     [SerializeField] private DropTable _dropTable;
     //[SerializeField] private List<Drop> _drop;
     private StructureBuilder _structureBuilder;
@@ -50,10 +46,12 @@ public class StructureCreator : ScriptableObject
             _structureBuilder.SetShovable();
         }
     }
-    public void SpawnStructure(){
+    public void SpawnStructure(Vector3 position,Vector3 scale){
         _structureBuilder = new StructureBuilder(StructurePrefab);
+        _dropTable = new DropTableBuilder().Add(new Wood(2), 1, 3, 100).GetDropTable();
         ConfigureBuilder();
-        _structureBuilder.GetStructure().PlaceStructure(_position, Quaternion.identity, _scale,_health,_displayName);
+        _structureBuilder.SetDropTable(_dropTable);
+        _structureBuilder.GetStructure().PlaceStructure(position, Quaternion.identity, scale,_billboardRelativePosition,_health,_displayName);
     }
     
 }

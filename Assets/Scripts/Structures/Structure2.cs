@@ -10,7 +10,7 @@ public class Structure2
         _structurePrefab = prefab;
         _modifications = modification;
     }
-    public void PlaceStructure(Vector3 position, Quaternion rotation, Vector3 scale, int health, string displayName){
+    public void PlaceStructure(Vector3 position, Quaternion rotation, Vector3 scale,Vector3 bilboardPos, int health, string displayName){
         GameObject structureObject = GameObject.Instantiate(_structurePrefab, position, rotation);
         foreach (var mod in _modifications){
             mod.Invoke(structureObject);
@@ -19,6 +19,8 @@ public class Structure2
         structureObject.transform.localScale = scale;
         GameObject healthBarPrefab = Resources.Load<GameObject>("Prefabs/HealthBar");
         GameObject healthBar = GameObject.Instantiate(healthBarPrefab, structureObject.transform);
-        healthBar.GetComponentInChildren<Billboard>().SetDisplayName(displayName);
+        Billboard billboard = healthBar.GetComponentInChildren<Billboard>();
+        billboard.SetDisplayName(displayName);
+        billboard.SetRelativePosition(bilboardPos);
     }
 }
