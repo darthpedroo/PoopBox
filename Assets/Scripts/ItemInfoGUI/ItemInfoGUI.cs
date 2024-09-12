@@ -10,7 +10,7 @@ public class ItemInfoGUI : MonoBehaviour
     void Start()
     {
         GameObject itemInfoGui = ObjectInstantiator.InstantiatePrefab("Prefabs/ItemInfoGUI", new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f));
-        Debug.Log("xddd");
+        //Debug.Log("xddd");
         itemInfoGui.transform.parent = gameObject.transform;
         itemInfoGui.transform.position = gameObject.transform.position;
         itemInfoGui.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);

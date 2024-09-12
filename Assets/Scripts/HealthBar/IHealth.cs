@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IHealth 
 {
-    int Health {get; set;}
+    int Health {get;}
+    public void TakeDamage(int damage, RaycastHit hit);
 }

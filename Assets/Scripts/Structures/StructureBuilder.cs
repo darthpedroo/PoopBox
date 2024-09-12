@@ -24,24 +24,19 @@ public class StructureBuilder
         return this;
     }
 
-    public StructureBuilder SetHealth(int health){
-        _modifications.Add((structure) => structure.GetComponent<IHealth>().Health = health);
+    public StructureBuilder SetDropTable(DropTable dropTable){
+        _modifications.Add((structure) => structure.GetComponent<StructureManager>().SetDropTable(dropTable));
         return this;
     }
-
     public StructureBuilder (GameObject prefab){
         _structurePrefab = prefab;
         _modifications = new()
         {
-            (structure) => structure.AddComponent<StructureInstance>()
+            (structure) => structure.AddComponent<StructureManager>()
         };
     }
 
-    public GameObject PlaceStructure(Vector3 position, Quaternion rotation){
-        GameObject structureObject = GameObject.Instantiate(_structurePrefab, position, rotation);
-        foreach (var mod in _modifications){
-            mod.Invoke(structureObject);
-        }
-        return structureObject;
+    public Structure2 GetStructure(){
+        return new Structure2(_modifications, _structurePrefab);
     }
 }

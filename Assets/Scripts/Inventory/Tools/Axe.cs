@@ -22,7 +22,7 @@ public class Axe : Tool
     public override void useItem()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 7.5f, LayerMask.GetMask("Interactable"))){      
-            hit.collider.transform.parent.gameObject.GetComponent<IChopable>().TakeAxeDamage(this, hit);
+            hit.collider.transform.gameObject.GetComponentInParent<IChopable>().TakeAxeDamage(this, hit);
         }
     }
 

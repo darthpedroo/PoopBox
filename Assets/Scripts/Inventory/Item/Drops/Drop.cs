@@ -25,7 +25,7 @@ public class Drop
 
     public Item DropLoot(){
         float randomNumber = Random.value * 100;
-        Debug.Log(randomNumber + "  " +_chance);
+        //Debug.Log(randomNumber + "  " +_chance);
         if (randomNumber <= _chance){
             if (_minDrop != 0 && _maxDrop != 0){
                 int stacksize = Random.Range(_minDrop,_maxDrop);

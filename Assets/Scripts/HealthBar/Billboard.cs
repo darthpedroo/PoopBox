@@ -18,6 +18,12 @@ public class Billboard : MonoBehaviour
         textDisplay.text = DisplayName;
     }
 
+    public void SetDisplayName(string displayName){
+        TMP_Text textDisplay = GetComponentInChildren<TMP_Text>();
+        textDisplay.text = displayName;
+        DisplayName = displayName;
+    }
+
     void LateUpdate(){
         transform.LookAt(transform.position + Cam.forward);
         _healthBarCanvas.enabled = (Cam.position - transform.position).magnitude <= 10f;

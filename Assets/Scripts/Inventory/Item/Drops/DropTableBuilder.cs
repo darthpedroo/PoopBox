@@ -28,12 +28,7 @@ public class DropTableBuilder
         _dropStrategy = new DropStrategyRandom();
         return this;
     }
-    
-    public Item[] GetDrops(){
-        return _dropStrategy.GetDrops(_drops);
-    }
-
-    public void SpawnDrops(UnityEngine.Vector3 position){
-        _dropStrategy.SpawnDrops(position,_drops);
+    public DropTable GetDropTable(){
+        return new DropTable(_drops, _dropStrategy);
     }
 }
