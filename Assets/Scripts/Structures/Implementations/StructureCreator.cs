@@ -16,24 +16,24 @@ public class StructureCreator : ScriptableObject
     [SerializeField] private Vector3 _scale = Vector3.one * 10;
     [SerializeField] private Vector3 _position = Vector3.one * 3;
     [SerializeField] private DropTable _dropTable;
-    [SerializeField] private List<Drop> _drop;
+    //[SerializeField] private List<Drop> _drop;
     private StructureBuilder _structureBuilder;
     
 
     void OnValidate() {
-		foreach (Drop drop in _drop){
-            if (drop.Chance > 100){
-                drop.Chance = 100;
-            } else if (drop.Chance < 0){
-                drop.Chance = 0;
-            }
-            if (drop.MinDrop < 0){
-                drop.MinDrop = 0;
-            }
-            if (drop.MaxDrop < 0){
-                drop.MaxDrop = 0;
-            }
-        }
+//		foreach (Drop drop in _drop){
+//            if (drop.Chance > 100){
+//                drop.Chance = 100;
+//            } else if (drop.Chance < 0){
+//                drop.Chance = 0;
+//            }
+//            if (drop.MinDrop < 0){
+//                drop.MinDrop = 0;
+//            }
+//            if (drop.MaxDrop < 0){
+//                drop.MaxDrop = 0;
+//            }
+//        }
 	}
     private void ConfigureBuilder()
     {
