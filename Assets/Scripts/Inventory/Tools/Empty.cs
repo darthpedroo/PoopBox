@@ -6,20 +6,20 @@ public class Empty : Item
 {
 
     public Empty() {
-        createObject();
+        CreateObject();
     }
 
-    public override void createObject()
+    public override void CreateObject()
     {
-        itemTexture = Resources.Load<Texture>("None");
+        _itemTexture = Resources.Load<Texture>("None");
     }
 
-    public override void equipItem(GameObject parentObject)
+    public override void EquipItem(GameObject parentObject)
     {
         
     }
 
-    public override void useItem()
+    public override void UseItem()
     {
 
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IChopable 
+public class ToolData : ItemData
 {
-    void TakeAxeDamage(int damage, RaycastHit hit);
+    public int ToolDamage;
 }

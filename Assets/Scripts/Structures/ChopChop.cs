@@ -5,8 +5,8 @@ using UnityEngine;
 public class ChopChop : MonoBehaviour, IChopable
 {
     private IHealth _healthComponent;
-    public void TakeAxeDamage(Tool tool, RaycastHit hit){
-        _healthComponent.TakeDamage(tool.Damage, hit);
+    public void TakeAxeDamage(int damage, RaycastHit hit){
+        _healthComponent.TakeDamage(damage, hit);
     }
     void Start(){
         _healthComponent = GetComponent<IHealth>();

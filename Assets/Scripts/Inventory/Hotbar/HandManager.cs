@@ -106,7 +106,7 @@ public class HandManager : MonoBehaviour
                 }
                 return true;
             }
-            else if (item.name == otherItem.name) {
+            else if (item.Name == otherItem.Name) {
                 if (item.Count + otherItem.Count <= item.StackSize){
                     _slots[i].ItemClass.Count += item.Count;
                     return true;

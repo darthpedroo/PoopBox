@@ -22,11 +22,11 @@ public class ItemSlot : MonoBehaviour
     }
 
     public void Equip(GameObject CurrentItemGameObject) {
-        ItemClass.equipItem(CurrentItemGameObject);
+        ItemClass.EquipItem(CurrentItemGameObject);
     }
 
     public void Use() {
-        ItemClass.useItem();
+        ItemClass.UseItem();
     }
 
 }

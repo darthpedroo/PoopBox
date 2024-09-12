@@ -10,30 +10,30 @@ public class Sword : Tool
 {
     
     public Sword() {
-        createObject();
+        CreateObject();
     }
 
-    public override void createObject(){
+    public override void CreateObject(){
         ToolDamage = 100;
-        itemTexture = Resources.Load<Texture>("sword");
+        _itemTexture = Resources.Load<Texture>("sword");
     }
         
 
 
-    public override void useItem()
+    public override void UseItem()
     {
         
     }
 
-    public override void equipItem(GameObject parentObject)
+    public override void EquipItem(GameObject parentObject)
     {
         GameObject swordObject = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         swordObject.transform.parent = parentObject.transform;
         swordObject.transform.position = parentObject.transform.position;
         swordObject.transform.localRotation = Quaternion.Euler(0f, 0f,0f);
         swordObject.layer = LayerMask.NameToLayer("holdLayer");
-        meshFilter = swordObject.GetComponent<MeshFilter>();
-        meshRenderer = swordObject.GetComponent<MeshRenderer>();
+        MeshFilter = swordObject.GetComponent<MeshFilter>();
+        MeshRenderer = swordObject.GetComponent<MeshRenderer>();
     }
 
 }

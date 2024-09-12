@@ -16,7 +16,7 @@ public class ItemInfoGUI : MonoBehaviour
         itemInfoGui.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         itemInfoGui.layer = LayerMask.NameToLayer("holdLayer");
         
-        itemInfoGui.GetComponentInChildren<TMP_Text>().text = gameObject.GetComponentInChildren<IPickable>().PickUp().name;
+        itemInfoGui.GetComponentInChildren<TMP_Text>().text = gameObject.GetComponentInChildren<IPickable>().PickUp().Name;
     }
 
     // Update is called once per frame

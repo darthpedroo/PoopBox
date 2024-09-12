@@ -9,24 +9,24 @@ public class Axe : Tool
     readonly Transform transform = UnityEngine.Object.FindObjectOfType<Camera>().transform;
     
     public Axe() {
-        createObject();
+        CreateObject();
     }
 
-    public override void createObject()
+    public override void CreateObject()
     {
-        name = "Axe";
+        Name = "Axe";
         ToolDamage = 50;
-        itemTexture = Resources.Load<Texture>("axe");
+        _itemTexture = Resources.Load<Texture>("axe");
 
     }
-    public override void useItem()
+    public override void UseItem()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 7.5f, LayerMask.GetMask("Interactable"))){      
-            hit.collider.transform.gameObject.GetComponentInParent<IChopable>().TakeAxeDamage(this, hit);
+            hit.collider.transform.gameObject.GetComponentInParent<IChopable>().TakeAxeDamage(ToolDamage, hit);
         }
     }
 
-    public override void equipItem(GameObject parentObject)
+    public override void EquipItem(GameObject parentObject)
     {
         // Use the static method from ObjectInstantiator to instantiate the axe
         GameObject axeObject = ObjectInstantiator.InstantiatePrefab("Prefabs/Axe", new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f));
@@ -35,7 +35,7 @@ public class Axe : Tool
         axeObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         axeObject.layer = LayerMask.NameToLayer("holdLayer");
 
-        meshFilter = axeObject.GetComponent<MeshFilter>();
-        meshRenderer = axeObject.GetComponent<MeshRenderer>();
+        MeshFilter = axeObject.GetComponent<MeshFilter>();
+        MeshRenderer = axeObject.GetComponent<MeshRenderer>();
     }
 }

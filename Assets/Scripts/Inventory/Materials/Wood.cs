@@ -8,25 +8,25 @@ public class Wood : Resource, IStackable
  
     public Wood(int startAmount) {
         
-        name = "Wood";
+        Name = "Wood";
         Count = startAmount;
         StackSize = 64;
-        createObject();
+        CreateObject();
     }
-    public override void equipItem(GameObject parentObject) {
+    public override void EquipItem(GameObject parentObject) {
         Debug.Log("Currently equipped: [Wood x" + Count + "]");
         GameObject axeObject = ObjectInstantiator.InstantiatePrefab("Prefabs/Wood", new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f));
         axeObject.transform.parent = parentObject.transform;
         axeObject.transform.position = parentObject.transform.position;
         axeObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         axeObject.layer = LayerMask.NameToLayer("holdLayer");
-        meshFilter = axeObject.GetComponent<MeshFilter>();
-        meshRenderer = axeObject.GetComponent<MeshRenderer>();
+        MeshFilter = axeObject.GetComponent<MeshFilter>();
+        MeshRenderer = axeObject.GetComponent<MeshRenderer>();
         
     }
-    public override void createObject()
+    public override void CreateObject()
     {
-        itemTexture = Resources.Load<Texture>("wood");
+        _itemTexture = Resources.Load<Texture>("wood");
         
     }
 }

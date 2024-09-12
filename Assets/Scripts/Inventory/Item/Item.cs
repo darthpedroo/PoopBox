@@ -4,21 +4,21 @@ public abstract class Item
 {
     
 
-    protected Texture itemTexture; //This is the texture for the inventory
+    protected Texture _itemTexture; //This is the texture for the inventory
     public Texture GetItemTexture
     {
-        get { return itemTexture; }
+        get { return _itemTexture; }
     }
 
-    public string name;
+    public string Name;
 
-    public MeshFilter meshFilter;
-    public MeshRenderer meshRenderer;
-    public abstract void createObject();
+    public MeshFilter MeshFilter;
+    public MeshRenderer MeshRenderer;
+    public abstract void CreateObject();
 
-    public abstract void useItem();
+    public abstract void UseItem();
 
-    public abstract void equipItem(GameObject parentObject);
+    public abstract void EquipItem(GameObject parentObject);
     public int StackSize { get; set; }
     public int Count { get; set; }
 

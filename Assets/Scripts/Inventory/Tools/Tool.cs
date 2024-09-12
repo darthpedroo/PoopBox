@@ -15,8 +15,8 @@ public abstract class Tool : Item
         get {return ToolDamage;}
     }
         
-    public override void createObject() {}
+    public override void CreateObject() {}
     
     
-    public override void useItem(){}
+    public override void UseItem(){}
 }

@@ -7,20 +7,20 @@ public class Hand : Tool
     readonly Transform transform = UnityEngine.Object.FindObjectOfType<Camera>().transform;
     
     public Hand() {
-        createObject();
+        CreateObject();
     }
 
-    public override void createObject() {
+    public override void CreateObject() {
         ToolDamage = 20;
     }
 
-    public override void useItem() {
+    public override void UseItem() {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 7.5f, LayerMask.GetMask("Interactable"))){      
-            hit.collider.transform.gameObject.GetComponentInParent<IChopable>().TakeAxeDamage(this, hit);
+            hit.collider.transform.gameObject.GetComponentInParent<IChopable>().TakeAxeDamage(ToolDamage, hit);
         }
     }
 
-    public override void equipItem(GameObject parentObject) {
+    public override void EquipItem(GameObject parentObject) {
         Debug.Log("Current active: Da HAND !!");
     }
 

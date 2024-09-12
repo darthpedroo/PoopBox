@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Resource : Item
 {
-    public override void createObject() {}
-    public override void useItem() {}
-    public override void equipItem(GameObject parentObject) {}
+    public override void CreateObject() {}
+    public override void UseItem() {}
+    public override void EquipItem(GameObject parentObject) {}
 }

@@ -18,13 +18,13 @@ public class Structure : MonoBehaviour, IHealth, IChopable
     public void TakeDamage(int damage, RaycastHit hit){
         Debug.LogWarning("Take Damage Not Implemented");
     }
-    public void TakeAxeDamage(Tool tool, RaycastHit hit){
+    public void TakeAxeDamage(int damage, RaycastHit hit){
         if (_isDestroyed){return;}
         HitParticle = ObjectInstantiator.InstantiatePrefab("Prefabs/HitParticle", transform.position, Quaternion.identity); 
         //Hacer esto UN SINGELTON
         HitParticle.transform.parent = transform;
         
-        Health -= tool.Damage;
+        Health -= damage;
         if (Health <= 0) {
             DestroyTree(hit);
         } else{
