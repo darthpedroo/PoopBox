@@ -12,18 +12,21 @@ public class HandManager : MonoBehaviour
     private ItemSlot[] _slots;
     private int _currentItemSlot; 
     public Transform Cameraman;
-    private Hand _emptyHand;
 
+    [SerializeField]
+    private AxeData _emptyHand;
     public RaycastHit hit;
 
     void Start()
     {   
-        _emptyHand = new Hand();
+        //_emptyHand = Resources.Load<AxeData>("ItemData/Hand");
         _slots = Hotbar.GetComponentsInChildren<ItemSlot>();
         _currentItemSlot = -1;
-        EquipItem(0);
+        //Debug.Log(_emptyHand);
+        //Debug.Log("GYATTT");
+        //EquipItem(0);
+        //ReceiveItem(Resources.Load<AxeData>("ItemData/Tools"));
 
-        ReceiveItem(new Axe());
     }
 
     // Update is called once per frame
@@ -33,8 +36,8 @@ public class HandManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             var itemSlot = _slots[_currentItemSlot];
-            if (itemSlot.ItemClass != null) {
-                itemSlot.Use();
+            if (itemSlot.SlotItem != null) {
+                itemSlot.Use(Cameraman);
             }
             else
             {
@@ -76,19 +79,21 @@ public class HandManager : MonoBehaviour
         if (transform.childCount > 0){
             var childObject = transform.GetChild(0).gameObject;
             Destroy(childObject); 
+            Debug.Log("seek and destroy");
         }
 
         var itemSlot = _slots[newSlotIndex];
-        if (itemSlot.ItemClass == null) {
+        if (itemSlot.SlotItem == null) {
             itemSlot.Switch(_emptyHand);
         }
+        Debug.Log(itemSlot.SlotItem.Name);
 
         itemSlot.Equip(gameObject);
         
         _currentItemSlot = newSlotIndex;
     }
 
-    public bool ReceiveItem(Item item) {
+    public bool ReceiveItem(ItemData item) {
         Debug.Log("Picked up item");
         for (int i = 0; i < _slots.Length; i++){
             // OKEY LO QUE HAY QUE HACER AHORA ES HACER QUE EL INVENTARIO SEA UNA LISTA
@@ -96,19 +101,21 @@ public class HandManager : MonoBehaviour
             // la lista tiene que primero contener slots no vacios y despues los vacios
             // porque la funcion depende de que los items iguales se chequeen antes que
             // algun slot vacio
-            Item otherItem = _slots[i].ItemClass;
-            
-            if (otherItem == null || otherItem == _emptyHand) {
+            ItemData otherItem = _slots[i].SlotItem;
+            Debug.Log(item.Name == otherItem.Name );
+            Debug.Log(otherItem.Name);
+            Debug.Log(item.Name);
+            if (otherItem == null || otherItem.Name == "Mano") {
                 _slots[i].Switch(item);
     
                 if (i == _currentItemSlot) {
-                    _slots[i].Equip(gameObject);
+                    EquipItem(i);
                 }
                 return true;
             }
             else if (item.Name == otherItem.Name) {
                 if (item.Count + otherItem.Count <= item.StackSize){
-                    _slots[i].ItemClass.Count += item.Count;
+                    _slots[i].SlotItem.Count += item.Count;
                     return true;
                 } else if (item.Count + otherItem.Count > item.StackSize){
                     int remainingItemsToStack = item.StackSize - otherItem.Count;

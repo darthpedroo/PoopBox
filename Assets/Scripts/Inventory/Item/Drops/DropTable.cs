@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropTable
+[CreateAssetMenu(fileName = "newDropTable", menuName = "ScriptableObjects/DropTable", order = 4)]
+public class DropTable : ScriptableObject
 {
-    private readonly List<Drop> _drops = new();
-    private readonly IDropStrategy _dropStrategy;
+    [SerializeField]
+    private List<Drop> _drops = new();
+    private IDropStrategy _dropStrategy;
 
-    public DropTable(List<Drop> drops, IDropStrategy dropStrategy){
+
+    public void Initialize(List<Drop> drops, IDropStrategy dropStrategy )
+    {
         _drops = drops;
         _dropStrategy = dropStrategy;
     }
 
-    public Item[] GetDrops(){
+    public ItemData[] GetDrops(){
         return _dropStrategy.GetDrops(_drops);
     }
 

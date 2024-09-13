@@ -16,6 +16,11 @@ MonoBehaviour:
   _isChopable: 1
   _isSwordable: 0
   _isShovable: 0
-  _health: 200
-  _displayName: pedro puto
-  _billboardRelativePosition: {x: 1, y: 1.5, z: 1}
+  _health: 507
+  _displayName: skibidi
+  _billboardRelativePosition: {x: 0, y: 0.65, z: 0}
+  _dropTable:
+  - Item: {fileID: 11400000, guid: c7494c054e0913340952a5a7ca621b9c, type: 2}
+    MinDrop: 33
+    MaxDrop: 33
+    Chance: 100

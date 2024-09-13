@@ -7,17 +7,17 @@ using UnityEngine;
 
 public interface IDropStrategy
 {
-    public abstract Item[] GetDrops(List<Drop> _drops);
+    public abstract ItemData[] GetDrops(List<Drop> _drops);
     public abstract void SpawnDrops(Vector3 position, List<Drop> _drops);
 }
 
 public class DropStrategyRandom : IDropStrategy
 {
-    public Item[] GetDrops(List<Drop> _drops)
+    public ItemData[] GetDrops(List<Drop> _drops)
     {
-        List<Item> allLoot = new();
+        List<ItemData> allLoot = new();
         foreach (Drop drop in _drops){
-            Item loot = drop.DropLoot();
+            ItemData loot = drop.DropLoot();
             if (loot != null){
                 allLoot.Add(loot);
             }
@@ -28,9 +28,9 @@ public class DropStrategyRandom : IDropStrategy
     public void SpawnDrops(Vector3 position, List<Drop> _drops)
     {
         foreach (Drop drop in _drops){
-            Item loot = drop.DropLoot();
+            ItemData loot = drop.DropLoot();
             if (loot != null){
-                FloorItemConstructor droppedItem = new FloorItemConstructor(position,loot);
+                FloorItemConstructor droppedItem = new(position,loot);
             }
         }
     }
@@ -45,13 +45,13 @@ public class DropStrategyMutuallyExclusive : IDropStrategy
         // chance de que te salga alguno de los items. 
         _chance = chance;
     }
-    public Item[] GetDrops(List<Drop> drops)
+    public ItemData[] GetDrops(List<Drop> drops)
     {
-        List<Item> allLoot = new();
+        List<ItemData> allLoot = new();
         if (Random.value * 100 <= _chance) 
         {
             Drop selectedDrop = SelectOneDrop(drops); 
-            Item loot = selectedDrop?.DropLoot();
+            ItemData loot = selectedDrop?.DropLoot();
             if (loot != null)
             {
                 allLoot.Add(loot);
@@ -65,10 +65,10 @@ public class DropStrategyMutuallyExclusive : IDropStrategy
         if (Random.value * 100 <= _chance) 
         {
             Drop selectedDrop = SelectOneDrop(drops); 
-            Item loot = selectedDrop?.DropLoot();
+            ItemData loot = selectedDrop?.DropLoot();
             if (loot != null)
             {
-                FloorItemConstructor droppedItem = new FloorItemConstructor(position, loot);
+                FloorItemConstructor droppedItem = new(position, loot);
             }
         }
     }

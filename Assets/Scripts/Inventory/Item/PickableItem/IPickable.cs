@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IPickable
 {
-    Item PickUp();
+    ItemData PickUp();
     GameObject ParentObject {get;}
 
 }
