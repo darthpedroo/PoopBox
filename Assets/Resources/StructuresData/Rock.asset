@@ -21,6 +21,6 @@ MonoBehaviour:
   _billboardRelativePosition: {x: 0, y: 0.65, z: 0}
   _dropTable:
   - Item: {fileID: 11400000, guid: c7494c054e0913340952a5a7ca621b9c, type: 2}
-    MinDrop: 33
-    MaxDrop: 33
+    MinDrop: 1
+    MaxDrop: 3
     Chance: 100

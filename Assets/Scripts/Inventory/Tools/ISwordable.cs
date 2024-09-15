@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ISwordable
 {
-    void TakeSwordDamage(Tool tool, RaycastHit hit);
+    void TakeSwordDamage(int damage, RaycastHit hit);
 }

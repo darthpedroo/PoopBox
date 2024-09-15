@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPickaxable
 {
-    void TakePickaxeDamage(Tool tool, RaycastHit hit);
+    void TakePickaxeDamage(int damage, RaycastHit hit);
 }

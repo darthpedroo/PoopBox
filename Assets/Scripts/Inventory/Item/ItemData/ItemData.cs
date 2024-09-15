@@ -11,8 +11,6 @@ public class ItemData : ScriptableObject
     public string Name;
     public int StackSize;
     public int Count {get; set;}
-    private MeshFilter _meshFilter;
-    private MeshRenderer _meshRenderer;
     public virtual void UseItem(Transform user){
         Debug.Log("Use item not implemented by " + Name);
     }
@@ -23,8 +21,6 @@ public class ItemData : ScriptableObject
         itemObject.transform.position = parentObject.transform.position;
         itemObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         itemObject.layer = LayerMask.NameToLayer("holdLayer");
-        _meshFilter = itemObject.GetComponent<MeshFilter>();
-        _meshRenderer = itemObject.GetComponent<MeshRenderer>();
         if (Name == "Madera"){
             Debug.Log("Madera: x" + Count);
         }

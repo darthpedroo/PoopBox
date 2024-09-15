@@ -102,9 +102,6 @@ public class HandManager : MonoBehaviour
             // porque la funcion depende de que los items iguales se chequeen antes que
             // algun slot vacio
             ItemData otherItem = _slots[i].SlotItem;
-            Debug.Log(item.Name == otherItem.Name );
-            Debug.Log(otherItem.Name);
-            Debug.Log(item.Name);
             if (otherItem == null || otherItem.Name == "Mano") {
                 _slots[i].Switch(item);
     
@@ -118,6 +115,7 @@ public class HandManager : MonoBehaviour
                     _slots[i].SlotItem.Count += item.Count;
                     return true;
                 } else if (item.Count + otherItem.Count > item.StackSize){
+                    
                     int remainingItemsToStack = item.StackSize - otherItem.Count;
                     otherItem.Count = item.StackSize;
                     item.Count -= remainingItemsToStack;

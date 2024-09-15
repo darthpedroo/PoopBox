@@ -14,7 +14,8 @@ public class FloorItemConstructor
     public FloorItemConstructor(Vector3 origin, ItemData item) {
         ConstructItemPrefab(origin);
         PickableItem pickableItem = _objectReference.GetComponentInChildren<PickableItem>();
-        pickableItem.BaseItem = item;
+        pickableItem.BaseItem = GameObject.Instantiate(item);
+        pickableItem.BaseItem.Count = item.Count;
         pickableItem.ParentObject = _objectReference;
     }
 
