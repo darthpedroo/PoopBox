@@ -66,13 +66,11 @@ public class HandManager : MonoBehaviour
         if (transform.childCount > 0){
             var childObject = transform.GetChild(0).gameObject;
             Destroy(childObject); 
-            Debug.Log("seek and destroy");
         }
 
         var itemSlot = _slots[newSlotIndex];
         if (itemSlot.SlotItem == null) {
             itemSlot.Switch(_emptyHand);
-            Debug.Log(itemSlot.SlotItem.ItemName);
 
         }
         itemSlot.Equip(gameObject);
@@ -82,7 +80,8 @@ public class HandManager : MonoBehaviour
 
     public bool ReceiveItem(ItemInstance item) {
         Debug.Log("Picked up item");
-        for (int i = 0; i < _slots.Length; i++){
+        bool isReceived = false; // 
+        for (int i = 0; i < _slots.Length && !isReceived; i++){
 
             ItemInstance otherItem = _slots[i].SlotItem;
             if (otherItem == null || otherItem.ItemName == "Hand") {
@@ -90,22 +89,17 @@ public class HandManager : MonoBehaviour
     
                 if (i == _currentItemSlot) {
                     EquipItem(i);
-                    Debug.Log("gyat");
                 }
-                return true;
+                isReceived = true;
+                break;
             }
-            else if (item.ItemName == otherItem.ItemName) {
-                if (item.Count + otherItem.Count <= item.StackSize){
-                    _slots[i].SlotItem.Count += item.Count;
-                    return true;
-                } else if (item.Count + otherItem.Count > item.StackSize){
-                    
-                    int remainingItemsToStack = item.StackSize - otherItem.Count;
-                    otherItem.Count = item.StackSize;
-                    item.Count -= remainingItemsToStack;
+            else {
+                isReceived = otherItem.Stack(item);
+                if (isReceived){
+                    break;
                 }
             }
         }
-        return false;
+        return isReceived;
     }
 }

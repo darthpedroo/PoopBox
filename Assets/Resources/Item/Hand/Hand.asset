@@ -15,5 +15,5 @@ MonoBehaviour:
   _itemSlotTexture: {fileID: 0}
   ItemModel: {fileID: 919132149155446097, guid: 1c11ce9393cbf93429f294cc4759a6f9, type: 3}
   Name: Mano
-  StackSize: 0
+  StackSize: 1
   ToolDamage: 260
