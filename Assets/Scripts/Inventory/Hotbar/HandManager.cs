@@ -13,19 +13,15 @@ public class HandManager : MonoBehaviour
     private int _currentItemSlot; 
     public Transform Cameraman;
 
-    [SerializeField]
-    private AxeData _emptyHand;
-    public RaycastHit hit;
+    private ItemInstance _emptyHand;
+    public RaycastHit Hit;
 
     void Start()
     {   
-        //_emptyHand = Resources.Load<AxeData>("ItemData/Hand");
         _slots = Hotbar.GetComponentsInChildren<ItemSlot>();
         _currentItemSlot = -1;
-        //Debug.Log(_emptyHand);
-        //Debug.Log("GYATTT");
-        //EquipItem(0);
-        //ReceiveItem(Resources.Load<AxeData>("ItemData/Tools"));
+        _emptyHand = new ItemInstance(Resources.Load<AxeData>("Item/Hand/Hand"),1);
+        EquipItem(0);
 
     }
 
@@ -36,13 +32,7 @@ public class HandManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             var itemSlot = _slots[_currentItemSlot];
-            if (itemSlot.SlotItem != null) {
-                itemSlot.Use(Cameraman);
-            }
-            else
-            {
-                Debug.LogWarning($"Item or ItemManagerSlot in slot {_currentItemSlot} is null.");
-            }
+            itemSlot.Use(Cameraman);
         }
 
         transform.rotation = Cameraman.rotation;
@@ -63,18 +53,15 @@ public class HandManager : MonoBehaviour
 
     public void showHitInfo()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 7.5f,LayerMask.GetMask("FloorItem"))){     
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Hit, 7.5f,LayerMask.GetMask("FloorItem"))){     
             Debug.Log("ITEM SUELO"); 
-            Debug.Log(hit.collider);
+            Debug.Log(Hit.collider);
         }
     }
 
     void EquipItem(int newSlotIndex)
     {
-        // Try to find and destroy the first child object
-        if (_currentItemSlot == newSlotIndex){
-            return;
-        }
+ 
         
         if (transform.childCount > 0){
             var childObject = transform.GetChild(0).gameObject;
@@ -85,32 +72,29 @@ public class HandManager : MonoBehaviour
         var itemSlot = _slots[newSlotIndex];
         if (itemSlot.SlotItem == null) {
             itemSlot.Switch(_emptyHand);
-        }
-        Debug.Log(itemSlot.SlotItem.Name);
+            Debug.Log(itemSlot.SlotItem.ItemName);
 
+        }
         itemSlot.Equip(gameObject);
         
         _currentItemSlot = newSlotIndex;
     }
 
-    public bool ReceiveItem(ItemData item) {
+    public bool ReceiveItem(ItemInstance item) {
         Debug.Log("Picked up item");
         for (int i = 0; i < _slots.Length; i++){
-            // OKEY LO QUE HAY QUE HACER AHORA ES HACER QUE EL INVENTARIO SEA UNA LISTA
-            // EJ = [MADERA,MADERA,HACHA,HACHA,empty,empty]
-            // la lista tiene que primero contener slots no vacios y despues los vacios
-            // porque la funcion depende de que los items iguales se chequeen antes que
-            // algun slot vacio
-            ItemData otherItem = _slots[i].SlotItem;
-            if (otherItem == null || otherItem.Name == "Mano") {
+
+            ItemInstance otherItem = _slots[i].SlotItem;
+            if (otherItem == null || otherItem.ItemName == "Hand") {
                 _slots[i].Switch(item);
     
                 if (i == _currentItemSlot) {
                     EquipItem(i);
+                    Debug.Log("gyat");
                 }
                 return true;
             }
-            else if (item.Name == otherItem.Name) {
+            else if (item.ItemName == otherItem.ItemName) {
                 if (item.Count + otherItem.Count <= item.StackSize){
                     _slots[i].SlotItem.Count += item.Count;
                     return true;

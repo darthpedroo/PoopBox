@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PickableItem : MonoBehaviour, IPickable
 {
-    public ItemData BaseItem;
-    public ItemData PickUp() {
+    public ItemInstance BaseItem;
+    public ItemInstance PickUp() {
         return BaseItem;
     }
     public GameObject ParentObject{get;set;}

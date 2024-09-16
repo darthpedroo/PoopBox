@@ -7,7 +7,7 @@ public class ItemSlot : MonoBehaviour
 {
     //public ItemManager itemManagerSlot;
     //public ItemManager.ItemType currentItemType; 
-    public ItemData SlotItem;
+    public ItemInstance SlotItem;
 
     public void UpdateImage(){
         if (TryGetComponent<RawImage>(out var slotimage)) {
@@ -19,13 +19,13 @@ public class ItemSlot : MonoBehaviour
         }
     }
 
-    public void Switch(ItemData newItem) {
+    public void Switch(ItemInstance newItem) {
         SlotItem = newItem;
         UpdateImage();
     }
 
-    public void Equip(GameObject CurrentItemGameObject) {
-        SlotItem.EquipItem(CurrentItemGameObject);
+    public void Equip(GameObject currentItemGameObject) {
+        SlotItem.EquipItem(currentItemGameObject);
     }
 
     public void Use(Transform user) {

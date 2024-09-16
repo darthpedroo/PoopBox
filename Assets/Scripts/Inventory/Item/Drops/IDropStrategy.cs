@@ -7,17 +7,17 @@ using UnityEngine;
 
 public interface IDropStrategy
 {
-    public abstract ItemData[] GetDrops(List<Drop> _drops);
+    public abstract ItemInstance[] GetDrops(List<Drop> _drops);
     public abstract void SpawnDrops(Vector3 position, List<Drop> _drops);
 }
 
 public class DropStrategyRandom : IDropStrategy
 {
-    public ItemData[] GetDrops(List<Drop> _drops)
+    public ItemInstance[] GetDrops(List<Drop> _drops)
     {
-        List<ItemData> allLoot = new();
+        List<ItemInstance> allLoot = new();
         foreach (Drop drop in _drops){
-            ItemData loot = drop.DropLoot();
+            ItemInstance loot = drop.DropLoot();
             if (loot != null){
                 allLoot.Add(loot);
             }
@@ -28,7 +28,7 @@ public class DropStrategyRandom : IDropStrategy
     public void SpawnDrops(Vector3 position, List<Drop> _drops)
     {
         foreach (Drop drop in _drops){
-            ItemData loot = drop.DropLoot();
+            ItemInstance loot = drop.DropLoot();
             if (loot != null){
                 FloorItemConstructor droppedItem = new(position,loot);
             }
@@ -45,13 +45,13 @@ public class DropStrategyMutuallyExclusive : IDropStrategy
         // chance de que te salga alguno de los items. 
         _chance = chance;
     }
-    public ItemData[] GetDrops(List<Drop> drops)
+    public ItemInstance[] GetDrops(List<Drop> drops)
     {
-        List<ItemData> allLoot = new();
+        List<ItemInstance> allLoot = new();
         if (Random.value * 100 <= _chance) 
         {
             Drop selectedDrop = SelectOneDrop(drops); 
-            ItemData loot = selectedDrop?.DropLoot();
+            ItemInstance loot = selectedDrop?.DropLoot();
             if (loot != null)
             {
                 allLoot.Add(loot);
@@ -65,7 +65,7 @@ public class DropStrategyMutuallyExclusive : IDropStrategy
         if (Random.value * 100 <= _chance) 
         {
             Drop selectedDrop = SelectOneDrop(drops); 
-            ItemData loot = selectedDrop?.DropLoot();
+            ItemInstance loot = selectedDrop?.DropLoot();
             if (loot != null)
             {
                 FloorItemConstructor droppedItem = new(position, loot);

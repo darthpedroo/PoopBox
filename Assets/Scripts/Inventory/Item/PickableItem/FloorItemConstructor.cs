@@ -11,11 +11,10 @@ public class FloorItemConstructor
 
     private GameObject _objectReference;
 
-    public FloorItemConstructor(Vector3 origin, ItemData item) {
+    public FloorItemConstructor(Vector3 origin, ItemInstance item) {
         ConstructItemPrefab(origin);
         PickableItem pickableItem = _objectReference.GetComponentInChildren<PickableItem>();
-        pickableItem.BaseItem = GameObject.Instantiate(item);
-        pickableItem.BaseItem.Count = item.Count;
+        pickableItem.BaseItem = item;
         pickableItem.ParentObject = _objectReference;
     }
 

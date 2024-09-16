@@ -10,7 +10,6 @@ public class ItemData : ScriptableObject
     public GameObject ItemModel;
     public string Name;
     public int StackSize;
-    public int Count {get; set;}
     public virtual void UseItem(Transform user){
         Debug.Log("Use item not implemented by " + Name);
     }
@@ -20,10 +19,7 @@ public class ItemData : ScriptableObject
         itemObject.transform.parent = parentObject.transform;
         itemObject.transform.position = parentObject.transform.position;
         itemObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        itemObject.layer = LayerMask.NameToLayer("holdLayer");
-        if (Name == "Madera"){
-            Debug.Log("Madera: x" + Count);
-        }
+        itemObject.layer = LayerMask.NameToLayer("holdLayer");  
     }
     public Texture GetItemTexture(){
         return _itemSlotTexture;

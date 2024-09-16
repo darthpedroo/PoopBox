@@ -24,18 +24,16 @@ public class Drop
         Chance = percentageChance;
     }
 
-    public ItemData DropLoot(){
+    public ItemInstance DropLoot(){
         float randomNumber = Random.value * 100;
         //Debug.Log(randomNumber + "  " +_chance);
         if (randomNumber <= Chance){
-            if (MinDrop != 0 && MaxDrop != 0){
-                int stacksize = Random.Range(MinDrop,MaxDrop);
-                Item.Count = stacksize;
+            int stacksize = Random.Range(MinDrop,MaxDrop);
+            if (stacksize > 0){
+                return new ItemInstance(Item, stacksize);
             }
-            return Item;
-        } else{
-            return null;
         }
+        return null;
         
     }
 }
