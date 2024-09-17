@@ -61,7 +61,6 @@ public class HandManager : MonoBehaviour
 
     void EquipItem(int newSlotIndex)
     {
- 
         
         if (transform.childCount > 0){
             var childObject = transform.GetChild(0).gameObject;
@@ -84,9 +83,8 @@ public class HandManager : MonoBehaviour
         for (int i = 0; i < _slots.Length && !isReceived; i++){
 
             ItemInstance otherItem = _slots[i].SlotItem;
-            if (otherItem == null || otherItem.ItemName == "Hand") {
+            if (otherItem == null || otherItem == _emptyHand) {
                 _slots[i].Switch(item);
-    
                 if (i == _currentItemSlot) {
                     EquipItem(i);
                 }

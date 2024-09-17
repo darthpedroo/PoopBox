@@ -19,21 +19,7 @@ public class DropStrategyRandom : IDropStrategy
         foreach (Drop drop in _drops){
             ItemInstance loot = drop.DropLoot();
             if (loot != null){
-                if (loot.Count < loot.StackSize){
-                    allLoot.Add(loot);
-                } else {
-                    int FullStacks = Mathf.FloorToInt((float)loot.Count / loot.StackSize);
-                    int ExcesStack = loot.Count-(FullStacks * loot.StackSize);
-                    Debug.Log(FullStacks);
-                    for (int i = 0; i < FullStacks; i++){
-                        ItemInstance newLoot = new ItemInstance(loot.data, loot.StackSize);
-                        allLoot.Add(newLoot);
-                    }
-                    if (ExcesStack != 0){
-                        loot.Count = ExcesStack;
-                        allLoot.Add(loot);
-                    }
-                }
+                allLoot.AddRange(loot.DivideIntoStacks());
             }
         }
         return allLoot.ToArray();
@@ -44,20 +30,8 @@ public class DropStrategyRandom : IDropStrategy
         foreach (Drop drop in _drops){
             ItemInstance loot = drop.DropLoot();
             if (loot != null){
-                if (loot.Count < loot.StackSize){
-                    FloorItemConstructor droppedItem = new(position,loot);
-                } else {
-                    int FullStacks = Mathf.FloorToInt((float)loot.Count / loot.StackSize);
-                    int ExcesStack = loot.Count-(FullStacks * loot.StackSize);
-                    Debug.Log(FullStacks);
-                    for (int i = 0; i < FullStacks; i++){
-                        ItemInstance newLoot = new ItemInstance(loot.data, loot.StackSize);
-                        FloorItemConstructor droppedItem = new(position,newLoot);
-                    }
-                    if (ExcesStack != 0){
-                        loot.Count = ExcesStack;
-                        FloorItemConstructor excessItem = new(position,loot);
-                    }
+                foreach (ItemInstance DividedItem in loot.DivideIntoStacks()){
+                    FloorItemConstructor droppedItem = new(position,DividedItem);
                 }
             }
         }
@@ -82,21 +56,7 @@ public class DropStrategyMutuallyExclusive : IDropStrategy
             ItemInstance loot = selectedDrop?.DropLoot();
             if (loot != null)
             {
-                if (loot.Count < loot.StackSize){
-                    allLoot.Add(loot);
-                } else {
-                    int FullStacks = Mathf.FloorToInt((float)loot.Count / loot.StackSize);
-                    int ExcesStack = loot.Count-(FullStacks * loot.StackSize);
-                    Debug.Log(FullStacks);
-                    for (int i = 0; i < FullStacks; i++){
-                        ItemInstance newLoot = new ItemInstance(loot.data, loot.StackSize);
-                        allLoot.Add(newLoot);
-                    }
-                    if (ExcesStack != 0){
-                        loot.Count = ExcesStack;
-                        allLoot.Add(loot);
-                    }
-                }
+                allLoot.AddRange(loot.DivideIntoStacks());
             }
         }
         return allLoot.ToArray();
@@ -108,22 +68,9 @@ public class DropStrategyMutuallyExclusive : IDropStrategy
         {
             Drop selectedDrop = SelectOneDrop(drops); 
             ItemInstance loot = selectedDrop?.DropLoot();
-            if (loot != null)
-            {
-                if (loot.Count < loot.StackSize){
-                    FloorItemConstructor droppedItem = new(position,loot);
-                } else {
-                    int FullStacks = Mathf.FloorToInt((float)loot.Count / loot.StackSize);
-                    int ExcesStack = loot.Count-(FullStacks * loot.StackSize);
-                    Debug.Log(FullStacks);
-                    for (int i = 0; i < FullStacks; i++){
-                        ItemInstance newLoot = new ItemInstance(loot.data, loot.StackSize);
-                        FloorItemConstructor droppedItem = new(position,newLoot);
-                    }
-                    if (ExcesStack != 0){
-                        loot.Count = ExcesStack;
-                        FloorItemConstructor excessItem = new(position,loot);
-                    }
+            if (loot != null) {
+                foreach (ItemInstance DividedItem in loot.DivideIntoStacks()){
+                    FloorItemConstructor droppedItem = new(position,DividedItem);
                 }
             }
         }
