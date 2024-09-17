@@ -10,30 +10,18 @@ public class ItemInstance
     private readonly ItemData _itemData;
     private int _quantity;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ItemInstance"/> class with specified item data and quantity.
-    /// </summary>
-    /// <param name="item">The data associated with the item.</param>
-    /// <param name="quantity">The quantity of the item.</param>
     public ItemInstance(ItemData item, int quantity)
     {
         _quantity = quantity;
         _itemData = item;
     }
 
-    /// <summary>
-    /// Gets the texture associated with the item.
-    /// </summary>
-    /// <returns>The texture of the item.</returns>
+
     public Texture GetItemTexture()
     {
         return _itemData.GetItemTexture();
     }
 
-    /// <summary>
-    /// Equips the item to the specified game object.
-    /// </summary>
-    /// <param name="currentItemGameObject">The game object to equip the item to.</param>
     public void EquipItem(GameObject currentItemGameObject)
     {
         _itemData.EquipItem(currentItemGameObject);
@@ -43,11 +31,6 @@ public class ItemInstance
         }
     }
 
-    /// <summary>
-    /// Stacks this item instance with another item instance if they are the same type and the stack size allows.
-    /// </summary>
-    /// <param name="item">The item instance to stack with this instance.</param>
-    /// <returns><c>true</c> if the items were successfully stacked; otherwise, <c>false</c>.</returns>
     public bool Stack(ItemInstance item)
     {
         int StackSize = _itemData.StackSize;
@@ -68,10 +51,7 @@ public class ItemInstance
         return false;
     }
 
-    /// <summary>
-    /// Divides the current item instance into multiple stacks based on the maximum stack size.
-    /// </summary>
-    /// <returns>An array of <see cref="ItemInstance"/> representing the divided stacks.</returns>
+
     public ItemInstance[] DivideIntoStacks()
     {
         List<ItemInstance> itemsDividedIntoStacks = new();
@@ -94,29 +74,16 @@ public class ItemInstance
         return itemsDividedIntoStacks.ToArray();
     }
 
-    /// <summary>
-    /// Uses the item with the specified user.
-    /// </summary>
-    /// <param name="user">The user who is using the item.</param>
     public void UseItem(Transform user)
     {
         _itemData.UseItem(user);
     }
 
-    /// <summary>
-    /// Gets the name of the item.
-    /// </summary>
-    /// <value>The name of the item.</value>
     public string ItemName
     {
         get { return _itemData.name; }
     }
 
-    /// <summary>
-    /// Determines whether the specified object is equal to the current item instance.
-    /// </summary>
-    /// <param name="obj">The object to compare with the current instance.</param>
-    /// <returns><c>true</c> if the specified object is equal to the current item instance; otherwise, <c>false</c>.</returns>
     public override bool Equals(object obj)
     {
         if (obj is ItemInstance otraclase)
@@ -126,10 +93,6 @@ public class ItemInstance
         return false;
     }
 
-    /// <summary>
-    /// Serves as a hash function for the item instance.
-    /// </summary>
-    /// <returns>A hash code for the current item instance.</returns>
     public override int GetHashCode()
     {
         return ItemName.GetHashCode();
