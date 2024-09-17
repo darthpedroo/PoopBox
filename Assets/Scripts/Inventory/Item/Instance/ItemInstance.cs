@@ -25,13 +25,13 @@ public class ItemInstance
     }
     public bool Stack(ItemInstance item){
         if (item.ItemName == ItemName){ // si son el mismo item, stackear
-            if (item._quantity + _quantity <= _itemData.StackSize){
-                _quantity += item._quantity;
+            if (item.Count + Count <= _itemData.StackSize){
+                Count += item.Count;
                 return true;
             } else {
-                int remainingItemsToStack = item.StackSize - item._quantity;
-                item._quantity = item.StackSize;
-                item._quantity -= remainingItemsToStack;
+                int remainingItemsToStack = item.Count + Count - StackSize;      
+                Count = item.StackSize;
+                item.Count = remainingItemsToStack;
             }
         } 
         return false;
@@ -51,6 +51,9 @@ public class ItemInstance
         set {
             _quantity = value == 0 ? throw new Exception(ItemName + " quantity cannot be zero") : value;
         }
+    }
+    public ItemData data{
+        get {return _itemData;}
     }
 }
 

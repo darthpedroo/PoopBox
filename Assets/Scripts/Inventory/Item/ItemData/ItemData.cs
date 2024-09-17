@@ -24,4 +24,10 @@ public class ItemData : ScriptableObject
     public Texture GetItemTexture(){
         return _itemSlotTexture;
     }
+
+    public virtual void OnValidate(){
+        if (StackSize < 1){
+            StackSize = 1;
+        }
+    }
 }
