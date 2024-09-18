@@ -54,8 +54,8 @@ public class HandManager : MonoBehaviour
     public void showHitInfo()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Hit, 7.5f,LayerMask.GetMask("FloorItem"))){     
-            Debug.Log("ITEM SUELO"); 
-            Debug.Log(Hit.collider);
+            //Debug.Log("ITEM SUELO"); 
+            //Debug.Log(Hit.collider);
         }
     }
 
@@ -78,7 +78,7 @@ public class HandManager : MonoBehaviour
     }
 
     public bool ReceiveItem(ItemInstance item) {
-        Debug.Log("Picked up item");
+        //Debug.Log("Picked up item");
         bool isReceived = false; // 
         for (int i = 0; i < _slots.Length && !isReceived; i++){
 

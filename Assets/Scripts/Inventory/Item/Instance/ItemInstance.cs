@@ -34,6 +34,7 @@ public class ItemInstance
     public bool Stack(ItemInstance item)
     {
         int StackSize = _itemData.StackSize;
+        //Debug.Log(item == this);
         if (item == this) // si son el mismo item, stackear
         {
             if (item._quantity + _quantity <= StackSize)
@@ -88,7 +89,8 @@ public class ItemInstance
     {
         if (obj is ItemInstance otraclase)
         {
-            return (ItemName == otraclase.ItemName);
+            
+            return ItemName == otraclase.ItemName;
         }
         return false;
     }
@@ -97,4 +99,23 @@ public class ItemInstance
     {
         return ItemName.GetHashCode();
     }
+    // atencion el siguiente codigo ha sido escrito por TITO CALDERON
+    public static bool operator ==(ItemInstance left, ItemInstance right)
+    {
+        // If both are null, return true
+        if (ReferenceEquals(left, right)) return true;
+
+        // If one is null, but not both, return false
+        if (ReferenceEquals(left, null) || ReferenceEquals(right, null)) return false;
+
+        // Return true if the fields match
+        return left.ItemName == right.ItemName;
+    }
+
+    // Overload the != operator
+    public static bool operator !=(ItemInstance left, ItemInstance right)
+    {
+        return !(left == right);
+    }
+
 }

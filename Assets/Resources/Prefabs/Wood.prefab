@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4235508301778300687}
   - component: {fileID: 4922625716645244076}
   - component: {fileID: 6665457416928123111}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Aquarium_Log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1747901602441733985}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
