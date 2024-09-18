@@ -33,19 +33,19 @@ public class ItemInstance
 
     public bool Stack(ItemInstance item)
     {
-        int StackSize = _itemData.StackSize;
+        int stackSize = _itemData.StackSize;
         //Debug.Log(item == this);
         if (item == this) // si son el mismo item, stackear
         {
-            if (item._quantity + _quantity <= StackSize)
+            if (item._quantity + _quantity <= stackSize)
             {
                 _quantity += item._quantity;
                 return true;
             }
             else
             {
-                int remainingItemsToStack = item._quantity + _quantity - StackSize;
-                _quantity = StackSize;
+                int remainingItemsToStack = item._quantity + _quantity - stackSize;
+                _quantity = stackSize;
                 item._quantity = remainingItemsToStack;
             }
         }
@@ -56,19 +56,19 @@ public class ItemInstance
     public ItemInstance[] DivideIntoStacks()
     {
         List<ItemInstance> itemsDividedIntoStacks = new();
-        int StackSize = _itemData.StackSize;
-        int FullStacks = Mathf.FloorToInt((float)_quantity / StackSize);
-        int ExcesStack = _quantity - (FullStacks * StackSize);
+        int stackSize = _itemData.StackSize;
+        int fullStacks = Mathf.FloorToInt((float)_quantity / stackSize);
+        int excesStack = _quantity - (fullStacks * stackSize);
 
-        for (int i = 0; i < FullStacks; i++)
+        for (int i = 0; i < fullStacks; i++)
         {
-            ItemInstance newItem = new ItemInstance(_itemData, StackSize);
+            ItemInstance newItem = new ItemInstance(_itemData, stackSize);
             itemsDividedIntoStacks.Add(newItem);
         }
 
-        if (ExcesStack != 0)
+        if (excesStack != 0)
         {
-            _quantity = ExcesStack;
+            _quantity = excesStack;
             itemsDividedIntoStacks.Add(this);
         }
 
@@ -80,7 +80,17 @@ public class ItemInstance
         _itemData.UseItem(user);
     }
 
-    public string ItemName
+    public void AddItemGUI(Transform user){
+        GameObject prefab = Resources.Load<GameObject>("Prefabs/ItemInfoGUI");
+        GameObject itemInfoGui = UnityEngine.Object.Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f),user);
+        itemInfoGui.transform.position = user.transform.position;
+        itemInfoGui.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        itemInfoGui.layer = LayerMask.NameToLayer("holdLayer");
+        itemInfoGui.GetComponentInChildren<TMPro.TMP_Text>().text = ItemName + " X" + _quantity;
+    }
+
+
+    private string ItemName
     {
         get { return _itemData.name; }
     }
