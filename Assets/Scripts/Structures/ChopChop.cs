@@ -12,4 +12,7 @@ public class ChopChop : MonoBehaviour, IChopable
         _healthComponent = GetComponent<IHealth>();
     }
     
+    void OnValidate(){
+        _healthComponent = GetComponent<IHealth>();
+    }
 }

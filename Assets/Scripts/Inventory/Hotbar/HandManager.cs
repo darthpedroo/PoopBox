@@ -19,10 +19,13 @@ public class HandManager : MonoBehaviour
     void Start()
     {   
         _slots = Hotbar.GetComponentsInChildren<ItemSlot>();
+        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"),1);
         _currentItemSlot = -1;
-        _emptyHand = new ItemInstance(Resources.Load<AxeData>("Item/Hand/Hand"),1);
         EquipItem(0);
+    }
 
+    void OnValidate(){
+        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"),1);
     }
 
     // Update is called once per frame
@@ -40,7 +43,7 @@ public class HandManager : MonoBehaviour
 
 
         // Check for numeric key inputs
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 9; i++)
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1 + i))
                 {
@@ -89,13 +92,9 @@ public class HandManager : MonoBehaviour
                     EquipItem(i);
                 }
                 isReceived = true;
-                break;
             }
             else {
                 isReceived = otherItem.Stack(item);
-                if (isReceived){
-                    break;
-                }
             }
         }
         return isReceived;

@@ -27,7 +27,11 @@ public class PlayerStateManager : MonoBehaviour
     {
         currentState.UpdateState(this);
     }
-
+    
+    void OnValidate(){
+        currentState = MovingState;
+        currentState.EnterState(this);
+    }
     public void SwitchState(PlayerBaseState state){
         currentState = state;
         state.EnterState(this);

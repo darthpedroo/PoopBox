@@ -16,6 +16,7 @@ public class ItemSlot : MonoBehaviour
                 slotimage.texture = slotTexture;
             } 
             
+
         }
     }
 
@@ -29,6 +30,7 @@ public class ItemSlot : MonoBehaviour
     }
 
     public void Use(Transform user) {
+        Debug.Log(user);
         SlotItem.UseItem(user);
     }
 
