@@ -31,7 +31,7 @@ public class DropStrategyRandom : IDropStrategy
             ItemInstance loot = drop.DropLoot();
             if (loot != null){
                 foreach (ItemInstance DividedItem in loot.DivideIntoStacks()){
-                    Vector3 randomVelocity = new(Random.Range(1,5),Random.Range(1,5),Random.Range(1,5));
+                    Vector3 randomVelocity = new(Random.Range(-5,5),Random.Range(1,5),Random.Range(-5,5));
                     FloorItemConstructor droppedItem = new(position,DividedItem,randomVelocity);
                 }
             }
@@ -71,7 +71,7 @@ public class DropStrategyMutuallyExclusive : IDropStrategy
             ItemInstance loot = selectedDrop?.DropLoot();
             if (loot != null) {
                 foreach (ItemInstance DividedItem in loot.DivideIntoStacks()){
-                    Vector3 randomVelocity = new(Random.Range(1,5),Random.Range(1,5),Random.Range(1,5));
+                    Vector3 randomVelocity = new(Random.Range(-5,5),Random.Range(1,5),Random.Range(-5,5));
                     FloorItemConstructor droppedItem = new(position,DividedItem,randomVelocity);
                 }
             }
