@@ -87,8 +87,12 @@ public class ItemInstance
         itemInfoGui.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         itemInfoGui.layer = LayerMask.NameToLayer("holdLayer");
         itemInfoGui.GetComponentInChildren<TMPro.TMP_Text>().text = ItemName + " X" + _quantity;
+
     }
 
+    public void UpdateItemGUI(Transform user){
+        user.GetComponentInChildren<TMPro.TMP_Text>().text = ItemName + " X" + _quantity;
+    }
 
     private string ItemName
     {

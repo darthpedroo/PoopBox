@@ -25,7 +25,10 @@ public class HandManager : MonoBehaviour
     }
 
     void OnValidate(){
-        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"),1);
+        if (Application.isPlaying)
+        {
+        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"), 1);
+        }
     }
 
     // Update is called once per frame
