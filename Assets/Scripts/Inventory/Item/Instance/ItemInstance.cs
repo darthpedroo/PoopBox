@@ -62,7 +62,7 @@ public class ItemInstance
 
         for (int i = 0; i < fullStacks; i++)
         {
-            ItemInstance newItem = new ItemInstance(_itemData, stackSize);
+            ItemInstance newItem = new(_itemData, stackSize);
             itemsDividedIntoStacks.Add(newItem);
         }
 
@@ -96,16 +96,21 @@ public class ItemInstance
 
     private string ItemName
     {
-        get { return _itemData.name; }
+        get { return _itemData.Name; }
+    }
+
+    public int Count
+    {
+        get {return _quantity;}
     }
 
     public override bool Equals(object obj)
     {
         if (obj is ItemInstance otraclase)
         {
-            
             return ItemName == otraclase.ItemName;
         }
+        Debug.Log("not");
         return false;
     }
 
@@ -117,10 +122,10 @@ public class ItemInstance
     public static bool operator ==(ItemInstance left, ItemInstance right)
     {
         // If both are null, return true
-        if (ReferenceEquals(left, right)) return true;
+        if (left is null && right is null) return true;
 
         // If one is null, but not both, return false
-        if (ReferenceEquals(left, null) || ReferenceEquals(right, null)) return false;
+        if (left is null || right is null) return false;
 
         // Return true if the fields match
         return left.ItemName == right.ItemName;

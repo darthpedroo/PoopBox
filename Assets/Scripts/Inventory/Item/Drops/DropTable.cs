@@ -16,7 +16,7 @@ public class DropTable : ScriptableObject
         _dropStrategy = dropStrategy;
     }
 
-    public ItemInstance[] ItemInstanceGetDrops(){
+    public ItemInstance[] GetDrops(){
         return _dropStrategy.GetDrops(_drops);
     }
 
