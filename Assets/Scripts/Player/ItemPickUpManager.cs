@@ -6,9 +6,15 @@ public class ItemPickUpManager : MonoBehaviour
 {
 
     public HandManager HandManager;
-    private void OnTriggerEnter(Collider PickedUpItem) {
-        IPickable floorItem = PickedUpItem.GetComponent<IPickable>();
-        bool isReceived = HandManager.ReceiveItem(floorItem.PickUp());
-        if (isReceived) {Destroy(floorItem.ParentObject);}
+    private void OnTriggerEnter(Collider pickedUpItem) {
+        IPickable floorItem = pickedUpItem.GetComponentInParent<IPickable>();
+        ItemInstance item = floorItem.PickUp();
+        bool isReceived = HandManager.ReceiveItem(item);
+        //Debug.Log(isReceived);
+        if (isReceived) 
+        {Destroy(floorItem.ParentObject); } else
+        {
+            item.UpdateItemGUI(pickedUpItem.transform.parent);
+        }
     }
 }

@@ -13,7 +13,7 @@ public class Structure : MonoBehaviour, IHealth, IChopable
     void Start()
     {
         Health = 250;
-        _dropTable = new DropTableBuilder().Add(new Wood(1),33,33,100).GetDropTable();
+        //_dropTable = new DropTableBuilder().Add(new Wood(1),33,33,100).GetDropTable();
     }
     public void TakeDamage(int damage, RaycastHit hit){
         Debug.LogWarning("Take Damage Not Implemented");
@@ -37,7 +37,7 @@ public class Structure : MonoBehaviour, IHealth, IChopable
         BazingaParticle = ObjectInstantiator.InstantiatePrefab("Prefabs/BazingaParticle", hit.point, Quaternion.Euler(0f, 0f, 0f));
         BazingaParticle.transform.parent = transform;
         BazingaParticle.GetComponent<ParticleSystem>().Emit(1);
-        _dropTable.SpawnDropsAt(transform.position);
+        //_dropTable.SpawnDropsAt(transform.position);
         _isDestroyed = true;
         //Hacer que no se pueda seguir golpeando al arbol porque se puede seguir ejecutando "TakeDamage"
         Destroy(gameObject, 0.5f);

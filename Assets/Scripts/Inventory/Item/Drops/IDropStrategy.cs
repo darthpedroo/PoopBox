@@ -7,19 +7,19 @@ using UnityEngine;
 
 public interface IDropStrategy
 {
-    public abstract Item[] GetDrops(List<Drop> _drops);
+    public abstract ItemInstance[] GetDrops(List<Drop> _drops);
     public abstract void SpawnDrops(Vector3 position, List<Drop> _drops);
 }
 
 public class DropStrategyRandom : IDropStrategy
 {
-    public Item[] GetDrops(List<Drop> _drops)
+    public ItemInstance[] GetDrops(List<Drop> _drops)
     {
-        List<Item> allLoot = new();
+        List<ItemInstance> allLoot = new();
         foreach (Drop drop in _drops){
-            Item loot = drop.DropLoot();
+            ItemInstance loot = drop.DropLoot();
             if (loot != null){
-                allLoot.Add(loot);
+                allLoot.AddRange(loot.DivideIntoStacks());
             }
         }
         return allLoot.ToArray();
@@ -28,9 +28,12 @@ public class DropStrategyRandom : IDropStrategy
     public void SpawnDrops(Vector3 position, List<Drop> _drops)
     {
         foreach (Drop drop in _drops){
-            Item loot = drop.DropLoot();
+            ItemInstance loot = drop.DropLoot();
             if (loot != null){
-                FloorItemConstructor droppedItem = new FloorItemConstructor(position,loot);
+                foreach (ItemInstance DividedItem in loot.DivideIntoStacks()){
+                    Vector3 randomVelocity = new(Random.Range(-5,5),Random.Range(1,5),Random.Range(-5,5));
+                    FloorItemConstructor droppedItem = new(position,DividedItem,randomVelocity);
+                }
             }
         }
     }
@@ -45,16 +48,16 @@ public class DropStrategyMutuallyExclusive : IDropStrategy
         // chance de que te salga alguno de los items. 
         _chance = chance;
     }
-    public Item[] GetDrops(List<Drop> drops)
+    public ItemInstance[] GetDrops(List<Drop> drops)
     {
-        List<Item> allLoot = new();
+        List<ItemInstance> allLoot = new();
         if (Random.value * 100 <= _chance) 
         {
             Drop selectedDrop = SelectOneDrop(drops); 
-            Item loot = selectedDrop?.DropLoot();
+            ItemInstance loot = selectedDrop?.DropLoot();
             if (loot != null)
             {
-                allLoot.Add(loot);
+                allLoot.AddRange(loot.DivideIntoStacks());
             }
         }
         return allLoot.ToArray();
@@ -65,10 +68,12 @@ public class DropStrategyMutuallyExclusive : IDropStrategy
         if (Random.value * 100 <= _chance) 
         {
             Drop selectedDrop = SelectOneDrop(drops); 
-            Item loot = selectedDrop?.DropLoot();
-            if (loot != null)
-            {
-                FloorItemConstructor droppedItem = new FloorItemConstructor(position, loot);
+            ItemInstance loot = selectedDrop?.DropLoot();
+            if (loot != null) {
+                foreach (ItemInstance DividedItem in loot.DivideIntoStacks()){
+                    Vector3 randomVelocity = new(Random.Range(-5,5),Random.Range(1,5),Random.Range(-5,5));
+                    FloorItemConstructor droppedItem = new(position,DividedItem,randomVelocity);
+                }
             }
         }
     }

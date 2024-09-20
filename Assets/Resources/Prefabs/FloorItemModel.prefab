@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3135894910156384893}
   - component: {fileID: 3135894910156384895}
   - component: {fileID: 3135894910156384888}
-  - component: {fileID: -7455066094616767397}
+  - component: {fileID: 4816400600749053579}
+  - component: {fileID: 6449892349418355844}
   m_Layer: 9
   m_Name: FloorItemModel
   m_TagString: canPickUp
@@ -52,7 +53,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3135894910156384890}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -95,13 +96,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3135894910156384890}
   serializedVersion: 2
-  m_Mass: 2
-  m_Drag: 0.25
-  m_AngularDrag: 0.05
+  m_Mass: 7
+  m_Drag: 0
+  m_AngularDrag: 0
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!135 &3135894910156384888
 SphereCollider:
@@ -116,7 +117,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-7455066094616767397
+--- !u!114 &4816400600749053579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +126,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3135894910156384890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39f51664442d1fc43a57db674e808044, type: 3}
+  m_Script: {fileID: 11500000, guid: 40c74a8240e06cd4082443bd84710bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6449892349418355844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3135894910156384890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a77f26ba69bddf418054bb701435d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8752544115747138942
@@ -138,7 +151,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2674114336985842640}
   - component: {fileID: 4220499486550332804}
-  - component: {fileID: 8545396776168051333}
   m_Layer: 8
   m_Name: Item Pickup Area
   m_TagString: Untagged
@@ -174,15 +186,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8545396776168051333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8752544115747138942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40c74a8240e06cd4082443bd84710bbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 816099056106442957}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: AXE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ Transform:
   - {fileID: 5184767256501169047}
   - {fileID: 295656335631317206}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2702045017857340079
 GameObject:
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 5184767256501169047}
   - component: {fileID: 8026089264000162445}
   - component: {fileID: 8660519007604374838}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: TopBladeBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fdd09ae4fb1d5f43854844fdfbedf81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1660163108482105862}
   - component: {fileID: 3887586685109994352}
   - component: {fileID: 7474689490561375861}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 1544195732035168012}
   - component: {fileID: 8299483801355233955}
   - component: {fileID: 7179841136681372873}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fdd09ae4fb1d5f43854844fdfbedf81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 6757594685053328916}
   - component: {fileID: 7996979386292299393}
   - component: {fileID: 4615677124445439128}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: MetalBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fdd09ae4fb1d5f43854844fdfbedf81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 295656335631317206}
   - component: {fileID: 3937830361517291837}
   - component: {fileID: 4106811314145133197}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: TopBladeFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fdd09ae4fb1d5f43854844fdfbedf81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 5212540825894347869}
   - component: {fileID: 5878831858833693853}
   - component: {fileID: 2337464875286301215}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BladeBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ad19528ba5ea65945a9c56c5a523ecbf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 6432036638728961550}
   - component: {fileID: 2725847896347458496}
   - component: {fileID: 7509450458801527411}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Bandages
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +601,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 623c3c8ad2cbff34393b54a439005407, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 1840964819380367028}
   - component: {fileID: 9141474553555143344}
   - component: {fileID: 2348232703801221009}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: HandleConnection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -684,7 +684,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fdd09ae4fb1d5f43854844fdfbedf81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 7497109667917461271}
   - component: {fileID: 2183613206142307501}
   - component: {fileID: 2525606499482641118}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ad19528ba5ea65945a9c56c5a523ecbf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 2553795183567782734}
   - component: {fileID: 4161874236470236898}
   - component: {fileID: 9140308191348504007}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BladeFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -850,7 +850,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ad19528ba5ea65945a9c56c5a523ecbf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 7852417071963360792}
   - component: {fileID: 6234614961803652825}
   - component: {fileID: 8836184555517881645}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: CenterWood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,7 +933,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fdd09ae4fb1d5f43854844fdfbedf81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

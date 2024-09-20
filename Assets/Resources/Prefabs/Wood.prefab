@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4235508301778300687}
   - component: {fileID: 4922625716645244076}
   - component: {fileID: 6665457416928123111}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Aquarium_Log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4568896285038658116, guid: 36bb7ac0b1d949842933d4091d2dfa49, type: 3}
+  - {fileID: 2100000, guid: d3bac98ae93f63f4cb8961849574beb2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1747901602441733985}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,5 +113,5 @@ Transform:
   m_Children:
   - {fileID: 4235508301778300687}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

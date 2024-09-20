@@ -4,37 +4,36 @@ using System.Runtime.InteropServices.WindowsRuntime;
 
 using UnityEngine;
 
+[System.Serializable]
 public class Drop
 {   
-    private readonly Item _item;
-    private readonly int _minDrop;
-    private readonly int _maxDrop;
-    private readonly float _chance;
+    [SerializeField] public ItemData Item;
+    [SerializeField] public int MinDrop;
+    [SerializeField] public int MaxDrop;
+    [SerializeField] public float Chance;
 
-    public Drop(Item item,int minDrop, int maxDrop, float percentageChance){
-        _item = item;
-        _minDrop = minDrop;
-        _maxDrop = maxDrop;
-        _chance = percentageChance;
+    public Drop(ItemData item,int minDrop, int maxDrop, float percentageChance){
+        Item = item;
+        MinDrop = minDrop;
+        MaxDrop = maxDrop;
+        Chance = percentageChance;
     }
 
-    public Drop(Item item, float percentageChance){
-        _item = item;
-        _chance = percentageChance;
+    public Drop(ItemData item, float percentageChance){
+        Item = item;
+        Chance = percentageChance;
     }
 
-    public Item DropLoot(){
+    public ItemInstance DropLoot(){
         float randomNumber = Random.value * 100;
         //Debug.Log(randomNumber + "  " +_chance);
-        if (randomNumber <= _chance){
-            if (_minDrop != 0 && _maxDrop != 0){
-                int stacksize = Random.Range(_minDrop,_maxDrop);
-                _item.Count = stacksize;
+        if (randomNumber <= Chance){
+            int stacksize = Random.Range(MinDrop,MaxDrop);
+            if (stacksize > 0){
+                return new ItemInstance(Item, stacksize);
             }
-            return _item;
-        } else{
-            return null;
         }
+        return null;
         
     }
 }
