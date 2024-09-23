@@ -15,12 +15,9 @@ public class Structure2
         foreach (var mod in _modifications){
             mod.Invoke(structureObject);
         }
-        structureObject.GetComponent<StructureManager>().SetHealth(health);
         structureObject.transform.localScale = scale;
-        GameObject healthBarPrefab = Resources.Load<GameObject>("Prefabs/HealthBar");
-        GameObject healthBar = GameObject.Instantiate(healthBarPrefab, structureObject.transform);
-        Billboard billboard = healthBar.GetComponentInChildren<Billboard>();
-        billboard.SetDisplayName(displayName);
-        billboard.SetRelativePosition(bilboardPos);
+        HealthObserver observer = structureObject.AddComponent<HealthObserver>();
+        System.Action action = structureObject.GetComponent<StructureManager>().DestroySelf;
+        observer.SetUp(health,action,displayName,1, new Vector3(0,1,0));
     }
 }

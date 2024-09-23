@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using TMPro;
 using UnityEngine;
 
@@ -23,6 +24,10 @@ public class Billboard : MonoBehaviour
 
     public void SetRelativePosition(Vector3 pos){
         transform.parent.parent.transform.localPosition = pos;
+    }
+
+    public void SetScale(int size){
+        transform.parent.parent.transform.localScale = Vector3.one * size;
     }
     void LateUpdate(){
         transform.LookAt(transform.position + Cam.forward);
