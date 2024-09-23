@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+
+using Codice.Client.BaseCommands.BranchExplorer;
+
 using UnityEngine;
 
 public class EntityStateManager : MonoBehaviour
@@ -11,12 +14,14 @@ public class EntityStateManager : MonoBehaviour
     public EntityIdleState idleState = new EntityIdleState();
     public EntityWanderingState wanderingState = new EntityWanderingState();
 
+    public EntityTestState testState = new EntityTestState();
+
 
     // Start is called before the first frame update
     void Start()
     {
         entityRigidbody = GetComponent<Rigidbody>();
-        currentState = idleState;
+        currentState = testState;
         currentState.EnterState(this);
     }
 
