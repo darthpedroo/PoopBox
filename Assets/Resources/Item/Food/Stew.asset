@@ -16,6 +16,6 @@ MonoBehaviour:
   ItemModel: {fileID: 1528508235545930, guid: fcb2c2b33094cf54591f330bc73def25, type: 3}
   Name: Stew
   StackSize: 16
-  ModelScale: {x: 4, y: 4, z: 4}
+  ModelScale: {x: 6, y: 6, z: 6}
   HungerRestore: 30
   HealthRestore: 10
