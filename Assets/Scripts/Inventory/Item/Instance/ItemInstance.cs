@@ -9,7 +9,13 @@ public class ItemInstance
 {
     private readonly ItemData _itemData;
     private int _quantity;
-    public int Quantity{get { return _quantity;} }
+    public delegate void QuantityChanged();
+    public event QuantityChanged OnQuantityChanged;
+
+    public int Quantity 
+    { 
+        get { return _quantity; }
+    }
     public ItemInstance(ItemData item, int quantity)
     {
         _quantity = quantity;
@@ -37,12 +43,14 @@ public class ItemInstance
             if (item._quantity + _quantity <= stackSize)
             {
                 _quantity += item._quantity;
+                OnQuantityChanged?.Invoke();
                 return true;
             }
             else
             {
                 int remainingItemsToStack = item._quantity + _quantity - stackSize;
                 _quantity = stackSize;
+                OnQuantityChanged?.Invoke();
                 item._quantity = remainingItemsToStack;
             }
         }
@@ -93,11 +101,6 @@ public class ItemInstance
     private string ItemName
     {
         get { return _itemData.Name; }
-    }
-
-    public int Count
-    {
-        get {return _quantity;}
     }
 
     public override bool Equals(object obj)

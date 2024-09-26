@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 8841589491782867507}
   - component: {fileID: 8185287014771767417}
   - component: {fileID: 1673302505373927579}
-  - component: {fileID: 7472756671239297746}
+  - component: {fileID: 887815336524181747}
   m_Layer: 0
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -195,7 +195,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6534169177500748215}
   m_CullTransparentMesh: 1
---- !u!114 &7472756671239297746
+--- !u!114 &887815336524181747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

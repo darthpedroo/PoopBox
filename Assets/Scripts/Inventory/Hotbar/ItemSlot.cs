@@ -25,7 +25,13 @@ public class ItemSlot : MonoBehaviour
             _image.texture = slotTexture;
         } 
     }
-
+    private void OnDestroy()
+    {
+        if (SlotItem != null)
+        {
+            SlotItem.OnQuantityChanged -= UpdateText; 
+        }
+    }
     public void UpdateText(){
         string textToDisplay = "";
         if (SlotItem.Quantity != 0){
@@ -34,7 +40,15 @@ public class ItemSlot : MonoBehaviour
         _text.text = textToDisplay;
     }
     public void Switch(ItemInstance newItem) {
+        if (SlotItem != null)
+        {
+            SlotItem.OnQuantityChanged -= UpdateText; // Unsubscribe from old item
+        }
         SlotItem = newItem;
+        if (SlotItem != null)
+        {
+            SlotItem.OnQuantityChanged += UpdateText; // Subscribe to new item
+        }
         UpdateImage();
         UpdateText();
     }

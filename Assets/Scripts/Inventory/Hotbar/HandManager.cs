@@ -98,7 +98,6 @@ public class HandManager : MonoBehaviour
             }
             else {
                 isReceived = otherItem.Stack(item);
-                _slots[i].UpdateText();
             }
         }
         return isReceived;

@@ -1013,9 +1013,33 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1673302505373927579, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3060752691328672195, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628088976193681191, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628088976193681191, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628088976193681191, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_Color.r
+      value: 0.35871875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628088976193681191, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5136307227345204232, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5818902473782830048, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
       propertyPath: m_text
@@ -1061,9 +1085,33 @@ PrefabInstance:
       propertyPath: m_enableVertexGradient
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6246253885884233817, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6534169177500748215, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
       propertyPath: m_Name
       value: Slot9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534169177500748215, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192509834767753572, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472756671239297746, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472756671239297746, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: b0959941cc233bf4ab6fe9a88d483904, type: 3}
+    - target: {fileID: 7472756671239297746, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
+      propertyPath: m_Maskable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8841589491782867507, guid: a0fdb22bf3eea6a40b1424d428a10e28, type: 3}
       propertyPath: m_Pivot.x

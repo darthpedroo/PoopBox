@@ -34,7 +34,7 @@ public class TestItemInstance
         _testItem1 = new(_testItemData,34);
         _testItem2 = new(_testItemData,32);
         _testItem1.Stack(_testItem2);
-        Assert.AreEqual(2,_testItem2.Count);
+        Assert.AreEqual(2,_testItem2.Quantity);
     }
     [Test]
     public void TestTwoInstancesOfTheSameItemAreEqual(){
