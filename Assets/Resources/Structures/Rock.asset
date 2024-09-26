@@ -21,11 +21,8 @@ MonoBehaviour:
   _displayName: skibidi
   _billboardRelativePosition: {x: 0, y: 0.65, z: 0}
   _dropTable:
-  - Item: {fileID: 11400000, guid: c7494c054e0913340952a5a7ca621b9c, type: 2}
-    MinDrop: 400
-    MaxDrop: 400
-    Chance: 100
-  - Item: {fileID: 11400000, guid: 2653323f1c6f7f743a44e26860aee293, type: 2}
+  - Item: {fileID: 11400000, guid: 8411a0cb7722e4e49ac9ecb5e930d384, type: 2}
     MinDrop: 1
     MaxDrop: 1
     Chance: 100
+  _scale: {x: 3, y: 3, z: 3}

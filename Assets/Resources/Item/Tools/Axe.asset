@@ -16,4 +16,5 @@ MonoBehaviour:
   ItemModel: {fileID: 6910877767944823, guid: 08656e4d6b6d176419357e8b5187f7c6, type: 3}
   Name: Axe
   StackSize: 1
+  ModelScale: {x: 1, y: 1, z: 1}
   ToolDamage: 80
