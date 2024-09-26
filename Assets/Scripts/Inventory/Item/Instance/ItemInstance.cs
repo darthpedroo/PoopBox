@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Represents an instance of an item in the game, including its data and quantity.
-/// </summary>
 public class ItemInstance
 {
     private readonly ItemData _itemData;
@@ -21,8 +18,6 @@ public class ItemInstance
         _quantity = quantity;
         _itemData = item;
     }
-
-
     public Texture GetItemTexture()
     {
         return _itemData.GetItemTexture();
@@ -85,20 +80,12 @@ public class ItemInstance
         _itemData.UseItem(user);
     }
 
-    public void AddItemGUI(Transform user){
-        GameObject prefab = Resources.Load<GameObject>("Prefabs/ItemInfoGUI");
-        GameObject itemInfoGui = UnityEngine.Object.Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f),user);
-        itemInfoGui.transform.position = user.transform.position;
-        itemInfoGui.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        itemInfoGui.layer = LayerMask.NameToLayer("holdLayer");
-        itemInfoGui.GetComponentInChildren<TMPro.TMP_Text>().text = ItemName + " X" + _quantity;
-    }
 
     public void UpdateItemGUI(Transform user){
         user.GetComponentInChildren<TMPro.TMP_Text>().text = ItemName + " X" + _quantity;
     }
 
-    private string ItemName
+    public string ItemName
     {
         get { return _itemData.Name; }
     }

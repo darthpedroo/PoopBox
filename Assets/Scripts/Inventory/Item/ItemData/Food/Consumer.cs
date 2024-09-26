@@ -7,8 +7,6 @@ public class Consumer : MonoBehaviour
 
     GameObject[] portions;
     int currentIndex;
-    float lastChange;
-    float interval = 1f;
 
     void Start()
     {
@@ -22,13 +20,10 @@ public class Consumer : MonoBehaviour
         }
     }
 
-    void Update()
+    public void UpdateState()
     {
-        if (Time.time - lastChange > interval)
-        {
-            Consume();
-            lastChange = Time.time;
-        }
+        Consume();
+
     }
 
     void Consume()
