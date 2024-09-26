@@ -128,7 +128,7 @@ public class EndlessTerrain : MonoBehaviour
                 RaycastHit hit;
                 
                 if (Physics.Raycast(rayStart, Vector3.down, out hit, rayHeight, LayerMask.GetMask("Ground"))) {
-                    structureCreator.SpawnStructure(hit.point, Vector3.one * 3);
+                    structureCreator.SpawnStructure(hit.point,parent);
                     
                     
                 } 

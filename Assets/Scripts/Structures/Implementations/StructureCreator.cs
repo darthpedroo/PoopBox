@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-
 using UnityEngine;
 
 
@@ -14,6 +13,7 @@ public class StructureCreator : ScriptableObject
     [SerializeField] private string _displayName = "Pedro";
     [SerializeField] private Vector3 _billboardRelativePosition ;
     [SerializeField] private List<Drop> _dropTable;
+    [SerializeField] private Vector3 _scale;
     private StructureBuilder _structureBuilder;
     
 
@@ -31,7 +31,15 @@ public class StructureCreator : ScriptableObject
                     drop.MaxDrop = 0;
             }
         }
-
+        if (_scale.x < 1){
+            _scale.x = 1;
+        }
+        if (_scale.y < 1){
+            _scale.y = 1;
+        }
+        if (_scale.z < 1){
+            _scale.z = 1;
+        }
 	}
     private void ConfigureBuilder()
     {
@@ -48,13 +56,21 @@ public class StructureCreator : ScriptableObject
             _structureBuilder.SetShovable();
         }
     }
-    public void SpawnStructure(Vector3 position,Vector3 scale){
+    public void SpawnStructure(Vector3 position){
         GameObject randomPrefab = StructurePrefab[Random.Range(0,StructurePrefab.Count)];
         _structureBuilder = new StructureBuilder(randomPrefab);
         ConfigureBuilder();
         DropTable dropTable = new DropTableBuilder().Add(_dropTable).GetDropTable();
         _structureBuilder.SetDropTable(dropTable);
-        _structureBuilder.GetStructure().PlaceStructure(position, Quaternion.identity, scale,_billboardRelativePosition,_health,_displayName);
+        _structureBuilder.GetStructure().PlaceStructure(position, Quaternion.identity, _scale,_billboardRelativePosition,_health,_displayName);
+    }
+    public void SpawnStructure(Vector3 position, Transform parent){
+        GameObject randomPrefab = StructurePrefab[Random.Range(0,StructurePrefab.Count)];
+        _structureBuilder = new StructureBuilder(randomPrefab);
+        ConfigureBuilder();
+        DropTable dropTable = new DropTableBuilder().Add(_dropTable).GetDropTable();
+        _structureBuilder.SetDropTable(dropTable);
+        _structureBuilder.GetStructure().PlaceStructure(position, Quaternion.identity, _scale,_billboardRelativePosition,_health,_displayName,parent);
     }
     
 }
