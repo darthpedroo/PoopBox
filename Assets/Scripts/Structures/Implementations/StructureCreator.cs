@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Structure", order = 1)]
 public class StructureCreator : ScriptableObject
 {
-    public GameObject StructurePrefab;
+    public List<GameObject> StructurePrefab;
     [SerializeField] private bool _isChopable;
     [SerializeField] private bool _isSwordable;
     [SerializeField] private bool _isShovable;
@@ -49,7 +49,8 @@ public class StructureCreator : ScriptableObject
         }
     }
     public void SpawnStructure(Vector3 position,Vector3 scale){
-        _structureBuilder = new StructureBuilder(StructurePrefab);
+        GameObject randomPrefab = StructurePrefab[Random.Range(0,StructurePrefab.Count)];
+        _structureBuilder = new StructureBuilder(randomPrefab);
         ConfigureBuilder();
         DropTable dropTable = new DropTableBuilder().Add(_dropTable).GetDropTable();
         _structureBuilder.SetDropTable(dropTable);

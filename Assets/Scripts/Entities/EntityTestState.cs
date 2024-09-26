@@ -48,24 +48,24 @@ public class EntityTestState : EntityBaseState
             walkCounter -= Time.deltaTime;
 
             // Perform movement based on the WalkDirection (0-3)
-            switch (WalkDirection)
-            {
-                case 0:
-                    entity.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-                    break;
-                case 1:
-                    entity.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
-                    break;
-                case 2:
-                    entity.transform.localRotation = Quaternion.Euler(0f, -90f, 0f);
-                    break;
-                case 3:
-                    entity.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
-                    break;
-            }
+            //switch (WalkDirection)
+            //{
+            //    case 0:
+            //        entity.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            //        break;
+            //    case 1:
+            //        entity.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+            //        break;
+            //    case 2:
+            //        entity.transform.localRotation = Quaternion.Euler(0f, -90f, 0f);
+            //        break;
+            //    case 3:
+            //      entity.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+            //       break;
+            //}
 
             // Move the entity forward based on the set direction and speed
-            entity.transform.position += entity.transform.forward * moveSpeed * Time.deltaTime;
+            //entity.transform.position += entity.transform.forward * moveSpeed * Time.deltaTime;
 
             // Stop walking if walkCounter hits 0
             if (walkCounter <= 0)
@@ -74,7 +74,7 @@ public class EntityTestState : EntityBaseState
                 isWalking = false;  // Stop walking
 
                 // Reset the entity position (this may be redundant, consider removing it)
-                entity.transform.position = stopPosition;
+                //entity.transform.position = stopPosition;
 
                 // If you have an animator, uncomment this to stop running animations
                 // animator.SetBool("isRunning", false);
