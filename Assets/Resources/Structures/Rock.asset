@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355826fab9e1e1945abb2a6f9e8d486d, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: 
-  StructurePrefab: {fileID: 198265140566174504, guid: 58bcc76d793ec894eb4d8002d736f2fe, type: 3}
+  StructurePrefab:
+  - {fileID: 198265140566174504, guid: 58bcc76d793ec894eb4d8002d736f2fe, type: 3}
   _isChopable: 1
   _isSwordable: 0
   _isShovable: 0

@@ -11,7 +11,7 @@ public class StructureManager : MonoBehaviour
     }
     public void DestroySelf(){
         Vector3 dropPosition = transform.position;
-        dropPosition.y += 1;
+        dropPosition.y += 2;
         _dropTable.SpawnDropsAt(dropPosition);
         Destroy(gameObject);
     }

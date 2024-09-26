@@ -9,7 +9,7 @@ public class ItemInstance
 {
     private readonly ItemData _itemData;
     private int _quantity;
-
+    public int Quantity{get { return _quantity;} }
     public ItemInstance(ItemData item, int quantity)
     {
         _quantity = quantity;
@@ -25,10 +25,7 @@ public class ItemInstance
     public void EquipItem(GameObject currentItemGameObject)
     {
         _itemData.EquipItem(currentItemGameObject);
-        if (ItemName == "Wood")
-        {
-            Debug.Log("Madera x" + _quantity);
-        }
+
     }
 
     public bool Stack(ItemInstance item)
@@ -87,7 +84,6 @@ public class ItemInstance
         itemInfoGui.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         itemInfoGui.layer = LayerMask.NameToLayer("holdLayer");
         itemInfoGui.GetComponentInChildren<TMPro.TMP_Text>().text = ItemName + " X" + _quantity;
-
     }
 
     public void UpdateItemGUI(Transform user){

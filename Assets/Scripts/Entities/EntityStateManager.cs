@@ -27,8 +27,11 @@ public class EntityStateManager : MonoBehaviour
         currentState.EnterState(this);
         gameObject.AddComponent<ChopChop>();
         HealthObserver observer = gameObject.AddComponent<HealthObserver>();
-        observer.SetUp(300,Death,"ChanchoPuto",3,new Vector3(0,1,0));
+        // Cuando se implemente deathState cambiar testState por el estado de muerte
+        observer.SetUp(300,() => {currentState = testState;
+            currentState.EnterState(this);},"ChanchoPuto",3,new Vector3(0,1,0));
     }
+
 
     // Update is called once per frame
     void Update()
@@ -36,7 +39,4 @@ public class EntityStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    void Death(){
-        Debug.Log("murio el chancho puto");
-    }
 }

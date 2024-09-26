@@ -7,8 +7,4 @@ public class BasicCraftingTable : MonoBehaviour
     void Start(){
         
     }
-
-    void LoadJSONRecipes(){
-
-    }
 }

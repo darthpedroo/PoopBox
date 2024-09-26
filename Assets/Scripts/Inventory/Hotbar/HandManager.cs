@@ -19,7 +19,7 @@ public class HandManager : MonoBehaviour
     void Start()
     {   
         _slots = Hotbar.GetComponentsInChildren<ItemSlot>();
-        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"),1);
+        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"),0);
         _currentItemSlot = -1;
         EquipItem(0);
     }
@@ -27,7 +27,7 @@ public class HandManager : MonoBehaviour
     void OnValidate(){
         if (Application.isPlaying)
         {
-        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"), 1);
+        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"), 0);
         }
     }
 
@@ -98,6 +98,7 @@ public class HandManager : MonoBehaviour
             }
             else {
                 isReceived = otherItem.Stack(item);
+                _slots[i].UpdateText();
             }
         }
         return isReceived;

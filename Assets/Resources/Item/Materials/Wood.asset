@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemSlotTexture: {fileID: 2800000, guid: b0959941cc233bf4ab6fe9a88d483904, type: 3}
   ItemModel: {fileID: 1371939357770939867, guid: c31e693ada360f949a0e7b3b8128dea5, type: 3}
-  Name: Madera
+  Name: Wood
   StackSize: 64
