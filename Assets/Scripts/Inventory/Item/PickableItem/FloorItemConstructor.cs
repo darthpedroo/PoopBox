@@ -33,7 +33,6 @@ public class FloorItemConstructor
         itemInfoGui.transform.position = parent.transform.position;
         itemInfoGui.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         itemInfoGui.layer = LayerMask.NameToLayer("holdLayer");
-        itemInfoGui.GetComponentInChildren<TMPro.TMP_Text>().text = item.ItemName + " X" + item.Quantity;
     }
 
     void ConstructItemPrefab(Vector3 origin) {

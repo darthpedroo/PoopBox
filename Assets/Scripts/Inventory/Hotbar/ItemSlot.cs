@@ -10,8 +10,6 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    //public ItemManager itemManagerSlot;
-    //public ItemManager.ItemType currentItemType; 
     public ItemInstance SlotItem;
     private RawImage _image;
     private TMP_Text _text;
