@@ -5,13 +5,16 @@ using TMPro;
 
 public class ItemInfoGUI : MonoBehaviour
 {
-    private string ItemName;
-    private int Quantity;
-    public void SetUp(string Name,int Quantity, ){
-        ItemName = Name;
-        Quantity = Quantity;
+    private ItemInstance _itemInstance;
+    public void SetUp(ItemInstance item){
+        _itemInstance = item;
+        _itemInstance.OnQuantityChanged += UpdateInfoGUI;
+        UpdateInfoGUI();
     }
     public void UpdateInfoGUI(){
-        itemInfoGui.GetComponentInChildren<TMPro.TMP_Text>().text = ItemName + " X" + Quantity;
+        GetComponentInChildren<TMP_Text>().text = _itemInstance.ItemName + " X" + _itemInstance.Quantity;
+    }
+    void OnDestroy(){
+        _itemInstance.OnQuantityChanged -= UpdateInfoGUI;
     }
 }

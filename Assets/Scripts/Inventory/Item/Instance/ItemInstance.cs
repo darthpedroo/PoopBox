@@ -8,20 +8,14 @@ public class ItemInstance
     private int _quantity;
     public delegate void QuantityChanged();
     public event QuantityChanged OnQuantityChanged;
-
-    public int Quantity 
-    { 
-        get { return _quantity; }
-    }
+    public int Quantity { get { return _quantity; }}
+    public string ItemName{get { return _itemData.Name; }}
     public ItemInstance(ItemData item, int quantity)
     {
         _quantity = quantity;
         _itemData = item;
     }
-    public Texture GetItemTexture()
-    {
-        return _itemData.GetItemTexture();
-    }
+    public Texture GetItemTexture() {return _itemData.GetItemTexture();}
 
     public void EquipItem(GameObject currentItemGameObject)
     {
@@ -79,31 +73,8 @@ public class ItemInstance
     {
         _itemData.UseItem(user);
     }
-
-
-    public void UpdateItemGUI(Transform user){
-        user.GetComponentInChildren<TMPro.TMP_Text>().text = ItemName + " X" + _quantity;
-    }
-
-    public string ItemName
-    {
-        get { return _itemData.Name; }
-    }
-
-    public override bool Equals(object obj)
-    {
-        if (obj is ItemInstance otraclase)
-        {
-            return ItemName == otraclase.ItemName;
-        }
-        Debug.Log("not");
-        return false;
-    }
-
-    public override int GetHashCode()
-    {
-        return ItemName.GetHashCode();
-    }
+    public override bool Equals(object obj) {return obj is ItemInstance otraclase ? ItemName == otraclase.ItemName : false;}
+    public override int GetHashCode() {return ItemName.GetHashCode();}
     // atencion el siguiente codigo ha sido escrito por TITO CALDERON
     public static bool operator ==(ItemInstance left, ItemInstance right)
     {

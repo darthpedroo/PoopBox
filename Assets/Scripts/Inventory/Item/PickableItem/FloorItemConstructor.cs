@@ -33,6 +33,7 @@ public class FloorItemConstructor
         itemInfoGui.transform.position = parent.transform.position;
         itemInfoGui.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         itemInfoGui.layer = LayerMask.NameToLayer("holdLayer");
+        itemInfoGui.GetComponent<ItemInfoGUI>().SetUp(item);
     }
 
     void ConstructItemPrefab(Vector3 origin) {
