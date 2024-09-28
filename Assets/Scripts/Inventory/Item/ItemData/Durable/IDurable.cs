@@ -7,4 +7,5 @@ public interface IDurable
     public int MaxDurability {get; set;}
     public int CurrentDurability {get; set;}
     public int DurabilityOnUse {get; set;}
+    public abstract DurableItem Construct();
 }

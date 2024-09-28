@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "newItem", menuName = "ScriptableObjects/Item", order = 3)]
-public class ItemData : ScriptableObject
+public class ItemData : ScriptableObject, UItemData
 {
     [SerializeField]
     protected Texture _itemSlotTexture;
     public GameObject ItemModel;
-    public string Name;
-    public int StackSize;
+    [SerializeField]
+    private string _name; 
+    public string Name { get => _name; set => _name = value; } 
+
+    [SerializeField]
+    private int _stackSize; 
+    public int StackSize { get => _stackSize; set => _stackSize = value; }
     public Vector3 ModelScale;
+
     public virtual void UseItem(Transform user){
         Debug.Log("Use item not implemented by " + Name);
     }
@@ -25,6 +31,10 @@ public class ItemData : ScriptableObject
     }
     public Texture GetItemTexture(){
         return _itemSlotTexture;
+    }
+
+    public UItemData Construct(){
+        return this;
     }
 
     public virtual void OnValidate(){

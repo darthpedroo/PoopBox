@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ItemInstance
 {
-    private readonly ItemData _itemData;
+    private readonly UItemData _itemData;
     private int _quantity;
     public delegate void QuantityChanged();
     public event QuantityChanged OnQuantityChanged;
     public int Quantity { get { return _quantity; }}
     public string ItemName{get { return _itemData.Name; }}
-    public ItemInstance(ItemData item, int quantity)
+    public ItemInstance(UItemData item, int quantity)
     {
         _quantity = quantity;
-        _itemData = item;
+        _itemData = item.Construct();
     }
     public Texture GetItemTexture() {return _itemData.GetItemTexture();}
 
