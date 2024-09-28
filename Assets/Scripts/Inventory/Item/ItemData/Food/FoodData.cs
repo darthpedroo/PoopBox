@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "Food", menuName = "ScriptableObjects/Food", order = 5)]
-public class FoodData : ItemData, IConsumable
+public class FoodData : ItemData
 {
     public float HungerRestore;
     public float HealthRestore;
@@ -20,5 +20,4 @@ public class FoodData : ItemData, IConsumable
         itemObject.layer = LayerMask.NameToLayer("holdLayer");
         _consumer = itemObject.GetComponentInChildren<Consumer>();
     }
-
 }

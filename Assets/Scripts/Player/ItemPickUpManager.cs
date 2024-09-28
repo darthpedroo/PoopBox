@@ -11,7 +11,7 @@ public class ItemPickUpManager : MonoBehaviour
         if (floorItem != null) {
             ItemInstance item = floorItem.PickUp();
             bool isReceived = HandManager.ReceiveItem(item);
-            if (isReceived)  {Destroy(floorItem.ParentObject); }  else { item.UpdateItemGUI(pickedUpItem.transform.parent);}
+            if (isReceived)  {Destroy(floorItem.ParentObject); }
         }
     }
 }
