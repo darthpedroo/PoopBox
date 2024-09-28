@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemSlotTexture: {fileID: 2800000, guid: 54de28212fd8b664c84e1d58fd83ab83, type: 3}
   ItemModel: {fileID: 1228912776443452, guid: 67d272003e829744b87737100e2371ca, type: 3}
-  Name: Watermelon
-  StackSize: 1
+  _name: Watermelon
+  _stackSize: 1
   ModelScale: {x: 6, y: 6, z: 6}
   HungerRestore: 60
   HealthRestore: 0

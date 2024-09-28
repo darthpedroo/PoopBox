@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemSlotTexture: {fileID: 2800000, guid: 914f1d0d80eb43747af49adb28f73d64, type: 3}
   ItemModel: {fileID: 1528508235545930, guid: fcb2c2b33094cf54591f330bc73def25, type: 3}
-  Name: Stew
-  StackSize: 16
+  _name: Stew
+  _stackSize: 16
   ModelScale: {x: 6, y: 6, z: 6}
   HungerRestore: 30
   HealthRestore: 10
