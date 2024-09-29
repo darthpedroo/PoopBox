@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+
 using UnityEngine;
 
 public class ItemInstance
@@ -26,7 +28,6 @@ public class ItemInstance
     public bool Stack(ItemInstance item)
     {
         int stackSize = _itemData.StackSize;
-        //Debug.Log(item == this);
         if (item == this) // si son el mismo item, stackear
         {
             if (item._quantity + _quantity <= stackSize)
@@ -71,7 +72,13 @@ public class ItemInstance
 
     public void UseItem(Transform user)
     {
-        _itemData.UseItem(user);
+        try{
+            _itemData.UseItem(user);
+        }  
+        catch (ItemBreakException){
+            _quantity -= 1;
+            OnQuantityChanged?.Invoke();
+        }
     }
     public override bool Equals(object obj) {return obj is ItemInstance otraclase ? ItemName == otraclase.ItemName : false;}
     public override int GetHashCode() {return ItemName.GetHashCode();}

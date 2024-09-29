@@ -22,7 +22,7 @@ public class DurableItem : UItemData
         
         if (_currentDurability < 0){
             Break();
-            Debug.Log("ROMPER");
+            throw new ItemBreakException();
         }
     }
     private void Break(){
