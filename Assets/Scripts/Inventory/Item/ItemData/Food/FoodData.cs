@@ -6,6 +6,12 @@ public class FoodData : ItemData
 {
     public float HungerRestore;
     public float HealthRestore;
+    [SerializeField]
+    private int _durabilityOnUse;
+    [SerializeField]
+    private int _maxDurability;
+    public int MaxDurability {get => _maxDurability;}
+    public int DurabilityOnUse {get => _durabilityOnUse;}
     private Consumer _consumer;
     public override void UseItem(Transform user){
         user.GetComponentInParent<IEater>().Eat(HungerRestore,HealthRestore);
@@ -20,4 +26,9 @@ public class FoodData : ItemData
         itemObject.layer = LayerMask.NameToLayer("holdLayer");
         _consumer = itemObject.GetComponentInChildren<Consumer>();
     }
+
+    //public override UItemData Construct()
+    //{
+     //   return new DurableItem(this,_maxDurability,_durabilityOnUse);
+    //}
 }

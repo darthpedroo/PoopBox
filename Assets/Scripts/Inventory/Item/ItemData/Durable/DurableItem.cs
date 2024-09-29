@@ -6,12 +6,22 @@ public class DurableItem : UItemData
 {
 
     private ItemData _item;
-    private int _maxDurability;
-    public DurableItem(ItemData item, int MaxDurability ,int CurrentDurability , int DurabilityOnUse ){
+    private readonly int _maxDurability;
+    private readonly int _durabilityOnUse;
+    private int _currentDurability;
+    public int CurrentDurability {get; set;}
+    public DurableItem(ItemData item, int maxDurability , int durabilityOnUse ){
         _item = item;
+        _maxDurability = maxDurability;
+        _durabilityOnUse = durabilityOnUse;
+        _currentDurability = _maxDurability;
     }
     public void UseItem(Transform user){
         _item.UseItem(user);
+        _currentDurability -= _durabilityOnUse;
+        if (_currentDurability < 0){
+            Debug.Log("Break");
+        }
     }
     public void EquipItem(GameObject parentObject){
         _item.EquipItem(parentObject);

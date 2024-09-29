@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public interface IDurable 
 {
-    public int MaxDurability {get; set;}
-    public int CurrentDurability {get; set;}
-    public int DurabilityOnUse {get; set;}
-    public abstract DurableItem Construct();
+    public int MaxDurability {get;}
+    public int DurabilityOnUse {get;}
+    public abstract UItemData Construct(); //Si se usa la interfaz retornar DurableItem
 }
