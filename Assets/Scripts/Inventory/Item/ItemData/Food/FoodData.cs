@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "Food", menuName = "ScriptableObjects/Food", order = 5)]
-public class FoodData : ItemData
+public class FoodData : ItemData, IDurable
 {
     public float HungerRestore;
     public float HealthRestore;
@@ -26,9 +26,15 @@ public class FoodData : ItemData
         itemObject.layer = LayerMask.NameToLayer("holdLayer");
         _consumer = itemObject.GetComponentInChildren<Consumer>();
     }
+    public override UItemData Construct()
+    {
+        return new DurableItem(this,_maxDurability,_durabilityOnUse);
+    }
 
-    //public override UItemData Construct()
-    //{
-     //   return new DurableItem(this,_maxDurability,_durabilityOnUse);
-    //}
+
+    public void EquipItemDurable(GameObject parent, int currentDurability)
+    {
+        EquipItem(parent);
+        _consumer.SetState(currentDurability);
+    }
 }

@@ -23,14 +23,25 @@ public class Consumer : MonoBehaviour
     public void UpdateState()
     {
         Consume();
-
+    }
+    public void SetState(int newIndex){
+        Start();
+        if (newIndex + 1 == portions.Length){
+            return;
+        }
+        for (int i = 0;  i < portions.Length - newIndex - 1 ; i++){
+            Consume();
+        }
+            
     }
 
     void Consume()
     {
+//        Debug.Log(currentIndex);
         if (currentIndex != portions.Length)
             portions[currentIndex].SetActive(false);
         currentIndex++;
+        
         if (currentIndex > portions.Length)
             currentIndex = 0;
         else if (currentIndex == portions.Length)

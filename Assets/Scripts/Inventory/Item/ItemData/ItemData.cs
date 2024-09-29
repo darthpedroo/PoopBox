@@ -33,7 +33,7 @@ public class ItemData : ScriptableObject, UItemData
         return _itemSlotTexture;
     }
 
-    public UItemData Construct(){
+    public virtual UItemData Construct(){
         return this;
     }
 
