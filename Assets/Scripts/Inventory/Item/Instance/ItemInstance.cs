@@ -47,29 +47,6 @@ public class ItemInstance
         return false;
     }
 
-
-    public ItemInstance[] DivideIntoStacks()
-    {
-        List<ItemInstance> itemsDividedIntoStacks = new();
-        int stackSize = _itemData.StackSize;
-        int fullStacks = Mathf.FloorToInt((float)_quantity / stackSize);
-        int excesStack = _quantity - (fullStacks * stackSize);
-
-        for (int i = 0; i < fullStacks; i++)
-        {
-            ItemInstance newItem = new(_itemData, stackSize);
-            itemsDividedIntoStacks.Add(newItem);
-        }
-
-        if (excesStack != 0)
-        {
-            _quantity = excesStack;
-            itemsDividedIntoStacks.Add(this);
-        }
-
-        return itemsDividedIntoStacks.ToArray();
-    }
-
     public void UseItem(Transform user)
     {
         try{

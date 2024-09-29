@@ -28,7 +28,9 @@ public class DurableItem : UItemData
     private void Break(){
         _currentDurability = _maxDurability;
     }
+
     public void EquipItem(GameObject parentObject){
+        Debug.Log(_currentDurability);
         if (_item is IDurable durableItem){
             durableItem.EquipItemDurable(parentObject, _currentDurability);
         } else {
@@ -42,7 +44,6 @@ public class DurableItem : UItemData
     public string Name{get {return _item.Name;}}
     public int StackSize{get {return _item.StackSize;}}
     public UItemData Construct(){
-        
         return this;
     }
 }

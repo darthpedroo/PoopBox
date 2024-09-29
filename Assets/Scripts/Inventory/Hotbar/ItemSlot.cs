@@ -13,39 +13,53 @@ public class ItemSlot : MonoBehaviour
         _text = GetComponentInChildren<TMP_Text>();
     }
     private void UpdateImage(){
-        Texture slotTexture = SlotItem.GetItemTexture();
-        if (slotTexture != null){
-            _image.texture = slotTexture;
-        } 
+        if (SlotItem == null){
+            _image.texture = null;
+        } else {
+            Texture slotTexture = SlotItem.GetItemTexture();
+            if (slotTexture != null){
+                _image.texture = slotTexture;
+            } 
+        }
     }
     private void OnDestroy()
     {
         if (SlotItem != null)
         {
-            SlotItem.OnQuantityChanged -= UpdateText; 
+            SlotItem.OnQuantityChanged -= OnQuantityChanged; 
         }
     }
-    public void UpdateText(){
+    private void UpdateText(){
         string textToDisplay = "";
-        if (SlotItem.Quantity != 0){
-            textToDisplay = SlotItem.Quantity.ToString();
+        if (SlotItem != null && SlotItem.Quantity != 0){
+            textToDisplay = SlotItem.Quantity.ToString(); 
         }
+        
         _text.text = textToDisplay;
+    }
+    private void OnQuantityChanged(){
+        if (SlotItem.Quantity == 0){
+            Switch(null);
+            throw new ItemBreakException();
+        } else {
+            UpdateText();
+        }
+        
     }
     public void Switch(ItemInstance newItem) {
         if (SlotItem != null)
         {
-            SlotItem.OnQuantityChanged -= UpdateText; // Unsubscribe from old item
+            SlotItem.OnQuantityChanged -= OnQuantityChanged; // Unsubscribe from old item
         }
         SlotItem = newItem;
         if (SlotItem != null)
         {
-            SlotItem.OnQuantityChanged += UpdateText; // Subscribe to new item
+            SlotItem.OnQuantityChanged += OnQuantityChanged; // Subscribe to new item
         }
         UpdateImage();
         UpdateText();
+        
     }
-
     public void Equip(GameObject currentItemGameObject) {
         SlotItem.EquipItem(currentItemGameObject);
     }

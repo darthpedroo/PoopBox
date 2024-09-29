@@ -19,3 +19,5 @@ MonoBehaviour:
   ModelScale: {x: 6, y: 6, z: 6}
   HungerRestore: 60
   HealthRestore: 0
+  _durabilityOnUse: 1
+  _maxDurability: 3

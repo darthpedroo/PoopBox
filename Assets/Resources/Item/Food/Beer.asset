@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96cd41ed95ef8f547a818bbd22a4b716, type: 3}
-  m_Name: Stew
+  m_Name: Beer
   m_EditorClassIdentifier: 
-  _itemSlotTexture: {fileID: 2800000, guid: 914f1d0d80eb43747af49adb28f73d64, type: 3}
-  ItemModel: {fileID: 1528508235545930, guid: fcb2c2b33094cf54591f330bc73def25, type: 3}
-  _name: Stew
-  _stackSize: 16
+  _itemSlotTexture: {fileID: 2800000, guid: a6c238f12c54cf44cbd49db2815aed00, type: 3}
+  ItemModel: {fileID: 1310611259822616, guid: adc1f0e5c2a025b488cad3fb21d4f3b6, type: 3}
+  _name: Beer
+  _stackSize: 5
   ModelScale: {x: 6, y: 6, z: 6}
-  HungerRestore: 30
-  HealthRestore: 10
+  HungerRestore: 0
+  HealthRestore: 50
   _durabilityOnUse: 1
   _maxDurability: 3

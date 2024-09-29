@@ -27,7 +27,7 @@ public class HandManager : MonoBehaviour
     void OnValidate(){
         if (Application.isPlaying)
         {
-        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"), 0);
+            _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"), 0);
         }
     }
 
@@ -37,8 +37,13 @@ public class HandManager : MonoBehaviour
         showHitInfo();
         if (Input.GetMouseButtonDown(0))
         {
-            var itemSlot = _slots[_currentItemSlot];
-            itemSlot.Use(Cameraman);
+            try{
+                var itemSlot = _slots[_currentItemSlot];
+                itemSlot.Use(Cameraman);
+            } catch (ItemBreakException) {
+                EquipItem(_currentItemSlot);
+            }
+            
         }
 
         transform.rotation = Cameraman.rotation;
@@ -76,7 +81,6 @@ public class HandManager : MonoBehaviour
         var itemSlot = _slots[newSlotIndex];
         if (itemSlot.SlotItem == null) {
             itemSlot.Switch(_emptyHand);
-
         }
         itemSlot.Equip(gameObject);
         
