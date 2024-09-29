@@ -19,6 +19,7 @@ public class ItemData : ScriptableObject, UItemData
 
     public virtual void UseItem(Transform user){
         Debug.Log("Use item not implemented by " + Name);
+        //throw new ItemBreakException();
     }
 
     public virtual void EquipItem(GameObject parentObject){
