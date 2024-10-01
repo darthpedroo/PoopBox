@@ -74,8 +74,9 @@ public class HandManager : MonoBehaviour
     {
         
         if (transform.childCount > 0){
-            var childObject = transform.GetChild(0).gameObject;
-            Destroy(childObject); 
+            foreach(Transform child in transform) {
+                Destroy(child.gameObject);
+            }
         }
 
         var itemSlot = _slots[newSlotIndex];

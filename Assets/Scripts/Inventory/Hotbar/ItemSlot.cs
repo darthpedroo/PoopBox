@@ -37,6 +37,7 @@ public class ItemSlot : MonoBehaviour
         
         _text.text = textToDisplay;
     }
+   
     private void OnQuantityChanged(){
         if (SlotItem.Quantity == 0){
             Switch(null);

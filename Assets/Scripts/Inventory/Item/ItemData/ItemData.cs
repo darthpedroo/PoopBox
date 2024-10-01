@@ -24,8 +24,6 @@ public class ItemData : ScriptableObject, UItemData
 
     public void RecursiveSetLayer(Transform obj, int newLayer) {
         obj.gameObject.layer = newLayer;
-        Debug.Log(obj);
-
         foreach(Transform child in obj) {
             RecursiveSetLayer(child, newLayer);
         }
