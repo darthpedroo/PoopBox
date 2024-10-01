@@ -22,13 +22,23 @@ public class ItemData : ScriptableObject, UItemData
         //throw new ItemBreakException();
     }
 
+    public void RecursiveSetLayer(Transform obj, int newLayer) {
+        obj.gameObject.layer = newLayer;
+        Debug.Log(obj);
+
+        foreach(Transform child in obj) {
+            RecursiveSetLayer(child, newLayer);
+        }
+    }
+
     public virtual void EquipItem(GameObject parentObject){
         GameObject itemObject = Instantiate(ItemModel);
         itemObject.transform.localScale = ModelScale;
         itemObject.transform.parent = parentObject.transform;
         itemObject.transform.position = parentObject.transform.position;
         itemObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        itemObject.layer = LayerMask.NameToLayer("holdLayer");  
+
+        RecursiveSetLayer(itemObject.transform, LayerMask.NameToLayer("holdLayer"));
     }
     public Texture GetItemTexture(){
         return _itemSlotTexture;

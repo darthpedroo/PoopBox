@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96cd41ed95ef8f547a818bbd22a4b716, type: 3}
+  m_Name: Ham
+  m_EditorClassIdentifier: 
+  _itemSlotTexture: {fileID: 2800000, guid: 245b6d51db76ab246ad12c2d76dc6b88, type: 3}
+  ItemModel: {fileID: 1103729609193184, guid: b5633769281ca0940b368cbed17b7ec0, type: 3}
+  _name: Ham
+  _stackSize: 12
+  ModelScale: {x: 6, y: 6, z: 6}
+  HungerRestore: 10
+  HealthRestore: 1
+  _durabilityOnUse: 1
+  _maxDurability: 2

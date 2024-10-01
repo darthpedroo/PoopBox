@@ -30,7 +30,7 @@ public class DurableItem : UItemData
     }
 
     public void EquipItem(GameObject parentObject){
-        Debug.Log(_currentDurability);
+
         if (_item is IDurable durableItem){
             durableItem.EquipItemDurable(parentObject, _currentDurability);
         } else {

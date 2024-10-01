@@ -20,18 +20,20 @@ public class EntityStateManager : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         entityRigidbody = GetComponent<Rigidbody>();
         currentState = testState;
         currentState.EnterState(this);
         gameObject.AddComponent<ChopChop>();
         HealthObserver observer = gameObject.AddComponent<HealthObserver>();
         // Cuando se implemente deathState cambiar testState por el estado de muerte
-        observer.SetUp(300,() => {currentState = testState;
-            currentState.EnterState(this);},"ChanchoPuto",3,new Vector3(0,1,0));
+        observer.SetUp(300, Die, "ChanchoPuto", 3, new Vector3(0,1,0));
     }
 
+    void Die() {
+        currentState = testState;
+        currentState.EnterState(this);
+    }
 
     // Update is called once per frame
     void Update()

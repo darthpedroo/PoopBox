@@ -23,7 +23,8 @@ public class FoodData : ItemData, IDurable
         itemObject.transform.parent = parentObject.transform;
         itemObject.transform.position = parentObject.transform.position;
         itemObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        itemObject.layer = LayerMask.NameToLayer("holdLayer");
+
+        RecursiveSetLayer(itemObject.transform, LayerMask.NameToLayer("holdLayer"));
         _consumer = itemObject.GetComponentInChildren<Consumer>();
     }
     public override UItemData Construct()
