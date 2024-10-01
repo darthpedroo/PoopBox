@@ -41,6 +41,6 @@ public class PlayerStateManager : MonoBehaviour, IEater
 
     public void Eat(float hunger, float health)
     {
-        Debug.Log("Me he heleado");
+        //Debug.Log("Me he heleado");
     }
 }

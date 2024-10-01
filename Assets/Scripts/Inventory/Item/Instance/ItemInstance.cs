@@ -22,9 +22,7 @@ public class ItemInstance
     public void EquipItem(GameObject currentItemGameObject)
     {
         _itemData.EquipItem(currentItemGameObject);
-
     }
-
     public bool Stack(ItemInstance item)
     {
         int stackSize = _itemData.StackSize;
@@ -46,7 +44,6 @@ public class ItemInstance
         }
         return false;
     }
-
     public void UseItem(Transform user)
     {
         try{
@@ -55,6 +52,7 @@ public class ItemInstance
         catch (ItemBreakException){
             _quantity -= 1;
             OnQuantityChanged?.Invoke();
+            throw new ItemBreakException();
         }
     }
     public override bool Equals(object obj) {return obj is ItemInstance otraclase ? ItemName == otraclase.ItemName : false;}

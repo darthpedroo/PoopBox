@@ -20,4 +20,4 @@ MonoBehaviour:
   HungerRestore: 0
   HealthRestore: 25
   _durabilityOnUse: 1
-  _maxDurability: 2
+  _maxDurability: 3
