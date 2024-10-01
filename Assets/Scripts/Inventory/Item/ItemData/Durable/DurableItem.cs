@@ -10,6 +10,8 @@ public class DurableItem : UItemData
     private readonly int _durabilityOnUse;
     private int _currentDurability;
     public int CurrentDurability {get; set;}
+    public delegate void DurabilityChanged(int currentDurability, int maxDurability);
+    public event DurabilityChanged OnDurabilityChanged;
     public DurableItem(ItemData item, int maxDurability , int durabilityOnUse ){
         _item = item;
         _maxDurability = maxDurability;
