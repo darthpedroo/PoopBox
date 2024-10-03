@@ -17,9 +17,9 @@ public class DropStrategyRandom : IDropStrategy
     {
         List<ItemInstance> allLoot = new();
         foreach (Drop drop in _drops){
-            ItemInstance loot = drop.DropLoot();
+            List<ItemInstance> loot = drop.DropLoot();
             if (loot != null){
-                allLoot.AddRange(loot.DivideIntoStacks());
+                allLoot.AddRange(loot);
             }
         }
         return allLoot.ToArray();
@@ -28,11 +28,11 @@ public class DropStrategyRandom : IDropStrategy
     public void SpawnDrops(Vector3 position, List<Drop> _drops)
     {
         foreach (Drop drop in _drops){
-            ItemInstance loot = drop.DropLoot();
+            List<ItemInstance> loot = drop?.DropLoot();
             if (loot != null){
-                foreach (ItemInstance DividedItem in loot.DivideIntoStacks()){
+                foreach (ItemInstance dividedItem in loot){
                     Vector3 randomVelocity = new(Random.Range(-5,5),Random.Range(1,5),Random.Range(-5,5));
-                    FloorItemConstructor droppedItem = new(position,DividedItem,randomVelocity);
+                    _ = new FloorItemConstructor(position, dividedItem, randomVelocity);
                 }
             }
         }
@@ -54,10 +54,10 @@ public class DropStrategyMutuallyExclusive : IDropStrategy
         if (Random.value * 100 <= _chance) 
         {
             Drop selectedDrop = SelectOneDrop(drops); 
-            ItemInstance loot = selectedDrop?.DropLoot();
+            List<ItemInstance> loot = selectedDrop?.DropLoot();
             if (loot != null)
             {
-                allLoot.AddRange(loot.DivideIntoStacks());
+                allLoot.AddRange(loot);
             }
         }
         return allLoot.ToArray();
@@ -68,11 +68,11 @@ public class DropStrategyMutuallyExclusive : IDropStrategy
         if (Random.value * 100 <= _chance) 
         {
             Drop selectedDrop = SelectOneDrop(drops); 
-            ItemInstance loot = selectedDrop?.DropLoot();
+            List<ItemInstance> loot = selectedDrop?.DropLoot();
             if (loot != null) {
-                foreach (ItemInstance DividedItem in loot.DivideIntoStacks()){
+                foreach (ItemInstance dividedItem in loot){
                     Vector3 randomVelocity = new(Random.Range(-5,5),Random.Range(1,5),Random.Range(-5,5));
-                    FloorItemConstructor droppedItem = new(position,DividedItem,randomVelocity);
+                    _ = new FloorItemConstructor(position, dividedItem, randomVelocity);
                 }
             }
         }

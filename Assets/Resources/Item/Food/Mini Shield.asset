@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96cd41ed95ef8f547a818bbd22a4b716, type: 3}
+  m_Name: Mini Shield
+  m_EditorClassIdentifier: 
+  _itemSlotTexture: {fileID: 2800000, guid: fbf6a52e63a162a4596a9e8c81f93068, type: 3}
+  ItemModel: {fileID: 1100542972656264, guid: bf1067ac4cce904429196bd5902ef4c2, type: 3}
+  _name: Mini
+  _stackSize: 6
+  ModelScale: {x: 6, y: 6, z: 6}
+  DurabilityOnUse: 1
+  MaxDurability: 4
+  HungerRestore: 0
+  HealthRestore: 25

@@ -19,8 +19,7 @@ public class EndlessTerrain : MonoBehaviour
     int chunkSize;
     int chunkVisibleInViewDst;
     Dictionary<Vector2,TerrainChunk> TerrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
-    static List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>();
-    public static GameObject[] treePrefabs; // Array to store tree prefabs
+    static List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>(); // Array to store tree prefabs
     public static int maxTreesPerChunk = 200; // Max number of trees per chunk
 
     void Start(){
@@ -29,8 +28,6 @@ public class EndlessTerrain : MonoBehaviour
         chunkSize = MapGenerator.mapChunkSize -1 ;
         chunkVisibleInViewDst = Mathf.RoundToInt(maxViewDist /chunkSize);
         UpdateVisibleChunks();
-        treePrefabs = Resources.LoadAll<GameObject>("Trees/Prefabs");
-
         
     }
 
@@ -111,16 +108,7 @@ public class EndlessTerrain : MonoBehaviour
     
         public void PlaceTrees(Vector2 position, MapData mapData, Transform parent) {
             int treeCount = UnityEngine.Random.Range(5, maxTreesPerChunk);
-
-            
-            
-
-            // Ensure the tree prefabs are loaded
-            if (treePrefabs == null || treePrefabs.Length == 0) {
-                Debug.LogWarning("No tree pskinidi!");
-                return;
-            }
-
+            StructureCreator structureCreator = Resources.Load<StructureCreator>("Structures/Tree");
         
             float rayHeight = 1000f; 
            
@@ -140,9 +128,7 @@ public class EndlessTerrain : MonoBehaviour
                 RaycastHit hit;
                 
                 if (Physics.Raycast(rayStart, Vector3.down, out hit, rayHeight, LayerMask.GetMask("Ground"))) {
-                    Vector3 treePosition = hit.point;   
-                    GameObject treePrefab = treePrefabs[UnityEngine.Random.Range(0, treePrefabs.Length)];          
-                    GameObject treeInstance = Instantiate(treePrefab, treePosition, Quaternion.identity, parent);
+                    structureCreator.SpawnStructure(hit.point,parent);
                     
                     
                 } 

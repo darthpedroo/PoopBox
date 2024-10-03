@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355826fab9e1e1945abb2a6f9e8d486d, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: 
-  StructurePrefab: {fileID: 198265140566174504, guid: 58bcc76d793ec894eb4d8002d736f2fe, type: 3}
+  StructurePrefab:
+  - {fileID: 198265140566174504, guid: 58bcc76d793ec894eb4d8002d736f2fe, type: 3}
   _isChopable: 1
   _isSwordable: 0
   _isShovable: 0
@@ -20,11 +21,16 @@ MonoBehaviour:
   _displayName: skibidi
   _billboardRelativePosition: {x: 0, y: 0.65, z: 0}
   _dropTable:
-  - Item: {fileID: 11400000, guid: c7494c054e0913340952a5a7ca621b9c, type: 2}
-    MinDrop: 400
-    MaxDrop: 400
-    Chance: 100
-  - Item: {fileID: 11400000, guid: 2653323f1c6f7f743a44e26860aee293, type: 2}
+  - Item: {fileID: 11400000, guid: 9aa5d52cf49bcc6499836fa2b3bed281, type: 2}
     MinDrop: 1
     MaxDrop: 1
     Chance: 100
+  - Item: {fileID: 11400000, guid: 2ee413f5c3d402548b8b857870670a93, type: 2}
+    MinDrop: 30
+    MaxDrop: 30
+    Chance: 100
+  - Item: {fileID: 11400000, guid: eeeda3f4e42c73542889fbe8e36d6404, type: 2}
+    MinDrop: 30
+    MaxDrop: 30
+    Chance: 100
+  _scale: {x: 3, y: 3, z: 3}

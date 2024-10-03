@@ -1,123 +1,59 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+
 using UnityEngine;
 
-/// <summary>
-/// Represents an instance of an item in the game, including its data and quantity.
-/// </summary>
 public class ItemInstance
 {
-    private readonly ItemData _itemData;
-    private int _quantity;
-
-    public ItemInstance(ItemData item, int quantity)
+    protected readonly UItemData _itemData;
+    protected int _quantity;
+    public delegate void QuantityChanged();
+    public event QuantityChanged OnQuantityChanged;
+    public int Quantity { get { return _quantity; } protected set{_quantity = value; OnQuantityChanged?.Invoke();}}
+    public string ItemName{get { return _itemData.Name; }}
+    public ItemInstance(UItemData item, int quantity)
     {
         _quantity = quantity;
         _itemData = item;
     }
+    public Texture GetItemTexture() {return _itemData.GetItemTexture();}
 
-
-    public Texture GetItemTexture()
-    {
-        return _itemData.GetItemTexture();
-    }
-
-    public void EquipItem(GameObject currentItemGameObject)
+    public virtual void EquipItem(GameObject currentItemGameObject)
     {
         _itemData.EquipItem(currentItemGameObject);
-        if (ItemName == "Wood")
-        {
-            Debug.Log("Madera x" + _quantity);
-        }
     }
-
     public bool Stack(ItemInstance item)
     {
         int stackSize = _itemData.StackSize;
-        //Debug.Log(item == this);
         if (item == this) // si son el mismo item, stackear
         {
             if (item._quantity + _quantity <= stackSize)
             {
-                _quantity += item._quantity;
+                Quantity += item._quantity;
                 return true;
             }
             else
             {
                 int remainingItemsToStack = item._quantity + _quantity - stackSize;
-                _quantity = stackSize;
+                Quantity = stackSize;
                 item._quantity = remainingItemsToStack;
             }
         }
         return false;
     }
-
-
-    public ItemInstance[] DivideIntoStacks()
+    public virtual void UseItem(Transform user)
     {
-        List<ItemInstance> itemsDividedIntoStacks = new();
-        int stackSize = _itemData.StackSize;
-        int fullStacks = Mathf.FloorToInt((float)_quantity / stackSize);
-        int excesStack = _quantity - (fullStacks * stackSize);
-
-        for (int i = 0; i < fullStacks; i++)
-        {
-            ItemInstance newItem = new(_itemData, stackSize);
-            itemsDividedIntoStacks.Add(newItem);
+        try{
+            _itemData.UseItem(user);
+        }  
+        catch (ItemBreakException){
+            Quantity -= 1;
+            throw new ItemBreakException();
         }
-
-        if (excesStack != 0)
-        {
-            _quantity = excesStack;
-            itemsDividedIntoStacks.Add(this);
-        }
-
-        return itemsDividedIntoStacks.ToArray();
     }
-
-    public void UseItem(Transform user)
-    {
-        _itemData.UseItem(user);
-    }
-
-    public void AddItemGUI(Transform user){
-        GameObject prefab = Resources.Load<GameObject>("Prefabs/ItemInfoGUI");
-        GameObject itemInfoGui = UnityEngine.Object.Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f),user);
-        itemInfoGui.transform.position = user.transform.position;
-        itemInfoGui.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        itemInfoGui.layer = LayerMask.NameToLayer("holdLayer");
-        itemInfoGui.GetComponentInChildren<TMPro.TMP_Text>().text = ItemName + " X" + _quantity;
-
-    }
-
-    public void UpdateItemGUI(Transform user){
-        user.GetComponentInChildren<TMPro.TMP_Text>().text = ItemName + " X" + _quantity;
-    }
-
-    private string ItemName
-    {
-        get { return _itemData.Name; }
-    }
-
-    public int Count
-    {
-        get {return _quantity;}
-    }
-
-    public override bool Equals(object obj)
-    {
-        if (obj is ItemInstance otraclase)
-        {
-            return ItemName == otraclase.ItemName;
-        }
-        Debug.Log("not");
-        return false;
-    }
-
-    public override int GetHashCode()
-    {
-        return ItemName.GetHashCode();
-    }
+    public override bool Equals(object obj) {return obj is ItemInstance otraclase ? ItemName == otraclase.ItemName : false;}
+    public override int GetHashCode() {return ItemName.GetHashCode();}
     // atencion el siguiente codigo ha sido escrito por TITO CALDERON
     public static bool operator ==(ItemInstance left, ItemInstance right)
     {

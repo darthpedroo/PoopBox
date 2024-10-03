@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStateManager : MonoBehaviour
+public class PlayerStateManager : MonoBehaviour, IEater
 {
 
     public PlayerBaseState currentState;
@@ -14,6 +14,7 @@ public class PlayerStateManager : MonoBehaviour
     public Vector3 velocity;
     public float speed = 20f;
     public bool isGrounded;
+    
     
     void Start()
     {
@@ -36,5 +37,10 @@ public class PlayerStateManager : MonoBehaviour
         currentState = state;
         state.EnterState(this);
 
+    }
+
+    public void Eat(float hunger, float health)
+    {
+        //Debug.Log("Me he heleado");
     }
 }

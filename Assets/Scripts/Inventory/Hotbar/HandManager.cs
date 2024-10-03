@@ -19,16 +19,9 @@ public class HandManager : MonoBehaviour
     void Start()
     {   
         _slots = Hotbar.GetComponentsInChildren<ItemSlot>();
-        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"),1);
+        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"),0);
         _currentItemSlot = -1;
         EquipItem(0);
-    }
-
-    void OnValidate(){
-        if (Application.isPlaying)
-        {
-        _emptyHand = new(Resources.Load<AxeData>("Item/Hand/Hand"), 1);
-        }
     }
 
     // Update is called once per frame
@@ -37,8 +30,13 @@ public class HandManager : MonoBehaviour
         showHitInfo();
         if (Input.GetMouseButtonDown(0))
         {
-            var itemSlot = _slots[_currentItemSlot];
-            itemSlot.Use(Cameraman);
+            try{
+                var itemSlot = _slots[_currentItemSlot];
+                itemSlot.Use(Cameraman);
+            } catch (ItemBreakException) {
+                EquipItem(_currentItemSlot);
+            }
+            
         }
 
         transform.rotation = Cameraman.rotation;
@@ -69,14 +67,14 @@ public class HandManager : MonoBehaviour
     {
         
         if (transform.childCount > 0){
-            var childObject = transform.GetChild(0).gameObject;
-            Destroy(childObject); 
+            foreach(Transform child in transform) {
+                Destroy(child.gameObject);
+            }
         }
 
         var itemSlot = _slots[newSlotIndex];
         if (itemSlot.SlotItem == null) {
             itemSlot.Switch(_emptyHand);
-
         }
         itemSlot.Equip(gameObject);
         

@@ -3,26 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-// DEPRECATED 
-//ITS A FUNCTION AT ITEM INSTANCE
-// TO PRESERVE ENCAPSULATION
 public class ItemInfoGUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    GameObject itemInfoGui = ObjectInstantiator.InstantiatePrefab("Prefabs/ItemInfoGUI", new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f));
-        //Debug.Log("xddd");
-    //    itemInfoGui.transform.parent = gameObject.transform;
-     //   itemInfoGui.transform.position = gameObject.transform.position;
-    //    itemInfoGui.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-     //   itemInfoGui.layer = LayerMask.NameToLayer("holdLayer");
-//        itemInfoGui.GetComponentInChildren<TMP_Text>().text = gameObject.GetComponentInChildren<IPickable>().PickUp().ItemName;
- //   }
-
-    // Update is called once per frame
- //   void Update()
- //   {
-        
-  //  }
+    private ItemInstance _itemInstance;
+    public void SetUp(ItemInstance item){
+        _itemInstance = item;
+        _itemInstance.OnQuantityChanged += UpdateInfoGUI;
+        UpdateInfoGUI();
+    }
+    public void UpdateInfoGUI(){
+        GetComponentInChildren<TMP_Text>().text = _itemInstance.ItemName + " X" + _itemInstance.Quantity;
+    }
+    void OnDestroy(){
+        _itemInstance.OnQuantityChanged -= UpdateInfoGUI;
+    }
 }

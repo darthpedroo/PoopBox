@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355826fab9e1e1945abb2a6f9e8d486d, type: 3}
+  m_Name: Tree
+  m_EditorClassIdentifier: 
+  StructurePrefab:
+  - {fileID: 5101555294967784729, guid: e7a796742987f0e45a330d734d0d8d22, type: 3}
+  - {fileID: 8044474495853503830, guid: b8ebbd1d29a39d043ae29a5ff9013f6b, type: 3}
+  - {fileID: 9188689212402260337, guid: 5359aeae7eb71b74c984d2d6f18cb204, type: 3}
+  - {fileID: 5535124781878055993, guid: fb78a259e6941c14d97f5e9687f3327b, type: 3}
+  - {fileID: 9056776316064075475, guid: 42e61f04f6d0c6349babd6c4d8ac5262, type: 3}
+  - {fileID: 3147647228992043609, guid: e9925550f2a9dbc45beeb2380ff00cfe, type: 3}
+  - {fileID: 6861211463795509193, guid: 68eaed47601a93e48a58b42bd5bfdb3c, type: 3}
+  - {fileID: 4238506228146238265, guid: 15d2d855ed479c449a972b313ae0b23c, type: 3}
+  - {fileID: 3459135868355144100, guid: 4f5bebd5807009040a1cd6854a7679e0, type: 3}
+  - {fileID: 563994172198152822, guid: 64bbe97843dfb0a46a724bd62fa4e73c, type: 3}
+  - {fileID: 3235846197451643562, guid: 02bf194a8588ff34e8dad7c7fd55e111, type: 3}
+  - {fileID: 1397764417442837929, guid: 142d5c37e58897446a1e3583d3e938d1, type: 3}
+  _isChopable: 1
+  _isSwordable: 0
+  _isShovable: 0
+  _health: 500
+  _displayName: Arbol
+  _billboardRelativePosition: {x: 0, y: 0, z: 0}
+  _dropTable:
+  - Item: {fileID: 11400000, guid: c7494c054e0913340952a5a7ca621b9c, type: 2}
+    MinDrop: 1
+    MaxDrop: 1
+    Chance: 100
