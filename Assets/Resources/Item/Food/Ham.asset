@@ -17,7 +17,7 @@ MonoBehaviour:
   _name: Ham
   _stackSize: 12
   ModelScale: {x: 6, y: 6, z: 6}
+  DurabilityOnUse: 1
+  MaxDurability: 4
   HungerRestore: 10
   HealthRestore: 1
-  _durabilityOnUse: 1
-  _maxDurability: 2

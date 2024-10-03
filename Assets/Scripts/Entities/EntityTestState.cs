@@ -6,7 +6,7 @@ public class EntityTestState : EntityBaseState
 {
     Animator animator;
 
-    public float moveSpeed = 0.2f;    // Speed at which the entity moves
+    public float moveSpeed = 1f;    // Speed at which the entity moves
     private Vector3 stopPosition;     // Position to stop at after walking
 
     private float walkTime;           // Time entity will walk
@@ -25,6 +25,7 @@ public class EntityTestState : EntityBaseState
 
         // Initialize Animator if needed (optional)
         animator = entity.GetComponent<Animator>();
+        moveSpeed = entity.speed;
 
         // So that all the entities don't move/stop at the same time
         walkTime = Random.Range(3f, 6f);  // Random walking time between 3 and 6 seconds

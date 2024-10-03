@@ -17,7 +17,7 @@ MonoBehaviour:
   _name: Beer
   _stackSize: 5
   ModelScale: {x: 6, y: 6, z: 6}
+  DurabilityOnUse: 1
+  MaxDurability: 4
   HungerRestore: 0
   HealthRestore: 50
-  _durabilityOnUse: 1
-  _maxDurability: 3

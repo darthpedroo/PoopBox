@@ -10,7 +10,7 @@ public class EntityStateManager : MonoBehaviour
 {
 
     public Rigidbody entityRigidbody; 
-    public float speed =10f;
+    public float speed = 1f;
     public EntityBaseState currentState;
     public EntityIdleState idleState = new EntityIdleState();
     public EntityWanderingState wanderingState = new EntityWanderingState();

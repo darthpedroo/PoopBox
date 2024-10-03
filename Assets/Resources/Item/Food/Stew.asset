@@ -17,7 +17,7 @@ MonoBehaviour:
   _name: Stew
   _stackSize: 16
   ModelScale: {x: 6, y: 6, z: 6}
+  DurabilityOnUse: 1
+  MaxDurability: 4
   HungerRestore: 30
   HealthRestore: 10
-  _durabilityOnUse: 1
-  _maxDurability: 3

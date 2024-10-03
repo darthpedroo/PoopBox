@@ -17,7 +17,7 @@ MonoBehaviour:
   _name: Watermelon
   _stackSize: 1
   ModelScale: {x: 6, y: 6, z: 6}
+  DurabilityOnUse: 1
+  MaxDurability: 4
   HungerRestore: 60
   HealthRestore: 0
-  _durabilityOnUse: 1
-  _maxDurability: 3
