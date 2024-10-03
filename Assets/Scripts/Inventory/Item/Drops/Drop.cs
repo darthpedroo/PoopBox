@@ -47,7 +47,7 @@ public class Drop
                 int currentStackSize = Mathf.Min(totalStackSize, maxStackSize);
                 
                 // Add the new ItemInstance to the list with the current stack size
-                droppedItems.Add(new ItemInstance(Item, currentStackSize));
+                droppedItems.Add(Item.GetInstance(currentStackSize));
                 
                 // Decrease the remaining stack size by the amount used in this stack
                 totalStackSize -= currentStackSize;

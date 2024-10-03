@@ -41,35 +41,44 @@ public class ItemSlot : MonoBehaviour
         _text.text = textToDisplay;
     }
 
-    private void UpdateSlider(int currentDurability, int maxDurability){
-        Debug.Log("papu");
-        _slider.maxValue = maxDurability;
-        _slider.value = currentDurability;
+    private void UpdateSlider(){
+        int sliderValue = 0;
+        if (SlotItem != null && SlotItem is DurableItemInstance durableItem){
+            _slider.maxValue = durableItem.MaxDurability;
+            sliderValue = durableItem.CurrentDurability;
+        }
+        _slider.value = sliderValue;
     }
    
     private void OnQuantityChanged(){
         if (SlotItem.Quantity == 0){
             Switch(null);
             throw new ItemBreakException();
-        } else {
-            UpdateText();
-        }
-        
+        } 
+        UpdateText();
+        UpdateSlider();
     }
     public void Switch(ItemInstance newItem) {
         if (SlotItem != null)
         {
             // Unsubscribe from old item
             SlotItem.OnQuantityChanged -= OnQuantityChanged;
+            if (SlotItem is DurableItemInstance durableItem){
+                durableItem.OnDurabilityChanged -= UpdateSlider;
+            }
         }
         SlotItem = newItem;
         if (SlotItem != null)
         {
             // Subscribe to new item
             SlotItem.OnQuantityChanged += OnQuantityChanged;
+            if (SlotItem is DurableItemInstance durableItem){
+                durableItem.OnDurabilityChanged += UpdateSlider;
+            }
         }
         UpdateImage();
         UpdateText();
+        UpdateSlider();
     }
     public void Equip(GameObject currentItemGameObject) {
         SlotItem.EquipItem(currentItemGameObject);

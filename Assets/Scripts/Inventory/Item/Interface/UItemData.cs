@@ -9,5 +9,4 @@ public interface UItemData
     public Texture GetItemTexture();
     public string Name{get;}
     public int StackSize{get;}
-    public UItemData Construct();
 }

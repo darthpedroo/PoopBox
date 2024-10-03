@@ -5,18 +5,18 @@ using UnityEngine;
 public class Consumer : MonoBehaviour
 {
 
-    GameObject[] portions;
-    int currentIndex;
+    GameObject[] _portions;
+    int _currentIndex;
 
     void Start()
     {
         bool skipFirst = transform.childCount > 4;
-        portions = new GameObject[skipFirst ? transform.childCount-1 : transform.childCount];
-        for (int i = 0; i < portions.Length; i++)
+        _portions = new GameObject[skipFirst ? transform.childCount-1 : transform.childCount];
+        for (int i = 0; i < _portions.Length; i++)
         {
-            portions[i] = transform.GetChild(skipFirst ? i + 1 : i).gameObject;
-            if (portions[i].activeInHierarchy)
-                currentIndex = i;
+            _portions[i] = transform.GetChild(skipFirst ? i + 1 : i).gameObject;
+            if (_portions[i].activeInHierarchy)
+                _currentIndex = i;
         }
     }
 
@@ -25,11 +25,12 @@ public class Consumer : MonoBehaviour
         Consume();
     }
     public void SetState(int newIndex){
+        newIndex -= 1;
         Start();
-        if (newIndex + 1 == portions.Length){
+        if (newIndex + 1 == _portions.Length){
             return;
         }
-        for (int i = 0;  i < portions.Length - newIndex - 1 ; i++){
+        for (int i = 0;  i < _portions.Length - newIndex - 1 ; i++){
             Consume();
         }
             
@@ -38,15 +39,15 @@ public class Consumer : MonoBehaviour
     void Consume()
     {
 //        Debug.Log(currentIndex);
-        if (currentIndex != portions.Length)
-            portions[currentIndex].SetActive(false);
-        currentIndex++;
+        if (_currentIndex != _portions.Length)
+            _portions[_currentIndex].SetActive(false);
+        _currentIndex++;
         
-        if (currentIndex > portions.Length)
-            currentIndex = 0;
-        else if (currentIndex == portions.Length)
+        if (_currentIndex > _portions.Length)
+            _currentIndex = 0;
+        else if (_currentIndex == _portions.Length)
             return;
-        portions[currentIndex].SetActive(true);
+        _portions[_currentIndex].SetActive(true);
     }
 
 }

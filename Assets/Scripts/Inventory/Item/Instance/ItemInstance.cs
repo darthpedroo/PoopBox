@@ -6,20 +6,20 @@ using UnityEngine;
 
 public class ItemInstance
 {
-    private readonly UItemData _itemData;
-    private int _quantity;
+    protected readonly UItemData _itemData;
+    protected int _quantity;
     public delegate void QuantityChanged();
     public event QuantityChanged OnQuantityChanged;
-    public int Quantity { get { return _quantity; }}
+    public int Quantity { get { return _quantity; } protected set{_quantity = value; OnQuantityChanged?.Invoke();}}
     public string ItemName{get { return _itemData.Name; }}
     public ItemInstance(UItemData item, int quantity)
     {
         _quantity = quantity;
-        _itemData = item.Construct();
+        _itemData = item;
     }
     public Texture GetItemTexture() {return _itemData.GetItemTexture();}
 
-    public void EquipItem(GameObject currentItemGameObject)
+    public virtual void EquipItem(GameObject currentItemGameObject)
     {
         _itemData.EquipItem(currentItemGameObject);
     }
@@ -30,28 +30,25 @@ public class ItemInstance
         {
             if (item._quantity + _quantity <= stackSize)
             {
-                _quantity += item._quantity;
-                OnQuantityChanged?.Invoke();
+                Quantity += item._quantity;
                 return true;
             }
             else
             {
                 int remainingItemsToStack = item._quantity + _quantity - stackSize;
-                _quantity = stackSize;
-                OnQuantityChanged?.Invoke();
+                Quantity = stackSize;
                 item._quantity = remainingItemsToStack;
             }
         }
         return false;
     }
-    public void UseItem(Transform user)
+    public virtual void UseItem(Transform user)
     {
         try{
             _itemData.UseItem(user);
         }  
         catch (ItemBreakException){
-            _quantity -= 1;
-            OnQuantityChanged?.Invoke();
+            Quantity -= 1;
             throw new ItemBreakException();
         }
     }

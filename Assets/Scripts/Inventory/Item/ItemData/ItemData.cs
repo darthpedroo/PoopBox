@@ -42,8 +42,8 @@ public class ItemData : ScriptableObject, UItemData
         return _itemSlotTexture;
     }
 
-    public virtual UItemData Construct(){
-        return this;
+    public virtual ItemInstance GetInstance(int quantity){
+        return new ItemInstance(this,quantity);
     }
 
     public virtual void OnValidate(){
