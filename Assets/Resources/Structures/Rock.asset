@@ -25,12 +25,8 @@ MonoBehaviour:
     MinDrop: 1
     MaxDrop: 1
     Chance: 100
-  - Item: {fileID: 11400000, guid: 2ee413f5c3d402548b8b857870670a93, type: 2}
-    MinDrop: 30
-    MaxDrop: 30
-    Chance: 100
-  - Item: {fileID: 11400000, guid: eeeda3f4e42c73542889fbe8e36d6404, type: 2}
-    MinDrop: 30
-    MaxDrop: 30
+  - Item: {fileID: 11400000, guid: 2653323f1c6f7f743a44e26860aee293, type: 2}
+    MinDrop: 1
+    MaxDrop: 1
     Chance: 100
   _scale: {x: 3, y: 3, z: 3}

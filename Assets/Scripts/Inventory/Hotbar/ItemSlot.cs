@@ -9,6 +9,9 @@ public class ItemSlot : MonoBehaviour
     private RawImage _image;
     private TMP_Text _text;
     private Slider _slider;
+    private static Color s_maxDurabilityColor = Color.green;
+    private static Color s_halfDurabilitColor = Color.yellow;
+    private static Color s_lessThanHalfDurabilityColor = Color.red;
     void Start(){
         _image = GetComponent<RawImage>();
         _text = GetComponentInChildren<TMP_Text>();
@@ -46,6 +49,14 @@ public class ItemSlot : MonoBehaviour
         if (SlotItem != null && SlotItem is DurableItemInstance durableItem){
             _slider.maxValue = durableItem.MaxDurability;
             sliderValue = durableItem.CurrentDurability;
+            float durabilityPercentage = (float)durableItem.CurrentDurability / durableItem.MaxDurability;
+            if (durabilityPercentage >= 0.5f) {
+                _slider.fillRect.GetComponent<RawImage>().color = s_maxDurabilityColor; // Green for more than 50%
+            } else if (durabilityPercentage >= 0.25f) {
+                _slider.fillRect.GetComponent<RawImage>().color = s_halfDurabilitColor; // Yellow for between 25% and 50%
+            } else {
+                _slider.fillRect.GetComponent<RawImage>().color = s_lessThanHalfDurabilityColor; // Red for less than 25%
+            }
         }
         _slider.value = sliderValue;
     }

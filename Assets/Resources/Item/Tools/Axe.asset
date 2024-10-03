@@ -17,4 +17,6 @@ MonoBehaviour:
   _name: Axe
   _stackSize: 1
   ModelScale: {x: 1, y: 1, z: 1}
+  DurabilityOnUse: 1
+  MaxDurability: 80
   ToolDamage: 80

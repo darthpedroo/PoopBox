@@ -6,6 +6,7 @@ public class StructureBuilderComponent : MonoBehaviour
     public Vector3 Pos;
     public void SpawnStructure()
     {
+        StructureCreator.ConfigureBuilder();
         StructureCreator.SpawnStructure(Pos);
     }
 }

@@ -15,7 +15,7 @@ public class StructureCreator : ScriptableObject
     [SerializeField] private List<Drop> _dropTable;
     [SerializeField] private Vector3 _scale;
     private StructureBuilder _structureBuilder;
-    
+    private bool _isConfigured = false; 
 
     void OnValidate() {
         foreach (Drop drop in _dropTable){
@@ -41,8 +41,17 @@ public class StructureCreator : ScriptableObject
             _scale.z = 1;
         }
 	}
-    private void ConfigureBuilder()
+    private void OnEnable() {
+        if (!_isConfigured) {
+            ConfigureBuilder();
+        }
+    }
+    public void ConfigureBuilder()
     {
+        Debug.Log("PAPU");
+        _structureBuilder = new(StructurePrefab);
+        DropTable dropTable = new DropTableBuilder().Add(_dropTable).GetDropTable();
+        _structureBuilder.SetDropTable(dropTable);
         if (_isChopable)
         {
             _structureBuilder.SetChopable();
@@ -55,21 +64,12 @@ public class StructureCreator : ScriptableObject
         {
             _structureBuilder.SetShovable();
         }
+        _isConfigured = true;
     }
     public void SpawnStructure(Vector3 position){
-        GameObject randomPrefab = StructurePrefab[Random.Range(0,StructurePrefab.Count)];
-        _structureBuilder = new StructureBuilder(randomPrefab);
-        ConfigureBuilder();
-        DropTable dropTable = new DropTableBuilder().Add(_dropTable).GetDropTable();
-        _structureBuilder.SetDropTable(dropTable);
         _structureBuilder.GetStructure().PlaceStructure(position, Quaternion.identity, _scale,_billboardRelativePosition,_health,_displayName);
     }
     public void SpawnStructure(Vector3 position, Transform parent){
-        GameObject randomPrefab = StructurePrefab[Random.Range(0,StructurePrefab.Count)];
-        _structureBuilder = new StructureBuilder(randomPrefab);
-        ConfigureBuilder();
-        DropTable dropTable = new DropTableBuilder().Add(_dropTable).GetDropTable();
-        _structureBuilder.SetDropTable(dropTable);
         _structureBuilder.GetStructure().PlaceStructure(position, Quaternion.identity, _scale,_billboardRelativePosition,_health,_displayName,parent);
     }
     

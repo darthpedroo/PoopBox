@@ -10,7 +10,7 @@ using UnityEngine;
 public class StructureBuilder 
 {
     private readonly List<System.Action<GameObject>> _modifications;
-    private readonly GameObject _structurePrefab;
+    private readonly List<GameObject> _structurePrefab;
     public StructureBuilder SetChopable(){
         _modifications.Add((structure) => structure.AddComponent<ChopChop>());
         return this;
@@ -28,7 +28,7 @@ public class StructureBuilder
         _modifications.Add((structure) => structure.GetComponent<StructureManager>().SetDropTable(dropTable));
         return this;
     }
-    public StructureBuilder (GameObject prefab){
+    public StructureBuilder (List<GameObject> prefab){
         _structurePrefab = prefab;
         _modifications = new()
         {
@@ -37,6 +37,7 @@ public class StructureBuilder
     }
 
     public Structure2 GetStructure(){
-        return new Structure2(_modifications, _structurePrefab);
+        GameObject randomPrefab = _structurePrefab[Random.Range(0,_structurePrefab.Count)];
+        return new Structure2(_modifications, randomPrefab);
     }
 }
