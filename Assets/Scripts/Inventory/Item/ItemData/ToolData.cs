@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToolData : ItemData
+public class ToolData : DurableItemData
 {
     public int ToolDamage;
     

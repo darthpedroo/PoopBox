@@ -36,3 +36,4 @@ MonoBehaviour:
     MinDrop: 1
     MaxDrop: 1
     Chance: 100
+  _scale: {x: 1, y: 1, z: 1}

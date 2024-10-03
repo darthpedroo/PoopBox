@@ -21,6 +21,7 @@ public class EndlessTerrain : MonoBehaviour
     Dictionary<Vector2,TerrainChunk> TerrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
     static List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>(); // Array to store tree prefabs
     public static int maxTreesPerChunk = 200; // Max number of trees per chunk
+    private static StructureCreator s_structureCreator;
 
     void Start(){
         mapGenerator = FindObjectOfType<MapGenerator>(); 
@@ -28,7 +29,8 @@ public class EndlessTerrain : MonoBehaviour
         chunkSize = MapGenerator.mapChunkSize -1 ;
         chunkVisibleInViewDst = Mathf.RoundToInt(maxViewDist /chunkSize);
         UpdateVisibleChunks();
-        
+        s_structureCreator = Resources.Load<StructureCreator>("Structures/Tree");
+        s_structureCreator.ConfigureBuilder();
     }
 
     void Update(){
@@ -108,8 +110,6 @@ public class EndlessTerrain : MonoBehaviour
     
         public void PlaceTrees(Vector2 position, MapData mapData, Transform parent) {
             int treeCount = UnityEngine.Random.Range(5, maxTreesPerChunk);
-            StructureCreator structureCreator = Resources.Load<StructureCreator>("Structures/Tree");
-        
             float rayHeight = 1000f; 
            
             for (int i = 0; i < treeCount; i++) {
@@ -128,9 +128,7 @@ public class EndlessTerrain : MonoBehaviour
                 RaycastHit hit;
                 
                 if (Physics.Raycast(rayStart, Vector3.down, out hit, rayHeight, LayerMask.GetMask("Ground"))) {
-                    structureCreator.SpawnStructure(hit.point,parent);
-                    
-                    
+                    s_structureCreator.SpawnStructure(hit.point,parent);
                 } 
             }
         }
