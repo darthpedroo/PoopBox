@@ -11,6 +11,8 @@ public class AxeData : ToolData
     public override void UseItem(Transform user){
         if (Physics.Raycast(user.position, user.TransformDirection(Vector3.forward), out _hit, 7.5f, LayerMask.GetMask("Interactable"))){      
             _hit.collider.transform.gameObject.GetComponentInParent<IChopable>().TakeAxeDamage(ToolDamage, _hit);
+        } else{
+            throw new ItemNotUsedException();
         }
     }
     

@@ -35,7 +35,7 @@ public class HandManager : MonoBehaviour
                 itemSlot.Use(Cameraman);
             } catch (ItemBreakException) {
                 EquipItem(_currentItemSlot);
-            }
+            } catch (ItemNotUsedException){}
             
         }
 

@@ -48,7 +48,6 @@ public class StructureCreator : ScriptableObject
     }
     public void ConfigureBuilder()
     {
-        Debug.Log("PAPU");
         _structureBuilder = new(StructurePrefab);
         DropTable dropTable = new DropTableBuilder().Add(_dropTable).GetDropTable();
         _structureBuilder.SetDropTable(dropTable);

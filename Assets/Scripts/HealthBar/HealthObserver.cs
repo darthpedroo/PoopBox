@@ -26,12 +26,13 @@ public class HealthObserver : MonoBehaviour, IHealth
 
     void HitParticle(RaycastHit hit){
         GameObject hitParticle = Instantiate(Resources.Load<GameObject>("Prefabs/HitParticle"), new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f), transform);
+        hitParticle.transform.localScale = Vector3.one * 0.15f;
         hitParticle.transform.position = hit.point;
     }
     void DeathParticle(RaycastHit hit){
         GameObject bazingaParticle = Instantiate(Resources.Load<GameObject>("Prefabs/BazingaParticle"), new Vector3(0, 0, 0), Quaternion.Euler(0f, 0f, 0f), transform);
-        bazingaParticle.
-        transform.position = hit.point;
+        bazingaParticle.transform.localScale = Vector3.one * 0.15f;
+        bazingaParticle.transform.position = hit.point;
     }
     private IEnumerator DelayedDeathCallback() {
         yield return new WaitForSeconds(0.5f); // Delay for 0.5 seconds

@@ -24,7 +24,12 @@ public class DurableItemInstance : ItemInstance
         _currentDurability = _maxDurability;
     }
     public override void UseItem(Transform user){
-        _itemData.UseItem(user);
+        try{
+            _itemData.UseItem(user);
+        }
+        catch (ItemNotUsedException) {
+            return;
+        }
         _currentDurability -= _durabilityOnUse;
         OnDurabilityChanged?.Invoke();
         if (_currentDurability < 1){
