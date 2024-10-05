@@ -14,8 +14,8 @@ public class StructureCreator : ScriptableObject
     [SerializeField] private Vector3 _billboardRelativePosition ;
     [SerializeField] private List<Drop> _dropTable;
     [SerializeField] private Vector3 _scale;
-    private StructureBuilder _structureBuilder;
-    private bool _isConfigured = false; 
+    private Structure _structure;
+
 
     void OnValidate() {
         foreach (Drop drop in _dropTable){
@@ -41,35 +41,37 @@ public class StructureCreator : ScriptableObject
             _scale.z = 1;
         }
 	}
-    private void OnEnable() {
-        if (!_isConfigured) {
-            ConfigureBuilder();
-        }
-    }
-    public void ConfigureBuilder()
+    
+    private void ConfigureBuilder()
     {
-        _structureBuilder = new(StructurePrefab);
+        StructureBuilder structureBuilder = new(StructurePrefab);
         DropTable dropTable = new DropTableBuilder().Add(_dropTable).GetDropTable();
-        _structureBuilder.SetDropTable(dropTable);
+        structureBuilder.SetDropTable(dropTable);
         if (_isChopable)
         {
-            _structureBuilder.SetChopable();
+            structureBuilder.SetChopable();
         }
         if (_isSwordable)
         {
-            _structureBuilder.SetSwordable();
+            structureBuilder.SetSwordable();
         }
         if (_isShovable)
         {
-            _structureBuilder.SetShovable();
+            structureBuilder.SetShovable();
         }
-        _isConfigured = true;
+        _structure = structureBuilder.GetStructure();
     }
     public void SpawnStructure(Vector3 position){
-        _structureBuilder.GetStructure().PlaceStructure(position, Quaternion.identity, _scale,_billboardRelativePosition,_health,_displayName);
+        if (_structure == null){
+            ConfigureBuilder();
+        }
+        _structure.PlaceStructure(position, Quaternion.identity, _scale,_billboardRelativePosition,_health,_displayName);
     }
     public void SpawnStructure(Vector3 position, Transform parent){
-        _structureBuilder.GetStructure().PlaceStructure(position, Quaternion.identity, _scale,_billboardRelativePosition,_health,_displayName,parent);
+        if (_structure == null){
+            ConfigureBuilder();
+        }
+        _structure.PlaceStructure(position, Quaternion.identity, _scale,_billboardRelativePosition,_health,_displayName,parent);
     }
     
 }

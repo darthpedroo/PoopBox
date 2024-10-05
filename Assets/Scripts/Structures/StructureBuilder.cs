@@ -36,8 +36,7 @@ public class StructureBuilder
         };
     }
 
-    public Structure2 GetStructure(){
-        GameObject randomPrefab = _structurePrefab[Random.Range(0,_structurePrefab.Count)];
-        return new Structure2(_modifications, randomPrefab);
+    public Structure GetStructure(){
+        return new Structure(_modifications, _structurePrefab);
     }
 }

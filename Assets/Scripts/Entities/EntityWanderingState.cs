@@ -34,7 +34,7 @@ public class EntityWanderingState : EntityBaseState
             timeBetweenMove+= Time.deltaTime;
             Vector3 movement_vector = MoveRandomDirection();
             SetDefaultRotation(entity);
-            entity.GetComponent<Rigidbody>().MovePosition(entity.transform.position + movement_vector*Time.deltaTime * entity.speed);
+            entity.GetComponent<Rigidbody>().MovePosition(entity.transform.position + movement_vector*Time.deltaTime * entity.Speed);
             }
     }
 

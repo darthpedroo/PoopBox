@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 
-public class Structure2
+public class Structure
 {
     private readonly List<System.Action<GameObject>> _modifications;
-    private readonly GameObject _structurePrefab;
-    public Structure2(List<System.Action<GameObject>> modification, GameObject prefab){
+    private readonly List<GameObject> _structurePrefab;
+    public Structure(List<System.Action<GameObject>> modification, List<GameObject> prefab){
         _structurePrefab = prefab;
         _modifications = modification;
     }
 
     public void PlaceStructure(Vector3 position, Quaternion rotation, Vector3 scale,Vector3 bilboardPos, int health, string displayName){
-        GameObject structureObject = GameObject.Instantiate(_structurePrefab, position, rotation);
+        GameObject randomPrefab = _structurePrefab[Random.Range(0,_structurePrefab.Count)];
+        GameObject structureObject = GameObject.Instantiate(randomPrefab, position, rotation);
         foreach (var mod in _modifications){
             mod.Invoke(structureObject);
         }
@@ -23,7 +24,8 @@ public class Structure2
         observer.SetUp(health,action,displayName,1, bilboardPos);
     }
     public void PlaceStructure(Vector3 position, Quaternion rotation, Vector3 scale,Vector3 bilboardPos, int health, string displayName, Transform parent){
-        GameObject structureObject = GameObject.Instantiate(_structurePrefab, position, rotation, parent);
+        GameObject randomPrefab = _structurePrefab[Random.Range(0,_structurePrefab.Count)];
+        GameObject structureObject = GameObject.Instantiate(randomPrefab, position, rotation, parent);
         foreach (var mod in _modifications){
             mod.Invoke(structureObject);
         }

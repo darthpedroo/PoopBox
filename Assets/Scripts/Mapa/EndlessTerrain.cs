@@ -30,7 +30,7 @@ public class EndlessTerrain : MonoBehaviour
         chunkVisibleInViewDst = Mathf.RoundToInt(maxViewDist /chunkSize);
         UpdateVisibleChunks();
         s_structureCreator = Resources.Load<StructureCreator>("Structures/Tree");
-        s_structureCreator.ConfigureBuilder();
+
     }
 
     void Update(){

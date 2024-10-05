@@ -11,7 +11,7 @@ public class StructureBuilderEditor : Editor
 
         DrawDefaultInspector();
 
-        if (GUILayout.Button("Get Structure"))
+        if (GUILayout.Button("Spawn Structure"))
         {
             builderComponent.SpawnStructure();
         }

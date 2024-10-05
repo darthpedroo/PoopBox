@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a8ec22efc743841b2b5d1700230a8e, type: 3}
+  m_Name: Pig
+  m_EditorClassIdentifier: 
+  EntityPrefab:
+  - {fileID: 7959600373146309913, guid: ea40e5cf6fdaa644dbd899e5ef9c8c9a, type: 3}
+  _health: 200
+  _displayName: Chancho
+  _billboardRelativePosition: {x: 0, y: 1, z: 0}
+  _dropTable:
+  - Item: {fileID: 11400000, guid: eeeda3f4e42c73542889fbe8e36d6404, type: 2}
+    MinDrop: 1
+    MaxDrop: 1
+    Chance: 100
+  _scale: {x: 1, y: 1, z: 1}
+  _speed: 5

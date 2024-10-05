@@ -25,7 +25,7 @@ public class EntityTestState : EntityBaseState
 
         // Initialize Animator if needed (optional)
         animator = entity.GetComponent<Animator>();
-        moveSpeed = entity.speed;
+        moveSpeed = entity.Speed;
 
         // So that all the entities don't move/stop at the same time
         walkTime = Random.Range(3f, 6f);  // Random walking time between 3 and 6 seconds
