@@ -112,7 +112,7 @@ public class EndlessTerrain : MonoBehaviour
 
         public void PlacePigs(Vector2 position, MapData mapData, Transform parent)
         {
-            int pigCount = UnityEngine.Random.Range(40, 40); // Random number of pigs to spawn
+            int pigCount = UnityEngine.Random.Range(150, 150); // Random number of pigs to spawn
             float rayHeight = 1000f; // Start the ray from a high position to hit the ground
 
             for (int i = 0; i < pigCount; i++)
