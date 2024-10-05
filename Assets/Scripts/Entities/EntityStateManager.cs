@@ -15,7 +15,8 @@ public class EntityStateManager : MonoBehaviour
     private EntityIdleState _idleState = new EntityIdleState();
     private EntityWanderingState _wanderingState = new EntityWanderingState();
     private EntityTestState _testState = new EntityTestState();
-    private DropTable drops;
+    private EntityDeathState _entityDeathState = new EntityDeathState();
+    public DropTable drops;
     // Start is called before the first frame update
     void Start() {
         _entityRigidbody = GetComponent<Rigidbody>();
@@ -28,8 +29,8 @@ public class EntityStateManager : MonoBehaviour
     }
 
     public void Die() {
-        drops.SpawnDropsAt(transform.position);
-        Destroy(gameObject);
+        _currentState = _entityDeathState;
+        _currentState.EnterState(this);
     }
 
     // Update is called once per frame

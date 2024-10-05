@@ -28,7 +28,7 @@ MonoBehaviour:
   _isChopable: 1
   _isSwordable: 0
   _isShovable: 0
-  _health: 500
+  _health: 160
   _displayName: Arbol
   _billboardRelativePosition: {x: 0, y: 0, z: 0}
   _dropTable:
@@ -36,4 +36,4 @@ MonoBehaviour:
     MinDrop: 1
     MaxDrop: 1
     Chance: 100
-  _scale: {x: 1, y: 1, z: 1}
+  _scale: {x: 5, y: 5, z: 5}

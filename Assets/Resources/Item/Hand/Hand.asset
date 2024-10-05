@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemSlotTexture: {fileID: 0}
   ItemModel: {fileID: 919132149155446097, guid: 1c11ce9393cbf93429f294cc4759a6f9, type: 3}
-  Name: Hand
-  StackSize: 1
+  _name: 
+  _stackSize: 1
   ModelScale: {x: 1, y: 1, z: 1}
-  ToolDamage: 260
+  DurabilityOnUse: 0
+  MaxDurability: 0
+  ToolDamage: 30

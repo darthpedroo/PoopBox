@@ -17,8 +17,8 @@ MonoBehaviour:
   _isChopable: 1
   _isSwordable: 0
   _isShovable: 0
-  _health: 507
-  _displayName: skibidi
+  _health: 200
+  _displayName: Roca
   _billboardRelativePosition: {x: 0, y: 0.65, z: 0}
   _dropTable:
   - Item: {fileID: 11400000, guid: 9aa5d52cf49bcc6499836fa2b3bed281, type: 2}

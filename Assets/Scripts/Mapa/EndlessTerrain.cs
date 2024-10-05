@@ -21,7 +21,8 @@ public class EndlessTerrain : MonoBehaviour
     Dictionary<Vector2,TerrainChunk> TerrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
     static List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>(); // Array to store tree prefabs
     public static int maxTreesPerChunk = 200; // Max number of trees per chunk
-    private static StructureCreator s_structureCreator;
+    private static StructureData s_structureCreator;
+    private static EntityData s_entityData;
 
     void Start(){
         mapGenerator = FindObjectOfType<MapGenerator>(); 
@@ -29,8 +30,8 @@ public class EndlessTerrain : MonoBehaviour
         chunkSize = MapGenerator.mapChunkSize -1 ;
         chunkVisibleInViewDst = Mathf.RoundToInt(maxViewDist /chunkSize);
         UpdateVisibleChunks();
-        s_structureCreator = Resources.Load<StructureCreator>("Structures/Tree");
-
+        s_structureCreator = Resources.Load<StructureData>("Structures/Tree");
+        s_entityData = Resources.Load<EntityData>("EntityData/Pig");
     }
 
     void Update(){
@@ -73,6 +74,7 @@ public class EndlessTerrain : MonoBehaviour
         LODInfo[] detailLevels;
         LODMesh[] lodMeshes;
         MapData mapData;
+        bool hasPlacedEntities;
         bool mapDataReceived;
         int previousLODIndex = -1;
         int chunkSize;
@@ -107,7 +109,41 @@ public class EndlessTerrain : MonoBehaviour
            UpdateTerrainChunk();
            
         }
-    
+
+        public void PlacePigs(Vector2 position, MapData mapData, Transform parent)
+        {
+            int pigCount = UnityEngine.Random.Range(40, 40); // Random number of pigs to spawn
+            float rayHeight = 1000f; // Start the ray from a high position to hit the ground
+
+            for (int i = 0; i < pigCount; i++)
+            {
+                // Generate random X and Z positions within the chunk
+                int randomX = UnityEngine.Random.Range(0, chunkSize);
+                int randomZ = UnityEngine.Random.Range(0, chunkSize);
+
+                // Get the terrain height from the height map at the chosen position
+                float height = mapData.heightMap[randomX, randomZ];
+
+                // You can set limits to avoid placing pigs on steep slopes or in water
+                if (height < 0.05f || height > 0.7f)
+                {
+                    continue;
+                }
+
+                // Calculate the start position for the raycast, adjusting the X and Z to the world position
+                Vector3 rayStart = new Vector3(((position.x) - (chunkSize / 2) + randomX) * scale, rayHeight, ((position.y) - (chunkSize / 2) + randomZ) * scale);
+
+                RaycastHit hit;
+
+                // Raycast down to check for ground to place the pig
+                if (Physics.Raycast(rayStart, Vector3.down, out hit, rayHeight, LayerMask.GetMask("Ground")))
+                {
+                    // Assuming you have a method to spawn pigs similar to trees
+                    s_entityData.SpawnEntity(hit.point, parent);
+                }
+            }
+        }
+
         public void PlaceTrees(Vector2 position, MapData mapData, Transform parent) {
             int treeCount = UnityEngine.Random.Range(5, maxTreesPerChunk);
             float rayHeight = 1000f; 
@@ -156,7 +192,12 @@ public class EndlessTerrain : MonoBehaviour
                             previousLODIndex = lodIndex;
                             meshFilter.mesh = lodMesh.mesh;
                             meshCollider.sharedMesh = lodMesh.mesh;
-                            PlaceTrees(position,mapData,meshObject.transform);
+                            if (!hasPlacedEntities){
+                                PlaceTrees(position,mapData,meshObject.transform);
+                                PlacePigs(position,mapData,meshObject.transform);
+                                hasPlacedEntities = true;
+                            }
+                            
                         }
                         else if (!lodMesh.hasRequestedMesh){
                             lodMesh.RequestMesh(mapData);

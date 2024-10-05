@@ -29,7 +29,12 @@ public class Structure
         foreach (var mod in _modifications){
             mod.Invoke(structureObject);
         }
-        structureObject.transform.localScale = scale;
+        Vector3 correctedScale = new Vector3(
+            scale.x / parent.localScale.x,
+            scale.y / parent.localScale.y,
+            scale.z / parent.localScale.z
+        );
+        structureObject.transform.localScale = correctedScale;
         HealthObserver observer = structureObject.AddComponent<HealthObserver>();
         System.Action action = structureObject.GetComponent<StructureManager>().DestroySelf;
         observer.SetUp(health,action,displayName,1, bilboardPos);

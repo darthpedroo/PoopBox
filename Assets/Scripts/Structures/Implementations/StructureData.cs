@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Structure", order = 1)]
-public class StructureCreator : ScriptableObject
+[CreateAssetMenu(fileName = "Structure", menuName = "ScriptableObjects/Structure", order = 1)]
+public class StructureData : ScriptableObject
 {
     public List<GameObject> StructurePrefab;
     [SerializeField] private bool _isChopable;

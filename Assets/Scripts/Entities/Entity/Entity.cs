@@ -27,7 +27,12 @@ public class Entity
         GameObject randomEntity = _entityPrefab[UnityEngine.Random.Range(0,_entityPrefab.Count)];
         GameObject entityObject = GameObject.Instantiate(randomEntity, position, rotation, parent);
         ApplyModifications(entityObject);
-        entityObject.transform.localScale = scale;
+        Vector3 correctedScale = new Vector3(
+            scale.x / parent.localScale.x,
+            scale.y / parent.localScale.y,
+            scale.z / parent.localScale.z
+        );
+        entityObject.transform.localScale = correctedScale;
         SetUpHealthObserver(entityObject, health, displayName, billboardPos);
     }
 
@@ -43,6 +48,6 @@ public class Entity
     {
         HealthObserver observer = entityObject.AddComponent<HealthObserver>();
         Action onDeath = entityObject.GetComponent<EntityStateManager>().Die;
-        observer.SetUp(health, onDeath, displayName, 1, billboardPos);
+        observer.SetUp(health, onDeath, displayName, 3, billboardPos);
     }
 }

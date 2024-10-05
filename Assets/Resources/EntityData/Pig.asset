@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityPrefab:
   - {fileID: 7959600373146309913, guid: ea40e5cf6fdaa644dbd899e5ef9c8c9a, type: 3}
-  _health: 200
+  _health: 120
   _displayName: Chancho
   _billboardRelativePosition: {x: 0, y: 1, z: 0}
   _dropTable:

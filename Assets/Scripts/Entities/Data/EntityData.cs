@@ -27,14 +27,14 @@ public class EntityData : ScriptableObject
                     drop.MaxDrop = 0;
             }
         }
-        if (_scale.x < 1){
-            _scale.x = 1;
+        if (_scale.x < 0.1f){
+            _scale.x = 0.1f;
         }
-        if (_scale.y < 1){
-            _scale.y = 1;
+        if (_scale.y < 0.1f){
+            _scale.y = 0.1f;
         }
-        if (_scale.z < 1){
-            _scale.z = 1;
+        if (_scale.z < 0.1f){
+            _scale.z = 0.1f;
         }
 	}
     private void ConfigureBuilder(){
@@ -52,6 +52,9 @@ public class EntityData : ScriptableObject
         _entity.SpawnEntity(position, Quaternion.identity, _scale,_billboardRelativePosition,_health,_displayName);
     }
     public void SpawnEntity (Vector3 position, Transform parent){
+        if (_entity == null){
+            ConfigureBuilder();
+        }
         _entity.SpawnEntity(position, Quaternion.identity, _scale,_billboardRelativePosition,_health,_displayName, parent);
     }
 }
