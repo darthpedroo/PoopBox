@@ -20,7 +20,10 @@ public class EndlessTerrain : MonoBehaviour
     int chunkVisibleInViewDst;
     Dictionary<Vector2,TerrainChunk> TerrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
     static List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>(); // Array to store tree prefabs
-    public static int maxTreesPerChunk = 100; // Max number of trees per chunk
+    public static int maxTreesPerChunk = 40; // Max number of trees per chunk
+    public static int minTreesPerChunk = 40;
+    public static int maxPigsPerChunk = 40;
+    public static int minPigsPerChunk = 40;
     private static StructureData s_structureCreator;
     private static EntityData s_entityData;
 
@@ -112,7 +115,7 @@ public class EndlessTerrain : MonoBehaviour
 
         void PlacePigs(Vector2 position, MapData mapData, Transform parent)
         {
-            int pigCount = UnityEngine.Random.Range(30, 50); // Number of pigs to spawn
+            int pigCount = UnityEngine.Random.Range(minPigsPerChunk, maxPigsPerChunk); // Number of pigs to spawn
             Vector3[] pigPositions = new Vector3[pigCount];
             float rayHeight = 1000f; // Start the ray from a high position to hit the ground
 
@@ -147,7 +150,7 @@ public class EndlessTerrain : MonoBehaviour
 
         void PlaceTrees(Vector2 position, MapData mapData, Transform parent)
         {
-            int treeCount = UnityEngine.Random.Range(5, maxTreesPerChunk);
+            int treeCount = UnityEngine.Random.Range(minTreesPerChunk, maxTreesPerChunk);
             Vector3[] treePositions = new Vector3[treeCount];
             float rayHeight = 1000f;
 
