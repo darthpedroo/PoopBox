@@ -20,7 +20,7 @@ public class EndlessTerrain : MonoBehaviour
     int chunkVisibleInViewDst;
     Dictionary<Vector2,TerrainChunk> TerrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
     static List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>(); // Array to store tree prefabs
-    public static int maxTreesPerChunk = 200; // Max number of trees per chunk
+    public static int maxTreesPerChunk = 100; // Max number of trees per chunk
     private static StructureData s_structureCreator;
     private static EntityData s_entityData;
 
@@ -110,102 +110,126 @@ public class EndlessTerrain : MonoBehaviour
            
         }
 
-        public void PlacePigs(Vector2 position, MapData mapData, Transform parent)
+        void PlacePigs(Vector2 position, MapData mapData, Transform parent)
         {
-            int pigCount = UnityEngine.Random.Range(150, 150); // Random number of pigs to spawn
+            int pigCount = UnityEngine.Random.Range(30, 50); // Number of pigs to spawn
+            Vector3[] pigPositions = new Vector3[pigCount];
             float rayHeight = 1000f; // Start the ray from a high position to hit the ground
 
             for (int i = 0; i < pigCount; i++)
             {
-                // Generate random X and Z positions within the chunk
                 int randomX = UnityEngine.Random.Range(0, chunkSize);
                 int randomZ = UnityEngine.Random.Range(0, chunkSize);
-
-                // Get the terrain height from the height map at the chosen position
                 float height = mapData.heightMap[randomX, randomZ];
 
-                // You can set limits to avoid placing pigs on steep slopes or in water
                 if (height < 0.05f || height > 0.7f)
                 {
                     continue;
                 }
 
-                // Calculate the start position for the raycast, adjusting the X and Z to the world position
-                Vector3 rayStart = new Vector3(((position.x) - (chunkSize / 2) + randomX) * scale, rayHeight, ((position.y) - (chunkSize / 2) + randomZ) * scale);
+                Vector3 rayStart = new((position.x - (chunkSize / 2) + randomX) * scale, rayHeight, (position.y - (chunkSize / 2) + randomZ) * scale);
 
-                RaycastHit hit;
-
-                // Raycast down to check for ground to place the pig
-                if (Physics.Raycast(rayStart, Vector3.down, out hit, rayHeight, LayerMask.GetMask("Ground")))
+                if (Physics.Raycast(rayStart, Vector3.down, out RaycastHit hit, rayHeight, LayerMask.GetMask("Ground")))
                 {
-                    // Assuming you have a method to spawn pigs similar to trees
-                    s_entityData.SpawnEntity(hit.point, parent);
+                    pigPositions[i] = hit.point;
+                }
+            }
+
+            // Spawn all pigs after positions are calculated
+            foreach (Vector3 pigPosition in pigPositions)
+            {
+                if (pigPosition != Vector3.zero) // Only spawn at valid positions
+                {
+                    s_entityData.SpawnEntity(pigPosition, parent);
                 }
             }
         }
 
-        public void PlaceTrees(Vector2 position, MapData mapData, Transform parent) {
+        void PlaceTrees(Vector2 position, MapData mapData, Transform parent)
+        {
             int treeCount = UnityEngine.Random.Range(5, maxTreesPerChunk);
-            float rayHeight = 1000f; 
-           
-            for (int i = 0; i < treeCount; i++) {
-                // chatgpt me puede comer la verga
+            Vector3[] treePositions = new Vector3[treeCount];
+            float rayHeight = 1000f;
+
+            for (int i = 0; i < treeCount; i++)
+            {
                 int randomX = UnityEngine.Random.Range(0, chunkSize);
                 int randomZ = UnityEngine.Random.Range(0, chunkSize);
+                float height = mapData.heightMap[randomX, randomZ];
 
-                float height = mapData.heightMap[randomX,randomZ];
-                
-                if (height < 0.05f || height > 0.7f){
+                if (height < 0.05f || height > 0.7f)
+                {
                     continue;
                 }
-                Vector3 rayStart = new Vector3(((position.x) - (chunkSize /2) + randomX) * scale,  rayHeight,  ((position.y) - (chunkSize/2) + randomZ) * scale);
-                
-                
-                RaycastHit hit;
-                
-                if (Physics.Raycast(rayStart, Vector3.down, out hit, rayHeight, LayerMask.GetMask("Ground"))) {
-                    s_structureCreator.SpawnStructure(hit.point,parent);
-                } 
+
+                Vector3 rayStart = new((position.x - (chunkSize / 2) + randomX) * scale, rayHeight, (position.y - (chunkSize / 2) + randomZ) * scale);
+
+                if (Physics.Raycast(rayStart, Vector3.down, out RaycastHit hit, rayHeight, LayerMask.GetMask("Ground")))
+                {
+                    treePositions[i] = hit.point;
+                }
+            }
+
+            // Spawn all trees after positions are calculated
+            foreach (Vector3 treePosition in treePositions)
+            {
+                if (treePosition != Vector3.zero)
+                {
+                    s_structureCreator.SpawnStructure(treePosition, parent);
+                }
             }
         }
 
 
+        void SetPigsActive(bool isActive){
+            foreach (EntityStateManager stateManager in meshObject.GetComponentsInChildren<EntityStateManager>())
+            {
+                if (stateManager.gameObject.activeSelf == isActive){
+                    return;
+                }
+                stateManager.gameObject.SetActive(isActive);
+            }
+        }
+        
 
 
         
+
+        
         public void UpdateTerrainChunk() {
-            if (mapDataReceived){
+            if (mapDataReceived) {
                 float viewerDstFromNearestEdge = Mathf.Sqrt(bounds.SqrDistance(viewerPosition));
                 bool visible = viewerDstFromNearestEdge <= maxViewDist;
-                if (visible){
+                if (visible) {
                     int lodIndex = 0;
-                    for (int i = 0; i < detailLevels.Length -1; i++){
-                        if (viewerDstFromNearestEdge > detailLevels[i].visibleDstThreshold){
-                            lodIndex = i+1;
-                        } else{
+                    for (int i = 0; i < detailLevels.Length - 1; i++) {
+                        if (viewerDstFromNearestEdge > detailLevels[i].visibleDstThreshold) {
+                            lodIndex = i + 1;
+                        } else {
                             break;
                         }
                     }
-                    if (lodIndex != previousLODIndex){
+
+                    if (lodIndex != previousLODIndex) {
                         LODMesh lodMesh = lodMeshes[lodIndex];
-                        if (lodMesh.hasMesh){
+                        if (lodMesh.hasMesh) {
                             previousLODIndex = lodIndex;
                             meshFilter.mesh = lodMesh.mesh;
                             meshCollider.sharedMesh = lodMesh.mesh;
-                            if (!hasPlacedEntities){
-                                PlaceTrees(position,mapData,meshObject.transform);
-                                PlacePigs(position,mapData,meshObject.transform);
-                                hasPlacedEntities = true;
+
+                            // Place all entities (trees, pigs, etc.) only when LOD is 0
+                            if (lodIndex == 0 && !hasPlacedEntities) {
+                                PlaceTrees(position, mapData, meshObject.transform);
+                                PlacePigs(position, mapData, meshObject.transform);
+                                hasPlacedEntities = true;  // Ensures entities are placed only once
                             }
-                            
-                        }
-                        else if (!lodMesh.hasRequestedMesh){
+                            SetPigsActive(hasPlacedEntities && lodIndex == 0);
+                        } else if (!lodMesh.hasRequestedMesh) {
                             lodMesh.RequestMesh(mapData);
                         }
                     }
-                    
+
                     terrainChunksVisibleLastUpdate.Add(this);
-                    
                 }
                 SetVisible(visible);
             }
