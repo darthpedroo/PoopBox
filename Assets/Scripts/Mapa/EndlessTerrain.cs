@@ -110,7 +110,6 @@ public class EndlessTerrain : MonoBehaviour
            Texture2D texture = TextureGenerator.TextureFromColourMap(mapData.colourMap,MapGenerator.mapChunkSize,MapGenerator.mapChunkSize);
            meshRenderer.material.mainTexture = texture;
            UpdateTerrainChunk();
-           
         }
 
         void PlacePigs(Vector2 position, MapData mapData, Transform parent)

@@ -21,7 +21,7 @@ public class EntityTestState : EntityBaseState
     // This method is now called during EnterState to initialize all values
     public override void EnterState(EntityStateManager entity)
     {
-        Debug.Log("Entering Test State");
+
 
         // Initialize Animator if needed (optional)
         animator = entity.GetComponent<Animator>();

@@ -12,9 +12,9 @@ public class HandManager : MonoBehaviour
     private ItemSlot[] _slots;
     private int _currentItemSlot; 
     public Transform Cameraman;
-
     private ItemInstance _emptyHand;
     public RaycastHit Hit;
+    public PlayerStateManager player;
 
     void Start()
     {   
@@ -32,7 +32,7 @@ public class HandManager : MonoBehaviour
         {
             try{
                 var itemSlot = _slots[_currentItemSlot];
-                itemSlot.Use(Cameraman);
+                itemSlot.Use(Cameraman  );
             } catch (ItemBreakException) {
                 EquipItem(_currentItemSlot);
             } catch (ItemNotUsedException){}
